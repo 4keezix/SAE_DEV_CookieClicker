@@ -64,7 +64,7 @@
         </Button>
 
         <!-- Arrière-plan -->
-        <Image Source="/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
+        <Image Source="pack://application:,,,/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
 
         <!-- Panneau gauche -->
         <StackPanel Grid.Column="0" Margin="15,10,5,0" VerticalAlignment="Top">
@@ -85,7 +85,7 @@
                         <Grid>
                             <Ellipse Width="200" Height="200">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Images/cookie.jpg"/>
+                                    <ImageBrush ImageSource="pack://application:,,,/Images/cookie.jpg"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Grid>
@@ -150,7 +150,7 @@
         </StackPanel>
 
         <!-- Séparateur gauche -->
-        <Image Source="/Images/bords.png" Grid.Column="1" Stretch="Fill"/>
+        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="1" Stretch="Fill"/>
 
         <!-- Panneau central -->
         <Grid Grid.Column="2" Margin="10">
@@ -179,43 +179,36 @@
         </Grid>
 
         <!-- Séparateur droit -->
-        <Image Source="/Images/bords.png" Grid.Column="3" Stretch="Fill"/>
+        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="3" Stretch="Fill"/>
 
         <!-- Panneau droit -->
         <StackPanel Grid.Column="4" Margin="10">
             <TextBlock Text="Boutique" FontSize="20" FontWeight="Bold" Foreground="White" Margin="10"/>
 
-            <!-- Outils de boutique -->
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <Image Source="/Images/tool1.png" Width="50" Height="50" Margin="0,0,10,0"/>
-                <Image Source="/Images/tool2.png" Width="50" Height="50" Margin="0,0,10,0"/>
-                <Image Source="/Images/tool3.png" Width="50" Height="50" Margin="0,0,10,0"/>
-            </StackPanel>
-
             <!-- Items de boutique -->
-            <StackPanel Orientation="Vertical" Margin="10">
-                <Grid Margin="5" MouseLeftButtonDown="BuyItem1_Click">
+            <StackPanel Orientation="Vertical" Margin="0">
+                <Grid MouseLeftButtonDown="BuyItem1_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Images/click.png" Stretch="Fill" Grid.Column="0"/>
-                    <TextBlock Text="15 cookies, +1 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0"/>
+                    <TextBlock Text="70 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
-                <Grid Margin="5" MouseLeftButtonDown="BuyItem2_Click">
+                <Grid MouseLeftButtonDown="BuyItem2_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Images/grandmere.png" Stretch="Fill" Grid.Column="0"/>
+                    <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0"/>
                     <TextBlock Text="100 cookies, +5 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
-                <Grid Margin="5" MouseLeftButtonDown="BuyItem3_Click">
+                <Grid MouseLeftButtonDown="BuyItem3_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Images/ferme.png" Stretch="Fill" Grid.Column="0"/>
+                    <Image Source="pack://application:,,,/Images/ferme.png" Stretch="Fill" Grid.Column="0"/>
                     <TextBlock Text="500 cookies, +10 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
             </StackPanel>
@@ -228,10 +221,10 @@
 
         <!-- Publicités en bas -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="800" Height="137" Margin="0,441,0,0" Grid.Column="4">
-            <Image Source="/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
-            <Image Source="/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
+            <Image Source="pack://application:,,,/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
+            <Image Source="pack://application:,,,/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
         </StackPanel>
-        <Image Source="/Images/bords.png" Grid.Column="4" Stretch="None" Margin="61,-377,228,583" RenderTransformOrigin="0.5,0.5">
+        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="4" Stretch="None" Margin="61,-377,228,583" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

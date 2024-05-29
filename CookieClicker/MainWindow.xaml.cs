@@ -78,7 +78,7 @@ namespace CookieClicker
             }
         }
 
-
+   
 
 
         private void BuyGrandma_Click(object sender, RoutedEventArgs e)
