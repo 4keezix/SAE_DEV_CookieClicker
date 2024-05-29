@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\ad1.jpg" />
+    <None Remove="Images\background.jpg" />
+    <None Remove="Images\bords.png" />
+    <None Remove="Images\click.png" />
+    <None Remove="Images\cookie.jpg" />
+    <None Remove="Images\ferme.png" />
+    <None Remove="Images\GM1.jpg" />
+    <None Remove="Images\GM2.jpg" />
+    <None Remove="Images\GM3.jpg" />
+    <None Remove="Images\grandmere.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ad1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\bords.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\click.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\cookie.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ferme.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GM1.jpg" />
+    <Resource Include="Images\GM2.jpg" />
+    <Resource Include="Images\GM3.jpg" />
+    <Resource Include="Images\grandmere.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

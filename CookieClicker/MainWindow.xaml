@@ -1,0 +1,245 @@
+﻿<Window x:Class="CookieClicker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="1010"
+        ResizeMode="NoResize"
+        SizeToContent="Manual"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        BorderBrush="SaddleBrown" BorderThickness="5">
+    <Window.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="#FFD700"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Bouton de fermeture -->
+        <Button x:Name="CloseButton" Content="X" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"
+                Background="Transparent" Opacity="0.4" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="CloseButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="1.0"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <!-- Arrière-plan -->
+        <Image Source="/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
+
+        <!-- Panneau gauche -->
+        <StackPanel Grid.Column="0" Margin="15,10,5,0" VerticalAlignment="Top">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+                <Border Background="Black" CornerRadius="10" Opacity="0.5" Margin="10">
+                    <TextBlock x:Name="BakeryNameTextBlock" Text="Pâtisserie Delicious Gizmo" FontSize="20" FontWeight="Bold" Foreground="White" Padding="10" MouseDown="BakeryNameTextBlock_MouseDown"/>
+                </Border>
+                <TextBox x:Name="BakeryNameTextBox" Text="Pâtisserie Delicious Gizmo" FontSize="20" FontWeight="Bold" Foreground="Black" Margin="10" Visibility="Collapsed" KeyDown="BakeryNameTextBox_KeyDown" LostFocus="BakeryNameTextBox_LostFocus"/>
+            </StackPanel>
+            <Grid HorizontalAlignment="Center">
+                <Rectangle HorizontalAlignment="Center" Height="46" Stroke="Black" Fill="Black" Opacity="0.5" Width="350"/>
+                <TextBlock x:Name="CookieCountText" Text="0 cookies" FontSize="30" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+            </Grid>
+            <TextBlock x:Name="CookiesPerSecondText" Text="par seconde : 0" FontSize="16" Foreground="White" Margin="10" HorizontalAlignment="Center"/>
+            <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Margin="40" Click="CookieButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Width="200" Height="200">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Images/cookie.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    <TranslateTransform X="0" Y="0"/>
+                                </TransformGroup>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                             To="1.1" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                                             To="1.1" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                             To="1" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                                             To="1" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="ButtonBase.Click">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                 From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                                 From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <!-- Séparateur gauche -->
+        <Image Source="/Images/bords.png" Grid.Column="1" Stretch="Fill"/>
+
+        <!-- Panneau central -->
+        <Grid Grid.Column="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Onglets en haut -->
+            <Grid Grid.Row="0" Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <Button Content="Options" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0" Click="OptionsButton_Click"/>
+                    <Button Content="Statistiques" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
+                    <Button Content="Infos" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0"/>
+                    <Button Content="Héritage" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- Séparateur droit -->
+        <Image Source="/Images/bords.png" Grid.Column="3" Stretch="Fill"/>
+
+        <!-- Panneau droit -->
+        <StackPanel Grid.Column="4" Margin="10">
+            <TextBlock Text="Boutique" FontSize="20" FontWeight="Bold" Foreground="White" Margin="10"/>
+
+            <!-- Outils de boutique -->
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Image Source="/Images/tool1.png" Width="50" Height="50" Margin="0,0,10,0"/>
+                <Image Source="/Images/tool2.png" Width="50" Height="50" Margin="0,0,10,0"/>
+                <Image Source="/Images/tool3.png" Width="50" Height="50" Margin="0,0,10,0"/>
+            </StackPanel>
+
+            <!-- Items de boutique -->
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Grid Margin="5" MouseLeftButtonDown="BuyItem1_Click">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Images/click.png" Stretch="Fill" Grid.Column="0"/>
+                    <TextBlock Text="15 cookies, +1 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                </Grid>
+                <Grid Margin="5" MouseLeftButtonDown="BuyItem2_Click">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Images/grandmere.png" Stretch="Fill" Grid.Column="0"/>
+                    <TextBlock Text="100 cookies, +5 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                </Grid>
+                <Grid Margin="5" MouseLeftButtonDown="BuyItem3_Click">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Images/ferme.png" Stretch="Fill" Grid.Column="0"/>
+                    <TextBlock Text="500 cookies, +10 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                </Grid>
+            </StackPanel>
+
+            <!-- Grand-mères -->
+            <WrapPanel x:Name="GrandmaPanel" Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Grand-mères :" FontSize="16" FontWeight="Bold" Foreground="White"/>
+            </WrapPanel>
+        </StackPanel>
+
+        <!-- Publicités en bas -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="800" Height="137" Margin="0,441,0,0" Grid.Column="4">
+            <Image Source="/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
+            <Image Source="/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
+        </StackPanel>
+        <Image Source="/Images/bords.png" Grid.Column="4" Stretch="None" Margin="61,-377,228,583" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.853"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+    </Grid>
+</Window>
