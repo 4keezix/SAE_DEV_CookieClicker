@@ -14,6 +14,7 @@ namespace CookieClicker
         private Assets item1;
         private Assets item2;
         private Assets item3;
+        private Assets item4;
         private DispatcherTimer timer;
 
         public MainWindow()
@@ -23,6 +24,7 @@ namespace CookieClicker
             item1 = new Assets(15, 1);
             item2 = new Assets(100, 5);
             item3 = new Assets(500, 10);
+            item4 = new Assets(1000, 50);
 
             UpdateCookieDisplay();
 
@@ -63,6 +65,11 @@ namespace CookieClicker
         private void BuyItem3_Click(object sender, MouseButtonEventArgs e)
         {
             BuyItem(item3);
+        }
+
+        private void BuyItem4_Click(object sender, MouseButtonEventArgs e)
+        {
+            BuyItem(item4);
         }
 
         private void BuyItem(Assets item)

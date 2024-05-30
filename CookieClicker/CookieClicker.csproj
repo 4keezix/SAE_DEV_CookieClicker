@@ -19,6 +19,7 @@
     <None Remove="Images\GM2.jpg" />
     <None Remove="Images\GM3.jpg" />
     <None Remove="Images\grandmere.png" />
+    <None Remove="Images\mine.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +45,9 @@
     <Resource Include="Images\GM2.jpg" />
     <Resource Include="Images\GM3.jpg" />
     <Resource Include="Images\grandmere.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\mine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
