@@ -4,23 +4,26 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using CookieClicker.View;
 
 namespace CookieClicker
 {
     public partial class MainWindow : Window
     {
-        private int cookieCount = 0;
-        private int cookiesPerSecond = 0;
-        private int item1Cost = 15;
-        private int item1CookiesPerSecond = 1;
-        private int grandmaCost = 115;
-        private int grandmasCount = 0;
-
+        private Cookie cookie;
+        private Assets item1;
+        private Assets item2;
+        private Assets item3;
         private DispatcherTimer timer;
 
         public MainWindow()
         {
             InitializeComponent();
+            cookie = new Cookie();
+            item1 = new Assets(15, 1);
+            item2 = new Assets(100, 5);
+            item3 = new Assets(500, 10);
+
             UpdateCookieDisplay();
 
             timer = new DispatcherTimer();
@@ -31,82 +34,49 @@ namespace CookieClicker
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            cookieCount += cookiesPerSecond;
+            cookie.AddCookiesFromTimer();
             UpdateCookieDisplay();
         }
 
         private void CookieButton_Click(object sender, RoutedEventArgs e)
         {
-            cookieCount++;
+            cookie.AddCookie();
             UpdateCookieDisplay();
         }
 
         private void UpdateCookieDisplay()
         {
-            CookieCountText.Text = $"{cookieCount} cookies";
-            CookiesPerSecondText.Text = $"par seconde : {cookiesPerSecond}";
+            CookieCountText.Text = $"{cookie.Count} cookies";
+            CookiesPerSecondText.Text = $"par seconde : {cookie.CookiesPerSecond}";
         }
-
-
 
         private void BuyItem1_Click(object sender, MouseButtonEventArgs e)
         {
-            BuyItem(15, 1); // Coût de 15 cookies, ajoute 1 cookie/sec
+            BuyItem(item1);
         }
 
         private void BuyItem2_Click(object sender, MouseButtonEventArgs e)
         {
-            BuyItem(100, 5); // Coût de 100 cookies, ajoute 5 cookies/sec
+            BuyItem(item2);
         }
 
         private void BuyItem3_Click(object sender, MouseButtonEventArgs e)
         {
-            BuyItem(500, 10); // Coût de 500 cookies, ajoute 10 cookies/sec
+            BuyItem(item3);
         }
 
-        private void BuyItem(int cost, int cookiesPerSecondIncrease)
+        private void BuyItem(Assets item)
         {
-            if (cookieCount >= cost)
+            if (cookie.Count >= item.Cost)
             {
-                cookieCount -= cost;
-                cookiesPerSecond += cookiesPerSecondIncrease;
+                cookie.DeductCookies(item.Cost);
+                cookie.AddCookiesPerSecond(item.CookiesPerSecond);
                 UpdateCookieDisplay();
             }
             else
             {
                 MessageBox.Show("Pas assez de cookies !");
             }
-        }
-
-   
-
-
-        private void BuyGrandma_Click(object sender, RoutedEventArgs e)
-        {
-            if (cookieCount >= grandmaCost)
-            {
-                cookieCount -= grandmaCost;
-                cookiesPerSecond++; // Assume each grandma adds 1 cookie per second
-                grandmasCount++;
-                UpdateCookieDisplay();
-                AddGrandma();
-            }
-            else
-            {
-                MessageBox.Show("Pas assez de cookies !");
-            }
-        }
-
-        private void AddGrandma()
-        {
-            Image grandmaImage = new Image
-            {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/GrandMère.png")),
-                Width = 50,
-                Height = 50,
-                Margin = new Thickness(5)
-            };
-            GrandmaPanel.Children.Add(grandmaImage);
         }
 
         private void BakeryNameTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
@@ -150,7 +120,6 @@ namespace CookieClicker
             optionsWindow.Owner = this; // Définit la fenêtre principale comme propriétaire de la fenêtre des options
             optionsWindow.ShowDialog(); // Affiche la fenêtre des options comme une fenêtre modale
         }
-
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
