@@ -215,6 +215,21 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Grid.RenderTransform>
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="70 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
@@ -223,6 +238,21 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Grid.RenderTransform>
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="100 cookies, +5 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
@@ -231,6 +261,21 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Grid.RenderTransform>
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/ferme.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="500 cookies, +10 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
@@ -239,6 +284,21 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Grid.RenderTransform>
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/mine.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="1000 cookies, +50 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                 </Grid>
