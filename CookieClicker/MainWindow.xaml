@@ -232,7 +232,18 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="70 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <!-- Tooltip for Cursor -->
+                    <Grid.ToolTip>
+                        <ToolTip Background="Black" Foreground="White">
+                            <StackPanel>
+                                <TextBlock Text="Curseur" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Chaque curseur produit 0.4 cookies par seconde" TextWrapping="Wrap"/>
+                                <TextBlock Text="Clique automatiquement toutes les 10 secondes" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Grid.ToolTip>
                 </Grid>
+
                 <Grid MouseLeftButtonDown="BuyItem2_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -255,7 +266,18 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="100 cookies, +5 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <!-- Tooltip for Grandma -->
+                    <Grid.ToolTip>
+                        <ToolTip Background="Black" Foreground="White">
+                            <StackPanel>
+                                <TextBlock Text="Grand-mère" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Chaque grand-mère produit 5 cookies par seconde" TextWrapping="Wrap"/>
+                                <TextBlock Text="Aide à produire plus de cookies" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Grid.ToolTip>
                 </Grid>
+
                 <Grid MouseLeftButtonDown="BuyItem3_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -278,7 +300,18 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/ferme.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="500 cookies, +10 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <!-- Tooltip for Farm -->
+                    <Grid.ToolTip>
+                        <ToolTip Background="Black" Foreground="White">
+                            <StackPanel>
+                                <TextBlock Text="Ferme" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Chaque ferme produit 10 cookies par seconde" TextWrapping="Wrap"/>
+                                <TextBlock Text="Cultive des cookies" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Grid.ToolTip>
                 </Grid>
+
                 <Grid MouseLeftButtonDown="BuyItem4_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -301,6 +334,16 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/mine.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="1000 cookies, +50 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <!-- Tooltip for Mine -->
+                    <Grid.ToolTip>
+                        <ToolTip Background="Black" Foreground="White">
+                            <StackPanel>
+                                <TextBlock Text="Mine" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Chaque mine produit 50 cookies par seconde" TextWrapping="Wrap"/>
+                                <TextBlock Text="Extrait des cookies" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Grid.ToolTip>
                 </Grid>
             </StackPanel>
 
