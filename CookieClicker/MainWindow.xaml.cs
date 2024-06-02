@@ -10,12 +10,12 @@ namespace CookieClicker
 {
     public partial class MainWindow : Window
     {
-        private readonly Cookie cookie;
-        private readonly Assets item1;
-        private readonly Assets item2;
-        private readonly Assets item3;
-        private readonly Assets item4;
-        private readonly DispatcherTimer timer;
+        private Cookie cookie;
+        private Assets item1;
+        private Assets item2;
+        private Assets item3;
+        private Assets item4;
+        private DispatcherTimer timer;
 
         private int item1Count = 0;
         private int item2Count = 0;
@@ -58,39 +58,61 @@ namespace CookieClicker
         {
             CookieCountText.Text = $"{cookie.Count} cookies";
             CookiesPerSecondText.Text = $"par seconde : {cookie.CookiesPerSecond}";
+            Item1Price.Text = $"{item1.Cost} cookies";
+            Item2Price.Text = $"{item2.Cost} cookies";
+            Item3Price.Text = $"{item3.Cost} cookies";
+            Item4Price.Text = $"{item4.Cost} cookies";
+
+            UpdatePriceColor(Item1Price, item1.Cost);
+            UpdatePriceColor(Item2Price, item2.Cost);
+            UpdatePriceColor(Item3Price, item3.Cost);
+            UpdatePriceColor(Item4Price, item4.Cost);
+        }
+
+        private void UpdatePriceColor(TextBlock priceTextBlock, int cost)
+        {
+            if (cookie.Count >= cost)
+            {
+                priceTextBlock.Foreground = new SolidColorBrush(Colors.Green);
+                priceTextBlock.Opacity = 1.0;
+            }
+            else
+            {
+                priceTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+                priceTextBlock.Opacity = 0.7;
+            }
         }
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item1, ref item1Count, Item1Count, Item1Price, Compteur1);
+            BuyItem(item1, ref item1Count, Item1Count, prix1);
         }
 
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item2, ref item2Count, Item2Count, Item2Price, Compteur2);
+            BuyItem(item2, ref item2Count, Item2Count, prix2);
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item3, ref item3Count, Item3Count, Item3Price, Compteur3);
+            BuyItem(item3, ref item3Count, Item3Count, prix3);
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item4, ref item4Count, Item4Count, Item4Price, Compteur4);
+            BuyItem(item4, ref item4Count, Item4Count, prix4);
         }
 
-        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock, TextBlock itemCompteurTextBlock)
+        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock priceTextBlock)
         {
             if (cookie.Count >= item.Cost)
             {
                 cookie.DeductCookies(item.Cost);
                 cookie.AddCookiesPerSecond(item.CookiesPerSecond);
                 itemCount++;
-                item.Count++;
+                item.IncreaseCost();
                 itemCountTextBlock.Text = itemCount.ToString();
-                itemCompteurTextBlock.Text = item.Count.ToString();
-                itemPriceTextBlock.Text = $"{item.Cost} cookies";
+                priceTextBlock.Text = $"{item.Cost} cookies";
                 UpdateCookieDisplay();
                 UpdateButtonStates();
             }
@@ -107,16 +129,10 @@ namespace CookieClicker
             BuyItem3Grid.IsEnabled = cookie.Count >= item3.Cost;
             BuyItem4Grid.IsEnabled = cookie.Count >= item4.Cost;
 
-            UpdateItemOpacity(BuyItem1Grid, cookie.Count >= item1.Cost, Item1Price);
-            UpdateItemOpacity(BuyItem2Grid, cookie.Count >= item2.Cost, Item2Price);
-            UpdateItemOpacity(BuyItem3Grid, cookie.Count >= item3.Cost, Item3Price);
-            UpdateItemOpacity(BuyItem4Grid, cookie.Count >= item4.Cost, Item4Price);
-        }
-
-        private void UpdateItemOpacity(Grid itemGrid, bool isEnabled, TextBlock itemPriceTextBlock)
-        {
-            itemGrid.Opacity = isEnabled ? 1.0 : 0.5;
-            itemPriceTextBlock.Foreground = isEnabled ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Colors.Red);
+            BuyItem1Grid.Opacity = BuyItem1Grid.IsEnabled ? 1.0 : 0.7;
+            BuyItem2Grid.Opacity = BuyItem2Grid.IsEnabled ? 1.0 : 0.7;
+            BuyItem3Grid.Opacity = BuyItem3Grid.IsEnabled ? 1.0 : 0.7;
+            BuyItem4Grid.Opacity = BuyItem4Grid.IsEnabled ? 1.0 : 0.7;
         }
 
         private void BakeryNameTextBlock_MouseDown(object sender, MouseButtonEventArgs e)

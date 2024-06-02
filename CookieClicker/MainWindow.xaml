@@ -63,7 +63,7 @@
             <Setter Property="IsEnabled" Value="True"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}}" Value="False">
-                    <Setter Property="Opacity" Value="0.5"/>
+                    <Setter Property="Opacity" Value="0.7"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -243,10 +243,11 @@
                         </EventTrigger>
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
-                    <TextBlock Text="70 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <TextBlock Text="15 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item1Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item1Price" Text="70 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="3" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="Compteur1" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="Compteur1" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="prix1" HorizontalAlignment="Left" Margin="71,41,0,0" TextWrapping="Wrap" Text="15 cookies" VerticalAlignment="Top" FontSize="16" Foreground="White" FontWeight="Bold"/>
                     <!-- Tooltip for Cursor -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -284,7 +285,8 @@
                     <TextBlock Text="100 cookies, +5 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item2Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item2Price" Text="100 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="3" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="Compteur2" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="Compteur2" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="prix2" HorizontalAlignment="Left" Margin="74,34,0,0" TextWrapping="Wrap" Text="100 cookies" VerticalAlignment="Top" FontSize="16" Foreground="White" FontWeight="Bold"/>
                     <!-- Tooltip for Grandma -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -322,7 +324,8 @@
                     <TextBlock Text="500 cookies, +10 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item3Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item3Price" Text="500 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="3" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="Compteur3" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="Compteur3" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="prix3" HorizontalAlignment="Left" Margin="72,34,0,0" TextWrapping="Wrap" Text="500 cookies" VerticalAlignment="Top" FontSize="16" Foreground="White" FontWeight="Bold"/>
                     <!-- Tooltip for Farm -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -360,7 +363,8 @@
                     <TextBlock Text="1000 cookies, +50 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item4Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <TextBlock x:Name="Item4Price" Text="1000 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="3" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="Compteur4" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="Compteur4" HorizontalAlignment="Right" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Width="50"/>
+                    <TextBlock x:Name="prix4" HorizontalAlignment="Left" Margin="70,38,0,0" TextWrapping="Wrap" Text="1000 cookies" VerticalAlignment="Top" FontSize="16" Foreground="White" FontWeight="Bold"/>
                     <!-- Tooltip for Mine -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
