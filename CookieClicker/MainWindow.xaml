@@ -57,7 +57,18 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="AvailableButtonStyle" TargetType="Grid">
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="IsEnabled" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}}" Value="False">
+                    <Setter Property="Opacity" Value="0.5"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -79,7 +90,7 @@
                             <Setter Property="Opacity" Value="1.0"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter Property="Opacity" Value="0.4"/>
+                            <Setter Property="Opacity" Value="0.9"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -210,10 +221,11 @@
 
             <!-- Items de boutique -->
             <StackPanel Orientation="Vertical" Margin="0,65,-10,0">
-                <Grid MouseLeftButtonDown="BuyItem1_Click" Margin="0">
+                <Grid x:Name="BuyItem1Grid" MouseLeftButtonDown="BuyItem1_Click" Margin="0" Style="{StaticResource AvailableButtonStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RenderTransform>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -232,6 +244,7 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="70 cookies" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="Item1Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <!-- Tooltip for Cursor -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -244,10 +257,11 @@
                     </Grid.ToolTip>
                 </Grid>
 
-                <Grid MouseLeftButtonDown="BuyItem2_Click" Margin="0">
+                <Grid x:Name="BuyItem2Grid" MouseLeftButtonDown="BuyItem2_Click" Margin="0" Style="{StaticResource AvailableButtonStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RenderTransform>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -266,6 +280,7 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="100 cookies, +5 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="Item2Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <!-- Tooltip for Grandma -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -278,10 +293,11 @@
                     </Grid.ToolTip>
                 </Grid>
 
-                <Grid MouseLeftButtonDown="BuyItem3_Click" Margin="0">
+                <Grid x:Name="BuyItem3Grid" MouseLeftButtonDown="BuyItem3_Click" Margin="0" Style="{StaticResource AvailableButtonStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RenderTransform>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -300,6 +316,7 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/ferme.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="500 cookies, +10 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="Item3Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <!-- Tooltip for Farm -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -312,10 +329,11 @@
                     </Grid.ToolTip>
                 </Grid>
 
-                <Grid MouseLeftButtonDown="BuyItem4_Click" Margin="0">
+                <Grid x:Name="BuyItem4Grid" MouseLeftButtonDown="BuyItem4_Click" Margin="0" Style="{StaticResource AvailableButtonStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RenderTransform>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -334,6 +352,7 @@
                     </Grid.Triggers>
                     <Image Source="pack://application:,,,/Images/mine.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock Text="1000 cookies, +50 cookies/sec" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,0,0"/>
+                    <TextBlock x:Name="Item4Count" Text="0" FontSize="14" Foreground="White" VerticalAlignment="Center" Grid.Column="2" Margin="10,0,0,0"/>
                     <!-- Tooltip for Mine -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -378,7 +397,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image Source="/Images/bords.png" Grid.Column="4" Stretch="None" Margin="463,-334,-173,634" RenderTransformOrigin="0.5,0.5">
+        <Image Source="/Images/bords.png" Grid.Column="4" Stretch="None" Margin="463,-339,-173,639" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
