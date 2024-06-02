@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 using CookieClicker.View;
 
@@ -25,7 +26,7 @@ namespace CookieClicker
         {
             InitializeComponent();
             cookie = new Cookie();
-            item1 = new Assets(70, 1);
+            item1 = new Assets(15, 1);
             item2 = new Assets(100, 5);
             item3 = new Assets(500, 10);
             item4 = new Assets(1000, 50);
@@ -33,15 +34,13 @@ namespace CookieClicker
             UpdateCookieDisplay();
             UpdateButtonStates();
 
-            timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(1)
-            };
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
-        private void Timer_Tick(object? sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             cookie.AddCookiesFromTimer();
             UpdateCookieDisplay();
@@ -63,32 +62,35 @@ namespace CookieClicker
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item1, ref item1Count, Item1Count);
+            BuyItem(item1, ref item1Count, Item1Count, Item1Price, Compteur1);
         }
 
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item2, ref item2Count, Item2Count);
+            BuyItem(item2, ref item2Count, Item2Count, Item2Price, Compteur2);
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item3, ref item3Count, Item3Count);
+            BuyItem(item3, ref item3Count, Item3Count, Item3Price, Compteur3);
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item4, ref item4Count, Item4Count);
+            BuyItem(item4, ref item4Count, Item4Count, Item4Price, Compteur4);
         }
 
-        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock)
+        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock, TextBlock itemCompteurTextBlock)
         {
             if (cookie.Count >= item.Cost)
             {
                 cookie.DeductCookies(item.Cost);
                 cookie.AddCookiesPerSecond(item.CookiesPerSecond);
                 itemCount++;
+                item.Count++;
                 itemCountTextBlock.Text = itemCount.ToString();
+                itemCompteurTextBlock.Text = item.Count.ToString();
+                itemPriceTextBlock.Text = $"{item.Cost} cookies";
                 UpdateCookieDisplay();
                 UpdateButtonStates();
             }
@@ -105,10 +107,16 @@ namespace CookieClicker
             BuyItem3Grid.IsEnabled = cookie.Count >= item3.Cost;
             BuyItem4Grid.IsEnabled = cookie.Count >= item4.Cost;
 
-            BuyItem1Grid.Opacity = BuyItem1Grid.IsEnabled ? 0.9 : 0.5;
-            BuyItem2Grid.Opacity = BuyItem2Grid.IsEnabled ? 0.9 : 0.5;
-            BuyItem3Grid.Opacity = BuyItem3Grid.IsEnabled ? 0.9 : 0.5;
-            BuyItem4Grid.Opacity = BuyItem4Grid.IsEnabled ? 0.9 : 0.5;
+            UpdateItemOpacity(BuyItem1Grid, cookie.Count >= item1.Cost, Item1Price);
+            UpdateItemOpacity(BuyItem2Grid, cookie.Count >= item2.Cost, Item2Price);
+            UpdateItemOpacity(BuyItem3Grid, cookie.Count >= item3.Cost, Item3Price);
+            UpdateItemOpacity(BuyItem4Grid, cookie.Count >= item4.Cost, Item4Price);
+        }
+
+        private void UpdateItemOpacity(Grid itemGrid, bool isEnabled, TextBlock itemPriceTextBlock)
+        {
+            itemGrid.Opacity = isEnabled ? 1.0 : 0.5;
+            itemPriceTextBlock.Foreground = isEnabled ? new SolidColorBrush(Colors.Green) : new SolidColorBrush(Colors.Red);
         }
 
         private void BakeryNameTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
@@ -148,10 +156,8 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            OptionsWindow optionsWindow = new()
-            {
-                Owner = this
-            };
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Owner = this; // Définit la fenêtre principale comme propriétaire de la fenêtre des options
             optionsWindow.ShowDialog(); // Affiche la fenêtre des options comme une fenêtre modale
         }
 
@@ -160,7 +166,7 @@ namespace CookieClicker
             MessageBoxResult result = MessageBox.Show("Êtes-vous sûr de vouloir quitter ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Close();
+                this.Close();
             }
         }
     }

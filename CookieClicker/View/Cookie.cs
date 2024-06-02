@@ -1,30 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CookieClicker.View
+﻿namespace CookieClicker.View
 {
     public class Cookie
     {
         public int Count { get; private set; }
         public int CookiesPerSecond { get; private set; }
 
-        public Cookie()
-        {
-            Count = 0;
-            CookiesPerSecond = 0;
-        }
-
         public void AddCookie()
         {
             Count++;
         }
 
-        public void AddCookiesPerSecond(int amount)
+        public void AddCookiesFromTimer()
         {
-            CookiesPerSecond += amount;
+            Count += CookiesPerSecond;
         }
 
         public void DeductCookies(int amount)
@@ -32,9 +20,9 @@ namespace CookieClicker.View
             Count -= amount;
         }
 
-        public void AddCookiesFromTimer()
+        public void AddCookiesPerSecond(int amount)
         {
-            Count += CookiesPerSecond;
+            CookiesPerSecond += amount;
         }
     }
 }
