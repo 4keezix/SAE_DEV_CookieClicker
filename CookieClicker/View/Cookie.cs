@@ -10,9 +10,9 @@
             Count++;
         }
 
-        public void AddCookiesFromTimer()
+        public void AddCookiesPerSecond(int amount)
         {
-            Count += CookiesPerSecond;
+            CookiesPerSecond += amount;
         }
 
         public void DeductCookies(int amount)
@@ -20,9 +20,9 @@
             Count -= amount;
         }
 
-        public void AddCookiesPerSecond(int amount)
+        public void AddCookiesFromTimer()
         {
-            CookiesPerSecond += amount;
+            Count += CookiesPerSecond;
         }
     }
 }

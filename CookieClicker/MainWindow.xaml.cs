@@ -10,12 +10,12 @@ namespace CookieClicker
 {
     public partial class MainWindow : Window
     {
-        private Cookie cookie;
-        private Assets item1;
-        private Assets item2;
-        private Assets item3;
-        private Assets item4;
-        private DispatcherTimer timer;
+        private readonly Cookie cookie;
+        private readonly Assets item1;
+        private readonly Assets item2;
+        private readonly Assets item3;
+        private readonly Assets item4;
+        private readonly DispatcherTimer timer;
 
         private int item1Count = 0;
         private int item2Count = 0;
@@ -33,6 +33,7 @@ namespace CookieClicker
 
             UpdateCookieDisplay();
             UpdateButtonStates();
+            UpdatePrices();
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -45,6 +46,7 @@ namespace CookieClicker
             cookie.AddCookiesFromTimer();
             UpdateCookieDisplay();
             UpdateButtonStates();
+            UpdatePrices();
         }
 
         private void CookieButton_Click(object sender, RoutedEventArgs e)
@@ -52,69 +54,47 @@ namespace CookieClicker
             cookie.AddCookie();
             UpdateCookieDisplay();
             UpdateButtonStates();
+            UpdatePrices();
         }
 
         private void UpdateCookieDisplay()
         {
             CookieCountText.Text = $"{cookie.Count} cookies";
             CookiesPerSecondText.Text = $"par seconde : {cookie.CookiesPerSecond}";
-            Item1Price.Text = $"{item1.Cost} cookies";
-            Item2Price.Text = $"{item2.Cost} cookies";
-            Item3Price.Text = $"{item3.Cost} cookies";
-            Item4Price.Text = $"{item4.Cost} cookies";
-
-            UpdatePriceColor(Item1Price, item1.Cost);
-            UpdatePriceColor(Item2Price, item2.Cost);
-            UpdatePriceColor(Item3Price, item3.Cost);
-            UpdatePriceColor(Item4Price, item4.Cost);
-        }
-
-        private void UpdatePriceColor(TextBlock priceTextBlock, int cost)
-        {
-            if (cookie.Count >= cost)
-            {
-                priceTextBlock.Foreground = new SolidColorBrush(Colors.Green);
-                priceTextBlock.Opacity = 1.0;
-            }
-            else
-            {
-                priceTextBlock.Foreground = new SolidColorBrush(Colors.Red);
-                priceTextBlock.Opacity = 0.7;
-            }
         }
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item1, ref item1Count, Item1Count, prix1);
+            BuyItem(item1, ref item1Count, Item1Count, Item1Price, 15);
         }
 
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item2, ref item2Count, Item2Count, prix2);
+            BuyItem(item2, ref item2Count, Item2Count, Item2Price, 100);
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item3, ref item3Count, Item3Count, prix3);
+            BuyItem(item3, ref item3Count, Item3Count, Item3Price, 500);
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item4, ref item4Count, Item4Count, prix4);
+            BuyItem(item4, ref item4Count, Item4Count, Item4Price, 1000);
         }
 
-        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock priceTextBlock)
+        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock, int basePrice)
         {
             if (cookie.Count >= item.Cost)
             {
                 cookie.DeductCookies(item.Cost);
                 cookie.AddCookiesPerSecond(item.CookiesPerSecond);
                 itemCount++;
-                item.IncreaseCost();
                 itemCountTextBlock.Text = itemCount.ToString();
-                priceTextBlock.Text = $"{item.Cost} cookies";
+                item.IncreaseCost(basePrice, itemCount);
                 UpdateCookieDisplay();
                 UpdateButtonStates();
+                UpdatePrices();
             }
             else
             {
@@ -129,10 +109,24 @@ namespace CookieClicker
             BuyItem3Grid.IsEnabled = cookie.Count >= item3.Cost;
             BuyItem4Grid.IsEnabled = cookie.Count >= item4.Cost;
 
-            BuyItem1Grid.Opacity = BuyItem1Grid.IsEnabled ? 1.0 : 0.7;
-            BuyItem2Grid.Opacity = BuyItem2Grid.IsEnabled ? 1.0 : 0.7;
-            BuyItem3Grid.Opacity = BuyItem3Grid.IsEnabled ? 1.0 : 0.7;
-            BuyItem4Grid.Opacity = BuyItem4Grid.IsEnabled ? 1.0 : 0.7;
+            BuyItem1Grid.Opacity = BuyItem1Grid.IsEnabled ? 1.0 : 0.5;
+            BuyItem2Grid.Opacity = BuyItem2Grid.IsEnabled ? 1.0 : 0.5;
+            BuyItem3Grid.Opacity = BuyItem3Grid.IsEnabled ? 1.0 : 0.5;
+            BuyItem4Grid.Opacity = BuyItem4Grid.IsEnabled ? 1.0 : 0.5;
+        }
+
+        private void UpdatePrices()
+        {
+            UpdatePrice(Item1Price, item1.Cost);
+            UpdatePrice(Item2Price, item2.Cost);
+            UpdatePrice(Item3Price, item3.Cost);
+            UpdatePrice(Item4Price, item4.Cost);
+        }
+
+        private void UpdatePrice(TextBlock priceTextBlock, int price)
+        {
+            priceTextBlock.Text = $"{price} cookies";
+            priceTextBlock.Foreground = cookie.Count >= price ? Brushes.LightGreen : Brushes.Red;
         }
 
         private void BakeryNameTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
@@ -172,9 +166,11 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            OptionsWindow optionsWindow = new OptionsWindow();
-            optionsWindow.Owner = this; // Définit la fenêtre principale comme propriétaire de la fenêtre des options
-            optionsWindow.ShowDialog(); // Affiche la fenêtre des options comme une fenêtre modale
+            OptionsWindow optionsWindow = new OptionsWindow
+            {
+                Owner = this
+            };
+            optionsWindow.ShowDialog();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -182,7 +178,7 @@ namespace CookieClicker
             MessageBoxResult result = MessageBox.Show("Êtes-vous sûr de vouloir quitter ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                this.Close();
+                Application.Current.Shutdown();
             }
         }
     }

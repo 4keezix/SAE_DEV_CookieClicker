@@ -3,17 +3,17 @@
     public class Assets
     {
         public int Cost { get; private set; }
-        public int CookiesPerSecond { get; }
+        public int CookiesPerSecond { get; private set; }
 
-        public Assets(int initialCost, int cookiesPerSecond)
+        public Assets(int cost, int cookiesPerSecond)
         {
-            Cost = initialCost;
+            Cost = cost;
             CookiesPerSecond = cookiesPerSecond;
         }
 
-        public void IncreaseCost()
+        public void IncreaseCost(int basePrice, int itemCount)
         {
-            Cost = (int)(Cost * 1.15);
+            Cost = (int)(basePrice * Math.Pow(1.15, itemCount));
         }
     }
 }
