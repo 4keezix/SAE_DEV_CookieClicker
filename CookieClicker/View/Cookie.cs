@@ -24,5 +24,10 @@
         {
             Count += CookiesPerSecond;
         }
+
+        public void GoldenBonus(int bonusCookies)
+        {
+            Count += bonusCookies;
+        }
     }
 }

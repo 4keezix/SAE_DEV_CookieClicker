@@ -71,7 +71,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="Auto"/>
@@ -409,5 +409,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+        <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" Grid.RowSpan="3" IsHitTestVisible="True"/>
     </Grid>
 </Window>

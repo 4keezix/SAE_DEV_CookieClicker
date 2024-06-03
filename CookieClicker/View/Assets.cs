@@ -11,9 +11,9 @@
             CookiesPerSecond = cookiesPerSecond;
         }
 
-        public void IncreaseCost(int basePrice, int itemCount)
+        public void IncreaseCost()
         {
-            Cost = (int)(basePrice * Math.Pow(1.15, itemCount));
+            Cost = (int)(Cost * 1.15);
         }
     }
 }

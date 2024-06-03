@@ -15,7 +15,10 @@ namespace CookieClicker
         private readonly Assets item2;
         private readonly Assets item3;
         private readonly Assets item4;
+        private GoldenCookie goldenCookie;
+
         private readonly DispatcherTimer timer;
+        private readonly DispatcherTimer goldenCookieTimer;
 
         private int item1Count = 0;
         private int item2Count = 0;
@@ -35,10 +38,19 @@ namespace CookieClicker
             UpdateButtonStates();
             UpdatePrices();
 
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            goldenCookieTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(new Random().Next(60, 180)) // Intervalle aléatoire entre 1 et 3 minutes
+            };
+            goldenCookieTimer.Tick += GoldenCookieTimer_Tick;
+            goldenCookieTimer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -47,6 +59,15 @@ namespace CookieClicker
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
+        }
+
+        private void GoldenCookieTimer_Tick(object sender, EventArgs e)
+        {
+            goldenCookie = new GoldenCookie(GoldenCookieCanvas, cookie);
+            goldenCookie.Spawn();
+
+            goldenCookieTimer.Interval = TimeSpan.FromSeconds(new Random().Next(60, 180)); // Réinitialiser l'intervalle aléatoire
+            goldenCookieTimer.Start();
         }
 
         private void CookieButton_Click(object sender, RoutedEventArgs e)
@@ -91,7 +112,7 @@ namespace CookieClicker
                 cookie.AddCookiesPerSecond(item.CookiesPerSecond);
                 itemCount++;
                 itemCountTextBlock.Text = itemCount.ToString();
-                item.IncreaseCost(basePrice, itemCount);
+                item.IncreaseCost();
                 UpdateCookieDisplay();
                 UpdateButtonStates();
                 UpdatePrices();
@@ -166,11 +187,9 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            OptionsWindow optionsWindow = new OptionsWindow
-            {
-                Owner = this
-            };
-            optionsWindow.ShowDialog();
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Owner = this; // Définit la fenêtre principale comme propriétaire de la fenêtre des options
+            optionsWindow.ShowDialog(); // Affiche la fenêtre des options comme une fenêtre modale
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
