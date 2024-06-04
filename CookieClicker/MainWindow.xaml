@@ -6,7 +6,7 @@
         SizeToContent="Manual"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        BorderBrush="#B1533F " BorderThickness="5">
+        BorderBrush="#6b4532" BorderThickness="5">
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -367,11 +367,6 @@
                     </Grid.ToolTip>
                 </Grid>
             </StackPanel>
-
-            <!-- Grand-mères -->
-            <WrapPanel x:Name="GrandmaPanel" Orientation="Horizontal" Margin="10">
-                <TextBlock Text="Grand-mères :" FontSize="16" FontWeight="Bold" Foreground="White"/>
-            </WrapPanel>
         </StackPanel>
 
         <!-- Publicités en bas -->

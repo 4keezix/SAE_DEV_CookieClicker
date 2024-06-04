@@ -22,9 +22,9 @@ namespace CookieClicker.View
             goldenCookieImage = new Image
             {
                 Source = new ImageSourceConverter().ConvertFromString("pack://application:,,,/Images/Golden_cookie.png") as ImageSource,
-                Width = 76, // Approximately 2.15 times smaller than the main cookie
+                Width = 76, 
                 Height = 76,
-                Opacity = 0 // Start invisible for the fade-in effect
+                Opacity = 0
             };
 
             goldenCookieImage.MouseLeftButtonDown += GoldenCookieImage_MouseLeftButtonDown;
@@ -64,7 +64,7 @@ namespace CookieClicker.View
 
         private void ApplyBonus()
         {
-            int bonusCookies = cookie.CookiesPerSecond * 10; // Le cookie donne pour l'instant 10 fois le nombre de cookies par seconde
+            int bonusCookies = cookie.CookiesPerSecond * 10;
             cookie.GoldenBonus(bonusCookies);
         }
 
