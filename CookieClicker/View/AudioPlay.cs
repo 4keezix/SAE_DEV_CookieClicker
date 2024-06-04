@@ -16,7 +16,7 @@ namespace CookieClicker.View
 
             public static void PlayClickSound()
             {
-                string resourceName = "CookieClicker.Songs.click1.mp3"; // Assurez-vous que ce nom est correct
+                string resourceName = "CookieClicker.Songs.click1.mp3"; 
                 var assembly = Assembly.GetExecutingAssembly();
 
                 using (Stream resourceStream = assembly.GetManifestResourceStream(resourceName))
@@ -24,22 +24,22 @@ namespace CookieClicker.View
                     if (resourceStream == null)
                         throw new Exception("Audio resource not found.");
 
-                    // Créer un fichier temporaire pour stocker le son
-                    string tempFile = Path.GetTempFileName() + ".flac";
+                    
+                    string tempFile = Path.GetTempFileName() + ".mp3";
 
                     using (FileStream fileStream = new FileStream(tempFile, FileMode.Create, FileAccess.Write))
                     {
                         resourceStream.CopyTo(fileStream);
                     }
 
-                    // Lire et jouer le fichier audio temporaire
+                    
                     waveOut = new WaveOutEvent();
                     audioFileReader = new MediaFoundationReader(tempFile);
 
                     waveOut.Init(audioFileReader);
                     waveOut.Play();
 
-                    // Nettoyer le fichier temporaire après la lecture
+                    
                     waveOut.PlaybackStopped += (s, e) =>
                     {
                         audioFileReader.Dispose();
@@ -48,6 +48,40 @@ namespace CookieClicker.View
                     };
                 }
             }
+        public static void BuyingSongs()
+        {
+            string resourceName = "CookieClicker.Songs.buy1.mp3";
+            var assembly = Assembly.GetExecutingAssembly();
+
+            using (Stream resourceStream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (resourceStream == null)
+                    throw new Exception("Audio resource not found.");
+
+
+                string tempFile = Path.GetTempFileName() + ".mp3";
+
+                using (FileStream fileStream = new FileStream(tempFile, FileMode.Create, FileAccess.Write))
+                {
+                    resourceStream.CopyTo(fileStream);
+                }
+
+
+                waveOut = new WaveOutEvent();
+                audioFileReader = new MediaFoundationReader(tempFile);
+
+                waveOut.Init(audioFileReader);
+                waveOut.Play();
+
+
+                waveOut.PlaybackStopped += (s, e) =>
+                {
+                    audioFileReader.Dispose();
+                    waveOut.Dispose();
+                    File.Delete(tempFile);
+                };
+            }
         }
+    }
 
     }

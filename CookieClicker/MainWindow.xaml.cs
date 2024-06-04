@@ -88,21 +88,25 @@ namespace CookieClicker
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item1, ref item1Count, Item1Count, Item1Price, 15);
+            AudioPlay.BuyingSongs();
         }
 
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item2, ref item2Count, Item2Count, Item2Price, 100);
+            AudioPlay.BuyingSongs();
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item3, ref item3Count, Item3Count, Item3Price, 500);
+            AudioPlay.BuyingSongs();
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item4, ref item4Count, Item4Count, Item4Price, 1000);
+            AudioPlay.BuyingSongs();
         }
 
         private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock, int basePrice)
