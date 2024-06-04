@@ -15,7 +15,7 @@ namespace CookieClicker
         private readonly Assets item2;
         private readonly Assets item3;
         private readonly Assets item4;
-        private GoldenCookie goldenCookie;
+        private GoldenCookie? goldenCookie;
 
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
