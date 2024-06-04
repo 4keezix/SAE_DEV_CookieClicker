@@ -76,6 +76,7 @@ namespace CookieClicker
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
+            AudioPlay.PlayClickSound();
         }
 
         private void UpdateCookieDisplay()

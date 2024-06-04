@@ -21,6 +21,33 @@
     <None Remove="Images\Golden_cookie.png" />
     <None Remove="Images\grandmere.png" />
     <None Remove="Images\mine.png" />
+    <None Remove="Songs\click1.mp3" />
+    <None Remove="Songs\click2.mp3" />
+    <None Remove="Songs\click3.mp3" />
+    <None Remove="Songs\click4.mp3" />
+    <None Remove="Songs\click5.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Songs\click1.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\click2.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\click3.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\click4.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\click5.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
