@@ -329,20 +329,27 @@ namespace CookieClicker
             var image = FindVisualChild<Image>(CursorUpgradeButton);
             if (image != null)
             {
-                // Mettre à jour l'image en fonction du niveau de l'amélioration du curseur
-                if (cursorLevel == 1)
+                // Dictionnaire pour mapper les niveaux de curseur aux chemins d'image
+                var cursorImagePaths = new Dictionary<int, string>
+        {
+            { 1, "/Images/CursorUpgrade1.png" },
+            { 3, "/Images/CursorUpgrade2.png" },
+            { 4, "/Images/CursorUpgrade3.png" },
+            { 5, "/Images/CursorUpgrade4.png" },
+            { 6, "/Images/CursorUpgrade5.png" },
+            { 7, "/Images/CursorUpgrade6.png" }
+        };
+
+                // Vérifiez si le niveau du curseur a une image associée et mettez à jour l'image
+                if (cursorImagePaths.TryGetValue(cursorLevel, out var imagePath))
                 {
-                    image.Source = new BitmapImage(new Uri("/Images/CursorUpgrade1.png", UriKind.Relative));
-                }
-                else if (cursorLevel == 2)
-                {
-                    image.Source = new BitmapImage(new Uri("/Images/CursorUpgrade.png", UriKind.Relative));
+                    image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
                 }
             }
 
-            
             CursorUpgradePriceText.Text = $"Prix: {cursorUpgradePrice} cookies";
         }
+
 
         private void CursorUpgradeButton_Click(object sender, RoutedEventArgs e)
         {
