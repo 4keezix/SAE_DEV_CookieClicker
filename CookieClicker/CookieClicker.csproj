@@ -21,6 +21,10 @@
     <None Remove="Images\Golden_cookie.png" />
     <None Remove="Images\grandmere.png" />
     <None Remove="Images\mine.png" />
+    <None Remove="Songs\buy1.mp3" />
+    <None Remove="Songs\buy2.mp3" />
+    <None Remove="Songs\buy3.mp3" />
+    <None Remove="Songs\buy4.mp3" />
     <None Remove="Songs\click1.mp3" />
     <None Remove="Songs\click2.mp3" />
     <None Remove="Songs\click3.mp3" />
@@ -29,6 +33,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Songs\buy1.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\buy2.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\buy3.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\buy4.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Songs\click1.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
