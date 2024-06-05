@@ -15,5 +15,9 @@
         {
             Cost = (int)(Cost * 1.15);
         }
+        public void DecreaseCost()
+        {
+            Cost = (int)(Cost / 1.15);
+        }
     }
 }

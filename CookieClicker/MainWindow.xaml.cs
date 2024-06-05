@@ -205,5 +205,28 @@ namespace CookieClicker
                 Application.Current.Shutdown();
             }
         }
+        private void SellItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock)
+        {
+            if (itemCount > 0)
+            {
+                itemCount--;
+                itemCountTextBlock.Text = itemCount.ToString();
+                cookie.AddCookies(item.Cost / 2);  // Revendre à moitié du prix actuel
+                cookie.AddCookiesPerSecond(-item.CookiesPerSecond);
+                item.DecreaseCost();
+                UpdateCookieDisplay();
+                UpdateButtonStates();
+                UpdatePrices();
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas cet article !");
+            }
+        }
+        private void SellItem1_Click(object sender, RoutedEventArgs e)
+        {
+            SellItem(item1, ref item1Count, Item1Count, Item1Price);
+            AudioPlay.SellingSongs();
+        }
     }
 }

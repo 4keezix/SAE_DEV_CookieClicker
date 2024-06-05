@@ -10,6 +10,11 @@
             Count++;
         }
 
+        public void AddCookies(int amount)
+        {
+            Count += amount;
+        }
+
         public void AddCookiesPerSecond(int amount)
         {
             CookiesPerSecond += amount;
@@ -31,3 +36,4 @@
         }
     }
 }
+

@@ -236,6 +236,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RenderTransform>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -245,9 +246,9 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -255,6 +256,7 @@
                     <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock x:Name="Item1Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Top" Margin="258,23,17,0" RenderTransformOrigin="0.49,0.602" Height="28"/>
                     <TextBlock x:Name="Item1Price" Style="{StaticResource PriceTextStyle}" Text="70 cookies" VerticalAlignment="Top" Margin="72,38,167,0"/>
+                    <Button Content="Revendre" Click="SellItem1_Click" Style="{StaticResource CustomButtonStyle}" RenderTransformOrigin="0.742,1.66" Margin="228,26,33,0" Height="21" VerticalAlignment="Top"/>
                     <!-- Tooltip for Cursor -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -266,7 +268,6 @@
                         </ToolTip>
                     </Grid.ToolTip>
                 </Grid>
-
                 <Grid x:Name="BuyItem2Grid" MouseLeftButtonDown="BuyItem2_Click" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -291,6 +292,7 @@
                     <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock x:Name="Item2Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Center" Margin="259,0,15,0" Height="24"/>
                     <TextBlock x:Name="Item2Price" Style="{StaticResource PriceTextStyle}" Text="100 cookies" VerticalAlignment="Top" Margin="71,34,158,0"/>
+                    
                     <!-- Tooltip for Grandma -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">

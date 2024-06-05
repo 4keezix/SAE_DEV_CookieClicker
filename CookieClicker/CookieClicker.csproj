@@ -20,7 +20,11 @@
     <None Remove="Images\GM3.jpg" />
     <None Remove="Images\Golden_cookie.png" />
     <None Remove="Images\grandmere.png" />
+    <None Remove="Images\Heritage.png" />
+    <None Remove="Images\Info.png" />
     <None Remove="Images\mine.png" />
+    <None Remove="Images\Option.png" />
+    <None Remove="Images\Statistiques.png" />
     <None Remove="Songs\buy1.mp3" />
     <None Remove="Songs\buy2.mp3" />
     <None Remove="Songs\buy3.mp3" />
@@ -30,6 +34,10 @@
     <None Remove="Songs\click3.mp3" />
     <None Remove="Songs\click4.mp3" />
     <None Remove="Songs\click5.mp3" />
+    <None Remove="Songs\sell1.mp3" />
+    <None Remove="Songs\sell2.mp3" />
+    <None Remove="Songs\sell3.mp3" />
+    <None Remove="Songs\sell4.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +68,18 @@
     <EmbeddedResource Include="Songs\click5.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Songs\sell1.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\sell2.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\sell3.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\sell4.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -85,14 +105,34 @@
     <Resource Include="Images\ferme.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\GM1.jpg" />
-    <Resource Include="Images\GM2.jpg" />
-    <Resource Include="Images\GM3.jpg" />
-    <Resource Include="Images\Golden_cookie.png" />
+    <Resource Include="Images\GM1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GM2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GM3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Golden_cookie.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\grandmere.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Heritage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\mine.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Option.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Statistiques.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
