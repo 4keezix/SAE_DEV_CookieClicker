@@ -313,7 +313,7 @@ namespace CookieClicker
 
             Image cursorImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/CookieClicker;component/Images/sprite.png")),
+                Source = new BitmapImage(new Uri("pack://application:,,,/CookieClicker;component/Images/CursorUpgrade.png")),
                 Width = cursorSize,
                 Height = cursorSize
             };
@@ -332,8 +332,8 @@ namespace CookieClicker
                 // Dictionnaire pour mapper les niveaux de curseur aux chemins d'image
                 var cursorImagePaths = new Dictionary<int, string>
         {
-            { 1, "/Images/CursorUpgrade1.png" },
-            { 3, "/Images/CursorUpgrade2.png" },
+            { 2, "/Images/CursorUpgrade.png" },
+            { 3, "/Images/CursorUpgrade10.png" },
             { 4, "/Images/CursorUpgrade3.png" },
             { 5, "/Images/CursorUpgrade4.png" },
             { 6, "/Images/CursorUpgrade5.png" },
@@ -354,15 +354,22 @@ namespace CookieClicker
         private void CursorUpgradeButton_Click(object sender, RoutedEventArgs e)
         {
 
+            if (cookie.Count >= cursorUpgradePrice)
+            {
                 cookie.DeductCookies(cursorUpgradePrice);
                 cursorLevel++; 
-                cursorUpgradePrice *= 2; 
+                cursorUpgradePrice *= 5; 
                 UpdateCookieDisplay();
                 UpdateButtonStates();
                 UpdatePrices();
                 UpdateCursorUpgradeButton();
-            
-           
+            }
+            else
+            {
+                MessageBox.Show("Pas assez de cookies !");
+            }
+
+
         }
 
         // Méthode utilitaire pour trouver un élément visuel à l'intérieur d'un contrôle parent

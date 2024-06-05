@@ -4,6 +4,24 @@
         Title="Options" Height="600" Width="1010" WindowStartupLocation="CenterOwner"
         WindowStyle="None" ResizeMode="NoResize" Background="DarkGray" AllowsTransparency="True" Opacity="0.85" BorderBrush="#6b4532" BorderThickness="5">
     <Window.Resources>
+        <!-- Style pour le bouton de fermeture -->
+        <Style x:Key="CloseButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1.0"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Opacity" Value="0.4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style pour le bouton général -->
         <Style x:Key="CustomButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#D3D3D3"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -69,49 +87,24 @@
     <Grid>
         <!-- Bouton de fermeture -->
         <Button x:Name="CloseButton" Content="X" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"
-                Background="Transparent" Opacity="0.4" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="CloseButton_Click" Margin="10" Panel.ZIndex="1">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Cursor" Value="Hand"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="1.0"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="False">
-                            <Setter Property="Opacity" Value="0.4"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+                Style="{StaticResource CloseButtonStyle}" Click="CloseButton_Click" Margin="10" Panel.ZIndex="1"/>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10">
-            <ScrollViewer.Resources>
-                <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MinimalScrollBar}"/>
-            </ScrollViewer.Resources>
-            <StackPanel Margin="20">
-                <TextBlock Text="Options" FontSize="30" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
+        <!-- Slider pour ajuster le volume de l'application -->
+        <StackPanel Margin="20,50,20,20">
+            <TextBlock Text="Volume" FontSize="20" FontWeight="Bold" Foreground="White" Margin="10,0,10,0"/>
+            <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" Value="75" Margin="10" ValueChanged="VolumeSlider_ValueChanged"/>
+        </StackPanel>
 
-                <TextBlock Text="Générales" FontSize="20" FontWeight="Bold" Foreground="White" Margin="10,20,10,0"/>
-                <Button Content="Changer de Langue" Style="{StaticResource CustomButtonStyle}"/>
-                <Button Content="Sauvegarder" Style="{StaticResource CustomButtonStyle}"/>
-                <Button Content="Importer Sauvegarde" Style="{StaticResource CustomButtonStyle}"/>
-                <Button Content="Exporter Sauvegarde" Style="{StaticResource CustomButtonStyle}"/>
-                <Button Content="Effacer Sauvegarde" Style="{StaticResource CustomButtonStyle}" Background="Red" Foreground="White"/>
-
-                <TextBlock Text="Paramètres" FontSize="20" FontWeight="Bold" Foreground="White" Margin="10,20,10,0"/>
-                <TextBlock Text="Volume" FontSize="16" Foreground="White" Margin="10,0,10,0"/>
-                <Slider Minimum="0" Maximum="100" Value="75" Margin="10"/>
-                <CheckBox Content="Graphismes élaborés : ACTIF" Margin="10"/>
-                <CheckBox Content="Filtres CSS : ACTIF" Margin="10"/>
-                <CheckBox Content="Particules : ACTIF" Margin="10"/>
-                <CheckBox Content="Nombres : ACTIF" Margin="10"/>
-                <CheckBox Content="Lait : ACTIF" Margin="10"/>
-                <CheckBox Content="Curseurs : ACTIF" Margin="10"/>
-                <CheckBox Content="Cookie tremblant : ACTIF" Margin="10"/>
-                <CheckBox Content="Autre son de cookie : ACTIF" Margin="10"/>
-            </StackPanel>
-        </ScrollViewer>
+        <!-- Interface pour changer les sons -->
+        <StackPanel Margin="20,150,20,20">
+            <TextBlock Text="Changer le son" FontSize="20" FontWeight="Bold" Foreground="White" Margin="10,20,10,0"/>
+            <TextBlock Text="Choisir le type de son :" FontSize="16" Foreground="White" Margin="10"/>
+            <ComboBox x:Name="SoundTypeComboBox" Margin="10">
+                <ComboBoxItem Content="Son du clic de cookie"/>
+                <ComboBoxItem Content="Son d'achat d'atout"/>
+                <ComboBoxItem Content="Son de revente"/>
+            </ComboBox>
+            <Button x:Name="ChangeSoundButton" Content="Changer le son" Style="{StaticResource CustomButtonStyle}" Margin="10" Click="ChangeSoundButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
