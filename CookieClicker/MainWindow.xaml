@@ -186,7 +186,7 @@
         </StackPanel>
 
         <!-- Séparateur gauche -->
-        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="1" Stretch="Fill"/>
+        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="1" Stretch="Fill" Panel.ZIndex="4"/>
 
         <!-- Panneau central -->
         <Grid Grid.Column="2" Margin="10">
@@ -196,8 +196,25 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <Image x:Name="SpecialImage" Source="pack://application:,,,/Images/milieu_gm.png" Stretch="None" Visibility="Collapsed" VerticalAlignment="Top" Height="107" Panel.ZIndex="2" Margin="-11,97,-17,0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
+
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.138"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.498"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="SpecialImage3" Source="pack://application:,,,/Images/milieu_ferme.png" Stretch="None" Visibility="Collapsed" VerticalAlignment="Top" Height="134" Panel.ZIndex="10" Grid.Row="2" Margin="-15,99,-17,0" RenderTransformOrigin="0.489,0.259"/>
+            <Image x:Name="SpecialImage4" Source="pack://application:,,,/Images/milieu_mine.png" Stretch="None" Visibility="Collapsed" VerticalAlignment="Top" Height="163" Panel.ZIndex="10" Grid.Row="2" Margin="-14,233,-18,0" RenderTransformOrigin="0.489,0.259"/>
+            <!-- Bouton pour ajouter 10 000 cookies -->
+            <Button x:Name="AddCookiesButton" Content="Add 10,000 Cookies" Width="200" Height="50"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,108,30"
+                Click="AddCookiesButton_Click" Panel.ZIndex="10" Grid.Row="2"/>
             <!-- Onglets en haut -->
-            <Grid Grid.Row="0" Background="Transparent">
+            <Grid Grid.Row="0" Background="Transparent" Margin="-15,-10,-15,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -282,9 +299,9 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
+                                     From="1" To="0.9" Duration="0:0:0.1" AutoReverse="True"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -292,7 +309,6 @@
                     <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock x:Name="Item2Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Center" Margin="259,0,15,0" Height="24"/>
                     <TextBlock x:Name="Item2Price" Style="{StaticResource PriceTextStyle}" Text="100 cookies" VerticalAlignment="Top" Margin="71,34,158,0"/>
-                    
                     <!-- Tooltip for Grandma -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -304,6 +320,7 @@
                         </ToolTip>
                     </Grid.ToolTip>
                 </Grid>
+
 
                 <Grid x:Name="BuyItem3Grid" MouseLeftButtonDown="BuyItem3_Click" Margin="0">
                     <Grid.ColumnDefinitions>
@@ -384,7 +401,7 @@
             <Image Source="pack://application:,,,/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
             <Image Source="pack://application:,,,/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
         </StackPanel>
-        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="4" Stretch="None" Margin="62,-382,227,578" RenderTransformOrigin="0.5,0.5">
+        <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="4" Stretch="None" Margin="61,-355,228,549" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -414,6 +431,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" Grid.RowSpan="3" IsHitTestVisible="True"/>
+        <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" IsHitTestVisible="True" Grid.ColumnSpan="3" Margin="0,0,290,0"/>
     </Grid>
 </Window>

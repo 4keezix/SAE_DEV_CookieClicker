@@ -5,6 +5,12 @@
         public int Count { get; private set; }
         public int CookiesPerSecond { get; private set; }
 
+        public Cookie()
+        {
+            Count = 0;
+            CookiesPerSecond = 0;
+        }
+
         public void AddCookie()
         {
             Count++;
@@ -15,14 +21,14 @@
             Count += amount;
         }
 
-        public void AddCookiesPerSecond(int amount)
-        {
-            CookiesPerSecond += amount;
-        }
-
         public void DeductCookies(int amount)
         {
             Count -= amount;
+        }
+
+        public void AddCookiesPerSecond(int amount)
+        {
+            CookiesPerSecond += amount;
         }
 
         public void AddCookiesFromTimer()
@@ -30,10 +36,9 @@
             Count += CookiesPerSecond;
         }
 
-        public void GoldenBonus(int bonusCookies)
+        public void GoldenBonus(int amount)
         {
-            Count += bonusCookies;
+            Count += amount;
         }
     }
 }
-

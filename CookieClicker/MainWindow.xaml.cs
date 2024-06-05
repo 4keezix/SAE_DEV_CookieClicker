@@ -20,6 +20,8 @@ namespace CookieClicker
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
 
+        private ImageItem imageItem;
+
         private int item1Count = 0;
         private int item2Count = 0;
         private int item3Count = 0;
@@ -33,6 +35,8 @@ namespace CookieClicker
             item2 = new Assets(100, 5);
             item3 = new Assets(500, 10);
             item4 = new Assets(1000, 50);
+
+            imageItem = new ImageItem(SpecialImage, SpecialImage3, SpecialImage4);
 
             UpdateCookieDisplay();
             UpdateButtonStates();
@@ -87,29 +91,32 @@ namespace CookieClicker
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item1, ref item1Count, Item1Count, Item1Price, 15);
+            BuyItem(item1, ref item1Count, Item1Count, Item1Price);
             AudioPlay.BuyingSongs();
         }
 
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item2, ref item2Count, Item2Count, Item2Price, 100);
+            imageItem.ShowImageForItem2();
+            BuyItem(item2, ref item2Count, Item2Count, Item2Price);
             AudioPlay.BuyingSongs();
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item3, ref item3Count, Item3Count, Item3Price, 500);
+            imageItem.ShowImageForItem3();
+            BuyItem(item3, ref item3Count, Item3Count, Item3Price);
             AudioPlay.BuyingSongs();
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item4, ref item4Count, Item4Count, Item4Price, 1000);
+            imageItem.ShowImageForItem4();
+            BuyItem(item4, ref item4Count, Item4Count, Item4Price);
             AudioPlay.BuyingSongs();
         }
 
-        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock, int basePrice)
+        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock)
         {
             if (cookie.Count >= item.Cost)
             {
@@ -205,6 +212,7 @@ namespace CookieClicker
                 Application.Current.Shutdown();
             }
         }
+
         private void SellItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock)
         {
             if (itemCount > 0)
@@ -223,10 +231,19 @@ namespace CookieClicker
                 MessageBox.Show("Vous n'avez pas cet article !");
             }
         }
+
         private void SellItem1_Click(object sender, RoutedEventArgs e)
         {
             SellItem(item1, ref item1Count, Item1Count, Item1Price);
             AudioPlay.SellingSongs();
+        }
+
+        private void AddCookiesButton_Click(object sender, RoutedEventArgs e)
+        {
+            cookie.AddCookies(10000);
+            UpdateCookieDisplay();
+            UpdateButtonStates();
+            UpdatePrices();
         }
     }
 }
