@@ -27,6 +27,7 @@
     <None Remove="Images\milieu_mine.png" />
     <None Remove="Images\mine.png" />
     <None Remove="Images\Option.png" />
+    <None Remove="Images\sprite.png" />
     <None Remove="Images\Statistiques.png" />
     <None Remove="Songs\buy1.mp3" />
     <None Remove="Songs\buy2.mp3" />
@@ -143,6 +144,9 @@
     </Resource>
     <Resource Include="Images\Option.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\sprite.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Statistiques.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

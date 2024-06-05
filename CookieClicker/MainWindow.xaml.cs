@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using CookieClicker.View;
 
@@ -16,6 +17,7 @@ namespace CookieClicker
         private readonly Assets item3;
         private readonly Assets item4;
         private GoldenCookie? goldenCookie;
+        private int cursorCount = 0;
 
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
@@ -92,6 +94,7 @@ namespace CookieClicker
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item1, ref item1Count, Item1Count, Item1Price);
+            AddCursorIcon();
             AudioPlay.BuyingSongs();
         }
 
@@ -244,6 +247,28 @@ namespace CookieClicker
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
+        }
+
+        private void AddCursorIcon()
+        {
+            cursorCount++;
+            Image cursorIcon = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/CookieClicker;component/Images/sprite.png")),
+                Width = 30,
+                Height = 30
+            };
+
+            double angle = (360.0 / cursorCount) * (cursorCount - 1);
+            double radius = 100; 
+
+            double x = 100 + radius * Math.Cos(angle * Math.PI / 180) - cursorIcon.Width / 2;
+            double y = 100 + radius * Math.Sin(angle * Math.PI / 180) - cursorIcon.Height / 2;
+
+            Canvas.SetLeft(cursorIcon, x);
+            Canvas.SetTop(cursorIcon, y);
+
+            CursorCanvas.Children.Add(cursorIcon);
         }
     }
 }
