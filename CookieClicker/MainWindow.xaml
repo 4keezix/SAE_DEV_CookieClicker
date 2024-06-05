@@ -437,7 +437,7 @@
         <Button x:Name="CursorUpgradeButton" Click="CursorUpgradeButton_Click" Margin="21,79,252,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
-                    <Image x:Name="CursorUpgradeImage" Source="/Images/CursorUpagrade1.png" Stretch="Fill"/>
+                    <Image x:Name="CursorUpgradeImage" Source="/Images/CursorUpgrade1.png" Stretch="Fill"/>
                 </ControlTemplate>
             </Button.Template>
             <Button.ToolTip>

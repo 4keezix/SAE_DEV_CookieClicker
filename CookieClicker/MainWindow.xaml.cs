@@ -81,13 +81,9 @@ namespace CookieClicker
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            // Calculer le nombre total de cookies générés par les curseurs
             int cursorCookiesPerSecond = cursorCount * cursorLevel;
-
-            // Ajouter le nombre total de cookies générés par les curseurs au cookie total
             cookie.AddCookiesFromTimer(cursorCookiesPerSecond);
 
-            // Mettre à jour l'affichage des cookies
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
@@ -328,31 +324,63 @@ namespace CookieClicker
             CursorCanvas.Children.Add(cursorImage);
         }
 
-        private void CursorUpgrade()
+        private void UpdateCursorUpgradeButton()
         {
-            if (cookie.Count >= cursorUpgradePrice && cursorCount > 0)
+            var image = FindVisualChild<Image>(CursorUpgradeButton);
+            if (image != null)
             {
-                // Déduire le coût de l'amélioration des cookies du joueur
-                cookie.DeductCookies(cursorUpgradePrice);
-
-                // Augmenter le niveau des curseurs
-                cursorLevel++;
-
-                // Mise à jour de l'affichage et des prix
-                UpdateCookieDisplay();
-                UpdateButtonStates();
-                UpdatePrices();
+                // Mettre à jour l'image en fonction du niveau de l'amélioration du curseur
+                if (cursorLevel == 1)
+                {
+                    image.Source = new BitmapImage(new Uri("/Images/CursorUpgrade1.png", UriKind.Relative));
+                }
+                else if (cursorLevel == 2)
+                {
+                    image.Source = new BitmapImage(new Uri("/Images/CursorUpgrade.png", UriKind.Relative));
+                }
             }
-            else
-            {
-                MessageBox.Show("Vous devez posséder des curseurs pour acheter une amélioration.");
-            }
+
+            
+            CursorUpgradePriceText.Text = $"Prix: {cursorUpgradePrice} cookies";
         }
 
         private void CursorUpgradeButton_Click(object sender, RoutedEventArgs e)
         {
-            CursorUpgrade();
+
+                cookie.DeductCookies(cursorUpgradePrice);
+                cursorLevel++; 
+                cursorUpgradePrice *= 2; 
+                UpdateCookieDisplay();
+                UpdateButtonStates();
+                UpdatePrices();
+                UpdateCursorUpgradeButton();
+            
+           
         }
+
+        // Méthode utilitaire pour trouver un élément visuel à l'intérieur d'un contrôle parent
+        private T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                if (child != null && child is T)
+                {
+                    return (T)child;
+                }
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                    {
+                        return childOfChild;
+                    }
+                }
+            }
+            return null;
+        }
+
+
 
     }
 }
