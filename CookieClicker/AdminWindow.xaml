@@ -1,0 +1,37 @@
+﻿<Window x:Class="CookieClicker.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AdminWindow" Height="500" Width="400">
+    <Grid Background="#f0f0f0">
+        <StackPanel>
+            <TextBlock Text="Admin Menu" FontSize="24" HorizontalAlignment="Center" Margin="10" FontWeight="Bold"/>
+            <Button Content="Spawn Golden Cookie" Click="SpawnGoldenCookie_Click" Margin="10" Background="#ffcc00" Foreground="Black"/>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Add Cookies:" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="CookiesToAddTextBox" Width="100" Margin="10,0"/>
+                <Button Content="Add" Click="AddCookies_Click" Foreground="Black"/>
+            </StackPanel>
+            <Button Content="Add 10,000 Cookies" Click="Add10000Cookies_Click" Margin="10" Background="#ffcc00" Foreground="Black"/>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Add Grandmas:" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="GrandmasToAddTextBox" Width="100" Margin="10,0"/>
+                <Button Content="Add" Click="AddGrandmas_Click" Foreground="Black"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Add Cursors:" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="CursorsToAddTextBox" Width="100" Margin="10,0"/>
+                <Button Content="Add" Click="AddCursors_Click" Foreground="Black"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Add Farms:" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="FarmsToAddTextBox" Width="100" Margin="10,0"/>
+                <Button Content="Add" Click="AddFarms_Click" Foreground="Black"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Add Mines:" VerticalAlignment="Center" Width="120"/>
+                <TextBox x:Name="MinesToAddTextBox" Width="100" Margin="10,0"/>
+                <Button Content="Add" Click="AddMines_Click" Foreground="Black"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

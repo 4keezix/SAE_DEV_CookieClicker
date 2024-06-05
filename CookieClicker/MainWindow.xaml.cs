@@ -20,12 +20,18 @@ namespace CookieClicker
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
 
-        private ImageItem imageItem;
+        private readonly ImageItem imageItem;
 
         private int item1Count = 0;
         private int item2Count = 0;
         private int item3Count = 0;
         private int item4Count = 0;
+
+        // Déclaration des items administrateur
+        public Assets GrandmaItem { get; private set; }
+        public Assets CursorItem { get; private set; }
+        public Assets FarmItem { get; private set; }
+        public Assets MineItem { get; private set; }
 
         public MainWindow()
         {
@@ -37,6 +43,12 @@ namespace CookieClicker
             item4 = new Assets(1000, 50);
 
             imageItem = new ImageItem(SpecialImage, SpecialImage3, SpecialImage4);
+
+            // Initialisation des items administrateur
+            GrandmaItem = new Assets(100, 1); // Remplacez ces valeurs par les coûts et cookies par seconde réels
+            CursorItem = new Assets(50, 1);
+            FarmItem = new Assets(500, 10);
+            MineItem = new Assets(1000, 20);
 
             UpdateCookieDisplay();
             UpdateButtonStates();
@@ -55,9 +67,12 @@ namespace CookieClicker
             };
             goldenCookieTimer.Tick += GoldenCookieTimer_Tick;
             goldenCookieTimer.Start();
+
+            // Pour le développement, afficher le bouton Admin
+            AdminButton.Visibility = Visibility.Visible;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             cookie.AddCookiesFromTimer();
             UpdateCookieDisplay();
@@ -65,7 +80,7 @@ namespace CookieClicker
             UpdatePrices();
         }
 
-        private void GoldenCookieTimer_Tick(object sender, EventArgs e)
+        private void GoldenCookieTimer_Tick(object? sender, EventArgs e)
         {
             goldenCookie = new GoldenCookie(GoldenCookieCanvas, cookie);
             goldenCookie.Spawn();
@@ -213,7 +228,7 @@ namespace CookieClicker
             }
         }
 
-        private void SellItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock)
+        private void SellItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock)
         {
             if (itemCount > 0)
             {
@@ -234,13 +249,35 @@ namespace CookieClicker
 
         private void SellItem1_Click(object sender, RoutedEventArgs e)
         {
-            SellItem(item1, ref item1Count, Item1Count, Item1Price);
+            SellItem(item1, ref item1Count, Item1Count);
             AudioPlay.SellingSongs();
         }
 
-        private void AddCookiesButton_Click(object sender, RoutedEventArgs e)
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            cookie.AddCookies(10000);
+            AdminWindow adminWindow = new AdminWindow(this);
+            adminWindow.Owner = this;
+            adminWindow.Show();
+        }
+
+        public void SpawnGoldenCookie()
+        {
+            goldenCookie = new GoldenCookie(GoldenCookieCanvas, cookie);
+            goldenCookie.Spawn();
+        }
+
+        public void AddCookies(int amount)
+        {
+            cookie.AddCookies(amount);
+            UpdateCookieDisplay();
+        }
+
+        public void AddItems(Assets item, int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                item.Buy(cookie);
+            }
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();

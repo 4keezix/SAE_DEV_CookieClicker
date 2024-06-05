@@ -209,10 +209,6 @@
             </Image>
             <Image x:Name="SpecialImage3" Source="pack://application:,,,/Images/milieu_ferme.png" Stretch="None" Visibility="Collapsed" VerticalAlignment="Top" Height="134" Panel.ZIndex="10" Grid.Row="2" Margin="-15,99,-17,0" RenderTransformOrigin="0.489,0.259"/>
             <Image x:Name="SpecialImage4" Source="pack://application:,,,/Images/milieu_mine.png" Stretch="None" Visibility="Collapsed" VerticalAlignment="Top" Height="163" Panel.ZIndex="10" Grid.Row="2" Margin="-14,233,-18,0" RenderTransformOrigin="0.489,0.259"/>
-            <!-- Bouton pour ajouter 10 000 cookies -->
-            <Button x:Name="AddCookiesButton" Content="Add 10,000 Cookies" Width="200" Height="50"
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,108,30"
-                Click="AddCookiesButton_Click" Panel.ZIndex="10" Grid.Row="2"/>
             <!-- Onglets en haut -->
             <Grid Grid.Row="0" Background="Transparent" Margin="-15,-10,-15,10">
                 <Grid.ColumnDefinitions>
@@ -241,6 +237,8 @@
 
         <!-- Séparateur droit -->
         <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="4" Stretch="Fill" Margin="1,0,290,0"/>
+
+        <Button x:Name="AdminButton" Content="Admin" Click="AdminButton_Click" Visibility="Visible" Margin="15,556,217,9"/>
 
         <!-- Panneau droit -->
         <StackPanel Grid.Column="4" Margin="10">
@@ -379,7 +377,7 @@
                             </BeginStoryboard>
                         </EventTrigger>
                     </Grid.Triggers>
-                    <Image Source="pack://application:,,,/Images/mine.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
+                    <Image Source="pack://application:,,,/Images/mine.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7" Grid.ColumnSpan="3"/>
                     <TextBlock x:Name="Item4Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Top" Margin="260,23,19,0" Height="24"/>
                     <TextBlock x:Name="Item4Price" Style="{StaticResource PriceTextStyle}" Text="1000 cookies" VerticalAlignment="Top" Margin="66,35,155,0"/>
                     <!-- Tooltip for Mine -->
