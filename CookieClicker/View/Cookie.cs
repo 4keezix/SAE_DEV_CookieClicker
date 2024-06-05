@@ -31,7 +31,7 @@
             CookiesPerSecond += amount;
         }
 
-        public void AddCookiesFromTimer()
+        public void AddCookiesFromTimer(int amount)
         {
             Count += CookiesPerSecond;
         }

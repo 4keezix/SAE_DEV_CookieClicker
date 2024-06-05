@@ -14,11 +14,14 @@
     <None Remove="Images\bords.png" />
     <None Remove="Images\click.png" />
     <None Remove="Images\cookie.jpg" />
+    <None Remove="Images\CursorUpgrade.png" />
+    <None Remove="Images\CursorUpgrade1.png" />
     <None Remove="Images\ferme.png" />
     <None Remove="Images\GM1.jpg" />
     <None Remove="Images\GM2.jpg" />
     <None Remove="Images\GM3.jpg" />
     <None Remove="Images\Golden_cookie.png" />
+    <None Remove="Images\GrandMaUpgrade.png" />
     <None Remove="Images\grandmere.png" />
     <None Remove="Images\Heritage.png" />
     <None Remove="Images\Info.png" />
@@ -106,6 +109,12 @@
     <Resource Include="Images\cookie.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\CursorUpgrade.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\CursorUpgrade1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\ferme.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -119,6 +128,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Golden_cookie.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\grandmere.png">

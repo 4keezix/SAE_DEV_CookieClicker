@@ -18,7 +18,12 @@ namespace CookieClicker
         private readonly Assets item4;
         private GoldenCookie? goldenCookie;
         private int cursorCount = 0;
-
+        private const int cursorsPerCircle = 12; // Nombre de curseurs par cercle
+        private const double baseRadius = 100; // Rayon de base pour le premier cercle
+        private const double radiusIncrement = 40; // Incrément de rayon pour chaque cercle supplémentaire
+        private const double baseCursorSize = 20; // Taille de base du curseur
+        private int cursorUpgradePrice = 100;
+        private int cursorLevel = 1;
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
 
@@ -76,7 +81,13 @@ namespace CookieClicker
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            cookie.AddCookiesFromTimer();
+            // Calculer le nombre total de cookies générés par les curseurs
+            int cursorCookiesPerSecond = cursorCount * cursorLevel;
+
+            // Ajouter le nombre total de cookies générés par les curseurs au cookie total
+            cookie.AddCookiesFromTimer(cursorCookiesPerSecond);
+
+            // Mettre à jour l'affichage des cookies
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
@@ -109,7 +120,7 @@ namespace CookieClicker
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item1, ref item1Count, Item1Count, Item1Price);
-            AddCursorIcon();
+            //AddCursor();
             AudioPlay.BuyingSongs();
         }
 
@@ -286,26 +297,62 @@ namespace CookieClicker
             UpdatePrices();
         }
 
-        private void AddCursorIcon()
+        private void AddCursor()
         {
             cursorCount++;
-            Image cursorIcon = new Image
+
+            // Déterminer le cercle et l'angle pour le curseur actuel
+            int circleIndex = (cursorCount - 1) / cursorsPerCircle;
+            int positionInCircle = (cursorCount - 1) % cursorsPerCircle;
+
+            double angle = 2 * Math.PI * positionInCircle / cursorsPerCircle;
+            double radius = baseRadius + circleIndex * radiusIncrement;
+
+            // Calculer les coordonnées x et y
+            double x = radius * Math.Cos(angle) + CookieButton.ActualWidth / 2;
+            double y = radius * Math.Sin(angle) + CookieButton.ActualHeight / 2;
+
+            // Réduire la taille du curseur en fonction du cercle
+            double cursorSize = baseCursorSize / (1 + circleIndex * 0.2);
+
+            Image cursorImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/CookieClicker;component/Images/sprite.png")),
-                Width = 30,
-                Height = 30
+                Width = cursorSize,
+                Height = cursorSize
             };
 
-            double angle = (360.0 / cursorCount) * (cursorCount - 1);
-            double radius = 100; 
+            Canvas.SetLeft(cursorImage, x);
+            Canvas.SetTop(cursorImage, y);
 
-            double x = 100 + radius * Math.Cos(angle * Math.PI / 180) - cursorIcon.Width / 2;
-            double y = 100 + radius * Math.Sin(angle * Math.PI / 180) - cursorIcon.Height / 2;
-
-            Canvas.SetLeft(cursorIcon, x);
-            Canvas.SetTop(cursorIcon, y);
-
-            CursorCanvas.Children.Add(cursorIcon);
+            CursorCanvas.Children.Add(cursorImage);
         }
+
+        private void CursorUpgrade()
+        {
+            if (cookie.Count >= cursorUpgradePrice && cursorCount > 0)
+            {
+                // Déduire le coût de l'amélioration des cookies du joueur
+                cookie.DeductCookies(cursorUpgradePrice);
+
+                // Augmenter le niveau des curseurs
+                cursorLevel++;
+
+                // Mise à jour de l'affichage et des prix
+                UpdateCookieDisplay();
+                UpdateButtonStates();
+                UpdatePrices();
+            }
+            else
+            {
+                MessageBox.Show("Vous devez posséder des curseurs pour acheter une amélioration.");
+            }
+        }
+
+        private void CursorUpgradeButton_Click(object sender, RoutedEventArgs e)
+        {
+            CursorUpgrade();
+        }
+
     }
 }

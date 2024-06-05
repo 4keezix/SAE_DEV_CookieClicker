@@ -434,5 +434,23 @@
             </Image.RenderTransform>
         </Image>
         <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" IsHitTestVisible="True" Grid.ColumnSpan="3" Margin="0,0,290,0"/>
+        <Button x:Name="CursorUpgradeButton" Click="CursorUpgradeButton_Click" Margin="21,79,252,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image x:Name="CursorUpgradeImage" Source="/Images/CursorUpagrade1.png" Stretch="Fill"/>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.ToolTip>
+                <ToolTip Background="Black" Foreground="White">
+                    <StackPanel>
+                        <TextBlock Text="Amélioration Curseur" FontWeight="Bold" FontSize="16"/>
+                        <TextBlock Text="Augmente la production de cookies par le curseur" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="CursorUpgradePriceText" Text="Prix: [Insérer le prix ici] cookies" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+
+
     </Grid>
 </Window>
