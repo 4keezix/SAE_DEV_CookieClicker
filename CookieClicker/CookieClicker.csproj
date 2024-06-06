@@ -29,6 +29,14 @@
     <None Remove="Images\GM2.jpg" />
     <None Remove="Images\GM3.jpg" />
     <None Remove="Images\Golden_cookie.png" />
+    <None Remove="Images\GrandMaUpgrade %281%29.png" />
+    <None Remove="Images\GrandMaUpgrade %282%29.png" />
+    <None Remove="Images\GrandMaUpgrade %283%29.png" />
+    <None Remove="Images\GrandMaUpgrade %284%29.png" />
+    <None Remove="Images\GrandMaUpgrade %285%29.png" />
+    <None Remove="Images\GrandMaUpgrade %286%29.png" />
+    <None Remove="Images\GrandMaUpgrade %287%29.png" />
+    <None Remove="Images\GrandMaUpgrade %288%29.png" />
     <None Remove="Images\GrandMaUpgrade.png" />
     <None Remove="Images\grandmere.png" />
     <None Remove="Images\Heritage.png" />
@@ -56,6 +64,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\GrandMaUpgrade (6).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <EmbeddedResource Include="Songs\buy1.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -160,6 +171,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Golden_cookie.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (1).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (2).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (3).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (4).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (5).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (7).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\GrandMaUpgrade (8).png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\GrandMaUpgrade.png">

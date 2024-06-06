@@ -318,7 +318,7 @@
                         <ToolTip Background="Black" Foreground="White">
                             <StackPanel>
                                 <TextBlock Text="Grand-mère" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock Text="Chaque grand-mère produit 5 cookies par seconde" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="GrandmaProductionText" Text="Chaque grand-mère produit 5 cookies par seconde" TextWrapping="Wrap"/>
                                 <TextBlock Text="Aide à produire plus de cookies" TextWrapping="Wrap"/>
                             </StackPanel>
                         </ToolTip>
@@ -452,7 +452,24 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
-        
+        <Button x:Name="GrandmaUpgradeButton" Click="GrandmaUpgradeButton_Click" Margin="73,75,191,479" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image x:Name="GrandmaUpgradeImage" Source="/Images/GrandMaUpgrade (1).png" Stretch="Fill"/>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.ToolTip>
+                <ToolTip Background="Black" Foreground="White">
+                    <StackPanel>
+                        <TextBlock Text="Amélioration Grand-mère" FontWeight="Bold" FontSize="16"/>
+                        <TextBlock Text="Augmente la production de cookies par la grand-mère" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="GrandmaUpgradePriceText" Text="Prix: cookies" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+
+
 
 
     </Grid>

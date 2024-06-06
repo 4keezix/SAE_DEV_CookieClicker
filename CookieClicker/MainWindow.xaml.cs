@@ -24,6 +24,8 @@ namespace CookieClicker
         private const double baseCursorSize = 20; // Taille de base du curseur
         private int cursorUpgradePrice = 100;
         private int cursorLevel = 1;
+        private int grandmaUpgradePrice = 300;
+        private int grandmaLevel = 1;
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
 
@@ -401,6 +403,70 @@ namespace CookieClicker
             CursorProductionText.Text = $"Chaque curseur produit {cursorCookiesPerSecond} cookies par seconde";
             
         }
+
+        private void UpdateGrandMaUpgradeButton()
+        {
+            var image = FindVisualChild<Image>(GrandmaUpgradeButton);
+            if (image != null)
+            {
+                // Dictionnaire pour mapper les niveaux de grand-mère aux chemins d'image
+                var grandmaImagePaths = new Dictionary<int, string>
+        {
+            { 2, "/Images/GrandMaUpgrade (2).png" },
+            { 3, "/Images/GrandMaUpgrade (7).png" },
+            { 4, "/Images/GrandMaUpgrade (3).png" },
+            { 5, "/Images/GrandMaUpgrade (4).png" },
+            { 6, "/Images/GrandMaUpgrade (5).png" },
+            { 7, "/Images/GrandMaUpgrade (6).png" }
+        };
+
+                // Vérifiez si le niveau de la grand-mère a une image associée et mettez à jour l'image
+                if (grandmaImagePaths.TryGetValue(grandmaLevel, out var imagePath))
+                {
+                    image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+                }
+            }
+
+            GrandmaUpgradePriceText.Text = $"Prix: {grandmaUpgradePrice} cookies";
+        }
+
+
+
+        private void GrandmaUpgradeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (cookie.Count >= grandmaUpgradePrice)
+            {
+                cookie.DeductCookies(grandmaUpgradePrice);
+                grandmaLevel++;
+                grandmaUpgradePrice *= 5;
+                UpdateCookieDisplay();
+                UpdateButtonStates();
+                UpdatePrices();
+                UpdateGrandMaUpgradeButton();
+
+                // Mettre à jour le texte des éléments TextBlock
+                UpdateGrandMaProductionText();
+            }
+            else
+            {
+                MessageBox.Show("Pas assez de cookies !");
+            }
+        }
+
+        private void UpdateGrandMaProductionText()
+        {
+            double grandmaCookiesPerSecond = GetGrandMaProductionPerSecond();
+            GrandmaProductionText.Text = $"Chaque grand-mère produit {grandmaCookiesPerSecond} cookies par seconde";
+        }
+        private double GetGrandMaProductionPerSecond()
+        {
+            // Implémentez la logique pour calculer la production des cookies par seconde par chaque grand-mère
+            return grandmaLevel * 0.4; // Exemple, ajustez en fonction de votre logique
+        }
+
+
+
+
 
         // Méthode utilitaire pour trouver un élément visuel à l'intérieur d'un contrôle parent
         private T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
