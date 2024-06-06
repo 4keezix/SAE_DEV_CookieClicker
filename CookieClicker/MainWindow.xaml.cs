@@ -81,7 +81,8 @@ namespace CookieClicker
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            int cursorCookiesPerSecond = cursorCount * cursorLevel;
+            // Calculer la production de cookies des curseurs
+            double cursorCookiesPerSecond = GetCursorProductionPerSecond();
             cookie.AddCookiesFromTimer(cursorCookiesPerSecond);
 
             UpdateCookieDisplay();
@@ -110,7 +111,8 @@ namespace CookieClicker
         private void UpdateCookieDisplay()
         {
             CookieCountText.Text = $"{cookie.Count} cookies";
-            CookiesPerSecondText.Text = $"par seconde : {cookie.CookiesPerSecond}";
+            int cookiesPerSecond = cookie.CookiesPerSecond * cursorLevel;
+            CookiesPerSecondText.Text = "par seconde " + cookiesPerSecond.ToString();
         }
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
@@ -262,6 +264,21 @@ namespace CookieClicker
             SellItem(item1, ref item1Count, Item1Count);
             AudioPlay.SellingSongs();
         }
+        private void SellItem2_Click(object sender, RoutedEventArgs e)
+        {
+            SellItem(item2, ref item1Count, Item2Count);
+            AudioPlay.SellingSongs();
+        }
+        private void SellItem3_Click(object sender, RoutedEventArgs e)
+        {
+            SellItem(item3, ref item1Count, Item3Count);
+            AudioPlay.SellingSongs();
+        }
+        private void SellItem4_Click(object sender, RoutedEventArgs e)
+        {
+            SellItem(item4, ref item1Count, Item4Count);
+            AudioPlay.SellingSongs();
+        }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
@@ -293,10 +310,14 @@ namespace CookieClicker
             UpdatePrices();
         }
 
+        private double GetCursorProductionPerSecond()
+        {
+            return 0.4 * cursorLevel; // Production de cookies par curseur par seconde, à multiplier par le nombre de curseurs
+        }
+
         private void AddCursor()
         {
             cursorCount++;
-
             // Déterminer le cercle et l'angle pour le curseur actuel
             int circleIndex = (cursorCount - 1) / cursorsPerCircle;
             int positionInCircle = (cursorCount - 1) % cursorsPerCircle;
@@ -353,23 +374,32 @@ namespace CookieClicker
 
         private void CursorUpgradeButton_Click(object sender, RoutedEventArgs e)
         {
-
             if (cookie.Count >= cursorUpgradePrice)
             {
                 cookie.DeductCookies(cursorUpgradePrice);
-                cursorLevel++; 
-                cursorUpgradePrice *= 5; 
+                cursorLevel++;
+                cursorUpgradePrice *= 5;
                 UpdateCookieDisplay();
                 UpdateButtonStates();
                 UpdatePrices();
                 UpdateCursorUpgradeButton();
+
+
+                // Mettre à jour le texte des éléments TextBlock
+                UpdateCursorProductionText();
             }
             else
             {
                 MessageBox.Show("Pas assez de cookies !");
             }
+        }
 
+        private void UpdateCursorProductionText()
+        {
+            double cursorCookiesPerSecond = GetCursorProductionPerSecond();
 
+            CursorProductionText.Text = $"Chaque curseur produit {cursorCookiesPerSecond} cookies par seconde";
+            
         }
 
         // Méthode utilitaire pour trouver un élément visuel à l'intérieur d'un contrôle parent

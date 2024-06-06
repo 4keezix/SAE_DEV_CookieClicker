@@ -31,9 +31,9 @@
             CookiesPerSecond += amount;
         }
 
-        public void AddCookiesFromTimer(int amount)
+        public void AddCookiesFromTimer(double cursorCookiesPerSecond)
         {
-            Count += CookiesPerSecond;
+            Count += CookiesPerSecond + (int)cursorCookiesPerSecond; 
         }
 
         public void GoldenBonus(int amount)

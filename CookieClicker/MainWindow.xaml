@@ -277,13 +277,13 @@
                     <Image Source="pack://application:,,,/Images/click.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
                     <TextBlock x:Name="Item1Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Top" Margin="258,23,17,0" RenderTransformOrigin="0.49,0.602" Height="28"/>
                     <TextBlock x:Name="Item1Price" Style="{StaticResource PriceTextStyle}" Text="70 cookies" VerticalAlignment="Top" Margin="72,38,167,0"/>
-                    <Button Content="Revendre" Click="SellItem1_Click" Style="{StaticResource CustomButtonStyle}" RenderTransformOrigin="0.742,1.66" Margin="228,26,33,0" Height="21" VerticalAlignment="Top"/>
+                    <Button Content="Revendre" Click="SellItem1_Click" Style="{StaticResource CustomButtonStyle}" RenderTransformOrigin="0.742,1.66" Margin="216,39,45,0" Height="21" VerticalAlignment="Top"/>
                     <!-- Tooltip for Cursor -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
                             <StackPanel>
                                 <TextBlock Text="Curseur" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock Text="Chaque curseur produit 0.4 cookies par seconde" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="CursorProductionText" Text="Chaque curseur produit 0.4 cookies par seconde" TextWrapping="Wrap"/>
                                 <TextBlock Text="Clique automatiquement toutes les 10 secondes" TextWrapping="Wrap"/>
                             </StackPanel>
                         </ToolTip>
@@ -447,11 +447,12 @@
                     <StackPanel>
                         <TextBlock Text="Amélioration Curseur" FontWeight="Bold" FontSize="16"/>
                         <TextBlock Text="Augmente la production de cookies par le curseur" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="CursorUpgradePriceText" Text="Prix: [Insérer le prix ici] cookies" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="CursorUpgradePriceText" Text="Prix: cookies" TextWrapping="Wrap"/>
                     </StackPanel>
                 </ToolTip>
             </Button.ToolTip>
         </Button>
+        
 
 
     </Grid>
