@@ -229,9 +229,11 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
-                    <Button x:Name="InfoButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0">
+                    <Button x:Name="InfoButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0" Click="InfoButton_Click">
                         <Image Source="pack://application:,,,/Images/Info.png" Stretch="Fill" />
                     </Button>
+
+
                     <Button x:Name="LegacyButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0">
                         <Image Source="pack://application:,,,/Images/Heritage.png" Stretch="Fill" />
                     </Button>

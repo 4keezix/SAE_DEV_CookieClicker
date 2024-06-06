@@ -394,6 +394,30 @@ namespace CookieClicker
             return null;
         }
 
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            InfoWindow infoWindow = new InfoWindow();
+            infoWindow.Owner = this;
+
+            // Positionner la fenêtre "Infos" dans la zone noire
+            double mainWindowLeft = this.Left;
+            double mainWindowTop = this.Top;
+            double mainWindowWidth = this.ActualWidth;
+            double mainWindowHeight = this.ActualHeight;
+
+            // Calculer les nouvelles positions pour centrer la fenêtre dans la zone noire
+            double infoWindowLeft = mainWindowLeft + (mainWindowWidth / 3) - 25; // Ajuster la position horizontale
+            double infoWindowTop = mainWindowTop + 115; // Ajuster la position verticale
+
+            infoWindow.Left = infoWindowLeft;
+            infoWindow.Top = infoWindowTop;
+
+            infoWindow.ShowDialog();
+        }
+
+
+
+
 
 
     }
