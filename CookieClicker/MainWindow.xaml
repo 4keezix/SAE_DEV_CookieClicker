@@ -117,7 +117,7 @@
             <TextBlock x:Name="CookiesPerSecondText" Text="par seconde : 0" FontSize="16" Foreground="White" Margin="10" HorizontalAlignment="Center"/>
 
             <Canvas x:Name="CursorCanvas" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Margin="40,0,0,0">
-                <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Width="200" Height="200" Click="CookieButton_Click">
+                <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Width="200" Height="200" Click="CookieButton_Click" HorizontalAlignment="Center" Canvas.Left="-23" VerticalAlignment="Top" Canvas.Top="32">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
