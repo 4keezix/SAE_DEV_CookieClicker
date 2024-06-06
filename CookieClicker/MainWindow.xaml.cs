@@ -17,7 +17,7 @@ namespace CookieClicker
         private readonly Assets item3;
         private readonly Assets item4;
         private GoldenCookie? goldenCookie;
-        private int cursorCount = 0;
+
         private const int cursorsPerCircle = 12; // Nombre de curseurs par cercle
         private const double baseRadius = 100; // Rayon de base pour le premier cercle
         private const double radiusIncrement = 40; // Incrément de rayon pour chaque cercle supplémentaire
@@ -83,14 +83,14 @@ namespace CookieClicker
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            // Calculer la production de cookies des curseurs
-            double cursorCookiesPerSecond = GetCursorProductionPerSecond();
-            cookie.AddCookiesFromTimer(cursorCookiesPerSecond);
+            double totalCookiesPerSecond = CalculateTotalCookiesPerSecond();
+            cookie.AddCookiesFromTimer(totalCookiesPerSecond);
 
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
         }
+
 
         private void GoldenCookieTimer_Tick(object? sender, EventArgs e)
         {
@@ -110,12 +110,25 @@ namespace CookieClicker
             AudioPlay.PlayClickSound();
         }
 
+        private double CalculateTotalCookiesPerSecond()
+        {
+
+            double cursorProduction = item1Count * GetCursorProductionPerSecond();
+            double grandmaProduction = item2Count * GetGrandMaProductionPerSecond();
+            double farmProduction = FarmItem.CookiesPerSecond * item3Count;
+            double mineProduction = MineItem.CookiesPerSecond * item4Count;
+
+            return cursorProduction + grandmaProduction + farmProduction + mineProduction;
+        }
+
+
         private void UpdateCookieDisplay()
         {
             CookieCountText.Text = $"{cookie.Count} cookies";
-            int cookiesPerSecond = cookie.CookiesPerSecond * cursorLevel;
-            CookiesPerSecondText.Text = "par seconde " + cookiesPerSecond.ToString();
+            double cookiesPerSecond = CalculateTotalCookiesPerSecond();
+            CookiesPerSecondText.Text = $"par seconde {cookiesPerSecond:F2}";
         }
+
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
@@ -319,10 +332,10 @@ namespace CookieClicker
 
         private void AddCursor()
         {
-            cursorCount++;
+            item1Count++;
             // Déterminer le cercle et l'angle pour le curseur actuel
-            int circleIndex = (cursorCount - 1) / cursorsPerCircle;
-            int positionInCircle = (cursorCount - 1) % cursorsPerCircle;
+            int circleIndex = (item1Count - 1) / cursorsPerCircle;
+            int positionInCircle = (item1Count - 1) % cursorsPerCircle;
 
             double angle = 2 * Math.PI * positionInCircle / cursorsPerCircle;
             double radius = baseRadius + circleIndex * radiusIncrement;
