@@ -198,8 +198,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
+            </Grid.RowDefinitions>
             <Image x:Name="SpecialImage" Source="pack://application:,,,/Images/milieu_gm.png" Stretch="None" Visibility="Collapsed" VerticalAlignment="Top" Height="107" Panel.ZIndex="2" Margin="-11,97,-17,0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
 
                 <Image.RenderTransform>
@@ -224,6 +224,7 @@
                     <Button x:Name="OptionsButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0" Click="OptionsButton_Click">
                         <Image Source="pack://application:,,,/Images/Option.png" Stretch="Fill" />
                     </Button>
+                    
                     <Button x:Name="StatsButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0">
                         <Image Source="pack://application:,,,/Images/Statistiques.png" Stretch="Fill" />
                     </Button>
@@ -238,7 +239,9 @@
                         <Image Source="pack://application:,,,/Images/Heritage.png" Stretch="Fill" />
                     </Button>
                 </StackPanel>
+
             </Grid>
+
         </Grid>
 
         <!-- Séparateur droit -->
@@ -468,6 +471,10 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
+        <Grid Grid.Column="2" HorizontalAlignment="Center" Height="469" Margin="0,111,0,0" VerticalAlignment="Top" Width="371">
+            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" />
+        </Grid>
+
 
 
 

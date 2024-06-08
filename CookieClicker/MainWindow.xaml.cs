@@ -133,7 +133,7 @@ namespace CookieClicker
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item1, ref item1Count, Item1Count, Item1Price);
-            //AddCursor();
+            AddCursor();
             AudioPlay.BuyingSongs();
         }
 
@@ -241,10 +241,9 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            OptionsWindow optionsWindow = new OptionsWindow();
-            optionsWindow.Owner = this; // Définit la fenêtre principale comme propriétaire de la fenêtre des options
-            optionsWindow.ShowDialog(); // Affiche la fenêtre des options comme une fenêtre modale
+            mainFrame.Navigate(new Uri("OptionsPage.xaml", UriKind.Relative));
         }
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
