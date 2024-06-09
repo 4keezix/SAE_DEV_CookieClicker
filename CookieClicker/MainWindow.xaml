@@ -6,7 +6,10 @@
         SizeToContent="Manual"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        
         BorderBrush="#6b4532" BorderThickness="5">
+    
+    
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -69,6 +72,15 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
+        <Storyboard x:Key="RotateShineAnimation" RepeatBehavior="Forever">
+            <DoubleAnimation
+                Storyboard.TargetName="ShineImage"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                From="0"
+                To="360"
+                Duration="0:0:5" />
+        </Storyboard>
+
     </Window.Resources>
 
     <Grid x:Name="MainGrid">
@@ -117,13 +129,27 @@
             <TextBlock x:Name="CookiesPerSecondText" Text="par seconde : 0" FontSize="16" Foreground="White" Margin="10" HorizontalAlignment="Center"/>
 
             <Canvas x:Name="CursorCanvas" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Margin="40,0,0,0">
-                <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Width="200" Height="200" Click="CookieButton_Click" HorizontalAlignment="Center" Canvas.Left="-23" VerticalAlignment="Top" Canvas.Top="32">
+                <!-- Shine Effect -->
+                <Image x:Name="ShineImage" Source="pack://application:,,/Ressources/CookiesEffects/Cookies/GoldenWrath Cookies/shine.png" Width="250" Height="250" Opacity="0.5" Canvas.Left="-25" Canvas.Top="-25">
+                    <Image.RenderTransform>
+                        <RotateTransform CenterX="125" CenterY="125"/>
+                    </Image.RenderTransform>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource RotateShineAnimation}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+
+                <!-- Cookie Button -->
+                <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Width="200" Height="200" Click="CookieButton_Click" HorizontalAlignment="Center" Canvas.Left="0" VerticalAlignment="Top" Canvas.Top="0">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
+                                <!-- Cookie Image -->
                                 <Ellipse Width="200" Height="200">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="pack://application:,,,/Ressources/CookiesEffects/Cookies/Particles/cookie1.jpg"/>
+                                        <ImageBrush ImageSource="pack://application:,,,/Images/cookie.jpg"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Grid>
@@ -152,9 +178,9 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                                     To="1.1" Duration="0:0:0.1"/>
+                                                             To="1.1" Duration="0:0:0.1"/>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                                     To="1.1" Duration="0:0:0.1"/>
+                                                             To="1.1" Duration="0:0:0.1"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -162,9 +188,9 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                                     To="1" Duration="0:0:0.1"/>
+                                                             To="1" Duration="0:0:0.1"/>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                                     To="1" Duration="0:0:0.1"/>
+                                                             To="1" Duration="0:0:0.1"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -177,16 +203,15 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                         From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
+                                                 From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                         From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
+                                                 From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
             </Canvas>
-
         </StackPanel>
 
         <!-- Séparateur gauche -->
