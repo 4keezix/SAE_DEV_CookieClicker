@@ -48,6 +48,82 @@
     <None Remove="Images\Option.png" />
     <None Remove="Images\sprite.png" />
     <None Remove="Images\Statistiques.png" />
+    <None Remove="Ressources\Backgrounds\bgBlack.jpg" />
+    <None Remove="Ressources\Backgrounds\bgBlue.jpg" />
+    <None Remove="Ressources\Backgrounds\bgBW.jpg" />
+    <None Remove="Ressources\Backgrounds\bgCandy.jpg" />
+    <None Remove="Ressources\Backgrounds\bgChoco.jpg" />
+    <None Remove="Ressources\Backgrounds\bgChocoDark.jpg" />
+    <None Remove="Ressources\Backgrounds\bgCoarse.jpg" />
+    <None Remove="Ressources\Backgrounds\bgFoil.jpg" />
+    <None Remove="Ressources\Backgrounds\bgGold.jpg" />
+    <None Remove="Ressources\Backgrounds\bgMint.jpg" />
+    <None Remove="Ressources\Backgrounds\bgMoney.jpg" />
+    <None Remove="Ressources\Backgrounds\bgPaint.jpg" />
+    <None Remove="Ressources\Backgrounds\bgPink.jpg" />
+    <None Remove="Ressources\Backgrounds\bgPurple.jpg" />
+    <None Remove="Ressources\Backgrounds\bgRed.jpg" />
+    <None Remove="Ressources\Backgrounds\bgSilver.jpg" />
+    <None Remove="Ressources\Backgrounds\bgSky.jpg" />
+    <None Remove="Ressources\Backgrounds\bgSnowy.jpg" />
+    <None Remove="Ressources\Backgrounds\bgSpectrum.jpg" />
+    <None Remove="Ressources\Backgrounds\bgStars.jpg" />
+    <None Remove="Ressources\Backgrounds\bgWhite.jpg" />
+    <None Remove="Ressources\Backgrounds\bgYellowBlue.jpg" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\alchemylabBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\antimattercondenserBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\bankBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\BGgarden.jpg" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\BGgrimoire.jpg" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\BGmarket.jpg" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\bgMoneyChart.jpg" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\BGpantheon.jpg" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\chancemakerBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\cortexBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\factoryBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\farmBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\fractalEngineBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\grandmaBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\idleverseBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\javascriptconsole.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\javascriptconsoleBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\mineBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\portalBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\prismBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\shipmentBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\templeBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\timemachineBackground.png" />
+    <None Remove="Ressources\Backgrounds\Building Backgrounds\wizardtowerBackground.png" />
+    <None Remove="Ressources\Backgrounds\grandmas1.jpg" />
+    <None Remove="Ressources\Backgrounds\grandmas2.jpg" />
+    <None Remove="Ressources\Backgrounds\grandmas3.jpg" />
+    <None Remove="Ressources\Backgrounds\mapBG.jpg" />
+    <None Remove="Ressources\Backgrounds\panelBG.png" />
+    <None Remove="Ressources\Backgrounds\starbg.jpg" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie1.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie2.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie3.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie4.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie5.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie6.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie7.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie8.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar1.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar2.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar3.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar4.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar5.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar6.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar7.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\dollar8.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart1.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart2.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart3.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart4.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart5.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart6.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart7.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Particles\heart8.png" />
     <None Remove="Songs\buy1.mp3" />
     <None Remove="Songs\buy2.mp3" />
     <None Remove="Songs\buy3.mp3" />
@@ -225,6 +301,234 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Statistiques.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgBlack.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgBlue.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgBW.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgCandy.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgChoco.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgChocoDark.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgCoarse.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgFoil.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgGold.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgMint.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgMoney.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgPaint.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgPink.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgPurple.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgRed.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgSilver.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgSky.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgSnowy.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgSpectrum.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgStars.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgWhite.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\bgYellowBlue.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\alchemylabBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\antimattercondenserBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\bankBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\BGgarden.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\BGgrimoire.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\BGmarket.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\bgMoneyChart.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\BGpantheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\chancemakerBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\cortexBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\factoryBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\farmBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\fractalEngineBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\grandmaBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\idleverseBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\javascriptconsole.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\javascriptconsoleBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\mineBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\portalBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\prismBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\shipmentBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\templeBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\timemachineBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\Building Backgrounds\wizardtowerBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\grandmas1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\grandmas2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\grandmas3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\mapBG.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\panelBG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\Backgrounds\starbg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\dollar8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Particles\heart8.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -100,7 +100,7 @@
         </Button>
 
         <!-- Arrière-plan -->
-        <Image Source="pack://application:,,,/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
+        <Image Source="pack://application:,,,/Ressources/Backgrounds/bgBlue.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
 
         <!-- Panneau gauche -->
         <StackPanel Grid.Column="0" Margin="15,10,5,0" VerticalAlignment="Top">
@@ -123,7 +123,7 @@
                             <Grid>
                                 <Ellipse Width="200" Height="200">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="pack://application:,,,/Images/cookie.jpg"/>
+                                        <ImageBrush ImageSource="pack://application:,,,/Ressources/CookiesEffects/Cookies/Particles/cookie1.jpg"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Grid>
@@ -224,7 +224,7 @@
                     <Button x:Name="OptionsButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0" Click="OptionsButton_Click">
                         <Image Source="pack://application:,,,/Images/Option.png" Stretch="Fill" />
                     </Button>
-                    
+
                     <Button x:Name="StatsButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0">
                         <Image Source="pack://application:,,,/Images/Statistiques.png" Stretch="Fill" />
                     </Button>
@@ -472,7 +472,7 @@
             </Button.ToolTip>
         </Button>
         <Grid Grid.Column="2" HorizontalAlignment="Center" Height="469" Margin="0,111,0,0" VerticalAlignment="Top" Width="371">
-            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" />
+            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,10,-10,0" Height="469" VerticalAlignment="Top" HorizontalAlignment="Right" Width="381" />
         </Grid>
 
 
