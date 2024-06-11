@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using CookieClicker.View;
@@ -108,6 +109,7 @@ namespace CookieClicker
             UpdateButtonStates();
             UpdatePrices();
             AudioPlay.PlayClickSound();
+            GenerateCookie();
         }
 
         private double CalculateTotalCookiesPerSecond()
@@ -133,7 +135,7 @@ namespace CookieClicker
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item1, ref item1Count, Item1Count, Item1Price);
-            AddCursor();
+            //AddCursor();
             AudioPlay.BuyingSongs();
         }
 
@@ -522,6 +524,35 @@ namespace CookieClicker
 
             infoWindow.ShowDialog();
         }
+        private void GenerateCookie()
+        {
+            Image cookie = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/cookie.jpg")),
+                Width = 50,
+                Height = 50
+            };
+
+            Random rand = new Random();
+            double startLeft = rand.Next(0, (int)CookieCanvas.ActualWidth - 50);
+            Canvas.SetLeft(cookie, startLeft);
+            Canvas.SetTop(cookie, -50);
+
+            CookieCanvas.Children.Add(cookie);
+
+            DoubleAnimation fallAnimation = new DoubleAnimation
+            {
+                From = -50,
+                To = CookieCanvas.ActualHeight,
+                Duration = new Duration(TimeSpan.FromSeconds(2))
+            };
+
+            fallAnimation.Completed += (s, a) => CookieCanvas.Children.Remove(cookie);
+
+            cookie.BeginAnimation(Canvas.TopProperty, fallAnimation);
+        }
+
+
 
 
 
