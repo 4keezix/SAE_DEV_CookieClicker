@@ -47,8 +47,15 @@
     <None Remove="Images\milieu_mine.png" />
     <None Remove="Images\mine.png" />
     <None Remove="Images\Option.png" />
+    <None Remove="Images\perfectCookie.png" />
     <None Remove="Images\sprite.png" />
     <None Remove="Images\Statistiques.png" />
+    <None Remove="Images\tile000.png" />
+    <None Remove="Images\tile001.png" />
+    <None Remove="Images\tile002.png" />
+    <None Remove="Images\tile003.png" />
+    <None Remove="Images\tile004.png" />
+    <None Remove="Images\tile005.png" />
     <None Remove="Ressources\Backgrounds\bgBlack.jpg" />
     <None Remove="Ressources\Backgrounds\bgBlue.jpg" />
     <None Remove="Ressources\Backgrounds\bgBW.jpg" />
@@ -309,10 +316,31 @@
     <Resource Include="Images\Option.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\perfectCookie.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\sprite.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Statistiques.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\tile000.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\tile001.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\tile002.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\tile003.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\tile004.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\tile005.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Ressources\Backgrounds\bgBlack.jpg">

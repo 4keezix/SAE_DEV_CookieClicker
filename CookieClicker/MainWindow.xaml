@@ -125,7 +125,7 @@
                             <Grid>
                                 <Ellipse Width="200" Height="200">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="pack://application:,,,/Images/cookie.jpg"/>
+                                        <ImageBrush ImageSource="pack://application:,,,/Images/perfectCookie.png"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Grid>
@@ -225,6 +225,7 @@
                 <StackPanel Grid.Column="0" Orientation="Vertical">
                     <Button x:Name="OptionsButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0" Click="OptionsButton_Click">
                         <Image Source="pack://application:,,,/Images/Option.png" Stretch="Fill" />
+
                     </Button>
 
                     <Button x:Name="StatsButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0">
@@ -440,8 +441,10 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" IsHitTestVisible="True" Grid.ColumnSpan="3" Margin="0,0,290,0"/>
-        <Button x:Name="CursorUpgradeButton" Click="CursorUpgradeButton_Click" Margin="21,79,252,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
+        <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" IsHitTestVisible="True" Grid.ColumnSpan="3" Margin="0,0,290,0">
+            <Image Height="60" Canvas.Left="400" Source="/Images/tile001.png" Stretch="Fill" Canvas.Top="62" Width="60"/>
+        </Canvas>
+        <Button x:Name="CursorUpgradeButton" Click="CursorUpgradeButton_Click" Margin="27,75,242,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4" RenderTransformOrigin="-3.547,4.531">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Image x:Name="CursorUpgradeImage" Source="/Images/CursorUpgrade1.png" Stretch="Fill"/>
@@ -473,8 +476,8 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
-        <Grid Grid.Column="2" HorizontalAlignment="Center" Height="469" Margin="0,111,0,0" VerticalAlignment="Top" Width="371">
-            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,10,-10,0" Height="469" VerticalAlignment="Top" HorizontalAlignment="Right" Width="371" />
+        <Grid Grid.Column="2" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top"  Height="480" Width="395">
+            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,10,0,0" Height="480" Width="395" VerticalAlignment="Top" />
         </Grid>
 
 

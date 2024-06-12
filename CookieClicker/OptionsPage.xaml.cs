@@ -28,11 +28,9 @@ namespace CookieClicker
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService != null && NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+           // NavigationService.Navigate(new Uri("MainWindow.xaml", UriKind.Relative));
         }
+
 
 
 

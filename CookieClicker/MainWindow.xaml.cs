@@ -243,7 +243,7 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new Uri("OptionsPage.xaml", UriKind.Relative));
+            mainFrame.Navigate(new OptionsPage());
         }
 
 
@@ -530,7 +530,8 @@ namespace CookieClicker
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/Images/cookie.jpg")),
                 Width = 50,
-                Height = 50
+                Height = 50,
+                Opacity = 0.8
             };
 
             Random rand = new Random();
@@ -538,7 +539,9 @@ namespace CookieClicker
             Canvas.SetLeft(cookie, startLeft);
             Canvas.SetTop(cookie, -50);
 
-            CookieCanvas.Children.Add(cookie);
+            
+            CookieCanvas.Children.Insert(0, cookie);
+            Panel.SetZIndex(cookie, -1); 
 
             DoubleAnimation fallAnimation = new DoubleAnimation
             {
@@ -551,6 +554,7 @@ namespace CookieClicker
 
             cookie.BeginAnimation(Canvas.TopProperty, fallAnimation);
         }
+
 
 
 
