@@ -109,6 +109,7 @@
     <None Remove="Ressources\Backgrounds\panelBG.png" />
     <None Remove="Ressources\Backgrounds\starbg.jpg" />
     <None Remove="Ressources\CookiesEffects\Cookies\GoldenWrath Cookies\shine.png" />
+    <None Remove="Ressources\CookiesEffects\Cookies\Miscellaneous\favicon.png" />
     <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie1.png" />
     <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie2.png" />
     <None Remove="Ressources\CookiesEffects\Cookies\Particles\cookie3.png" />
@@ -140,6 +141,7 @@
     <None Remove="Ressources\CookiesEffects\Cookies\Screen Effects\heartStorm.png" />
     <None Remove="Ressources\CookiesEffects\Cookies\Screen Effects\snow.jpg" />
     <None Remove="Ressources\CookiesEffects\Cookies\Screen Effects\snow2.jpg" />
+    <None Remove="Ressources\icon.ico" />
     <None Remove="Songs\BackgroundMusic.mp3" />
     <None Remove="Songs\buy1.mp3" />
     <None Remove="Songs\buy2.mp3" />
@@ -510,6 +512,7 @@
     <Resource Include="Ressources\CookiesEffects\Cookies\GoldenWrath Cookies\shine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Ressources\CookiesEffects\Cookies\Miscellaneous\favicon.png" />
     <Resource Include="Ressources\CookiesEffects\Cookies\Particles\cookie1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -603,6 +606,7 @@
     <Resource Include="Ressources\CookiesEffects\Cookies\Screen Effects\snow2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Ressources\icon.ico" />
   </ItemGroup>
 
 </Project>

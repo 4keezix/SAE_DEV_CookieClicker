@@ -19,6 +19,10 @@ namespace CookieClicker
         private readonly Assets item4;
         private GoldenCookie? goldenCookie;
 
+        private bool isStatsPageOpen = false;
+        private StatistiquesWindow statsPage;
+        private Statistiques stats;
+
         private const int cursorsPerCircle = 12; // Nombre de curseurs par cercle
         private const double baseRadius = 100; // Rayon de base pour le premier cercle
         private const double radiusIncrement = 40; // Incrément de rayon pour chaque cercle supplémentaire
@@ -51,8 +55,11 @@ namespace CookieClicker
             item2 = new Assets(100, 5);
             item3 = new Assets(500, 10);
             item4 = new Assets(1000, 50);
+            stats = new Statistiques();
 
             imageItem = new ImageItem(SpecialImage, SpecialImage3, SpecialImage4);
+
+            statsPage = new StatistiquesWindow(stats);
 
             // Initialisation des items administrateur
             GrandmaItem = new Assets(100, 1); // Remplacez ces valeurs par les coûts et cookies par seconde réels
@@ -88,11 +95,12 @@ namespace CookieClicker
         private void Timer_Tick(object? sender, EventArgs e)
         {
             double totalCookiesPerSecond = CalculateTotalCookiesPerSecond();
-            cookie.AddCookiesFromTimer(totalCookiesPerSecond);
+            cookie.AddCookiesFromTimer((int)totalCookiesPerSecond);
 
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
+            UpdateStats();
         }
 
         private void GoldenCookieTimer_Tick(object? sender, EventArgs e)
@@ -112,6 +120,7 @@ namespace CookieClicker
             UpdatePrices();
             AudioPlay.PlayClickSound();
             GenerateCookie();
+            UpdateStats();
         }
 
         private double CalculateTotalCookiesPerSecond()
@@ -134,8 +143,8 @@ namespace CookieClicker
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
             BuyItem(item1, ref item1Count, Item1Count, Item1Price);
-            //AddCursor();
             AudioPlay.BuyingSongs();
+            UpdateStats();
         }
 
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
@@ -143,6 +152,7 @@ namespace CookieClicker
             imageItem.ShowImageForItem2();
             BuyItem(item2, ref item2Count, Item2Count, Item2Price);
             AudioPlay.BuyingSongs();
+            UpdateStats();
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
@@ -150,6 +160,7 @@ namespace CookieClicker
             imageItem.ShowImageForItem3();
             BuyItem(item3, ref item3Count, Item3Count, Item3Price);
             AudioPlay.BuyingSongs();
+            UpdateStats();
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
@@ -157,6 +168,7 @@ namespace CookieClicker
             imageItem.ShowImageForItem4();
             BuyItem(item4, ref item4Count, Item4Count, Item4Price);
             AudioPlay.BuyingSongs();
+            UpdateStats();
         }
 
         private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock)
@@ -277,24 +289,28 @@ namespace CookieClicker
         {
             SellItem(item1, ref item1Count, Item1Count);
             AudioPlay.SellingSongs();
+            UpdateStats();
         }
 
         private void SellItem2_Click(object sender, RoutedEventArgs e)
         {
             SellItem(item2, ref item2Count, Item2Count);
             AudioPlay.SellingSongs();
+            UpdateStats();
         }
 
         private void SellItem3_Click(object sender, RoutedEventArgs e)
         {
             SellItem(item3, ref item3Count, Item3Count);
             AudioPlay.SellingSongs();
+            UpdateStats();
         }
 
         private void SellItem4_Click(object sender, RoutedEventArgs e)
         {
             SellItem(item4, ref item4Count, Item4Count);
             AudioPlay.SellingSongs();
+            UpdateStats();
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -487,6 +503,38 @@ namespace CookieClicker
                 }
             }
             return null!;
+        }
+
+        private void StatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (isStatsPageOpen)
+            {
+                mainFrame.Content = null; // Ferme la page des statistiques
+                isStatsPageOpen = false;
+            }
+            else
+            {
+                UpdateStats(); // Mise à jour des statistiques avant d'afficher la page
+                mainFrame.Navigate(statsPage);
+                isStatsPageOpen = true;
+            }
+        }
+
+        // Mise à jour des statistiques
+        private void UpdateStats()
+        {
+            stats.CookiesEnBanque = cookie.Count;
+            stats.CookiesCuits = cookie.TotalCookiesProduced; // Remplacez par le nombre total de cookies cuits si c'est différent
+            stats.CookiesCuitsTotal = cookie.TotalCookiesProduced; // Exemple, remplacez par la bonne valeur
+            stats.TempsJeu = DateTime.Now - cookie.StartTime;
+            stats.ConstructionsPossedees = item1Count + item2Count + item3Count + item4Count;
+            stats.CookiesParSeconde = CalculateTotalCookiesPerSecond();
+            stats.CookiesParClic = cookie.CookiesPerClick;
+            stats.ClicsDeCookies = cookie.TotalClicks;
+            stats.CookiesFaitsMain = cookie.CookiesMadeByHand;
+            stats.ClicsCookiesDores = cookie.GoldenCookieClicks; // Exemple, remplacez par la bonne valeur
+
+            statsPage.UpdateStatistics();
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)

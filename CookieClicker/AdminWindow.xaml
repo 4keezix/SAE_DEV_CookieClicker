@@ -1,7 +1,8 @@
 ﻿<Window x:Class="CookieClicker.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AdminWindow" Height="500" Width="400">
+        Title="AdminWindow" Height="500" Width="400"
+        Icon="Ressources/icon.ico">
     <Grid Background="#f0f0f0">
         <StackPanel>
             <TextBlock Text="Admin Menu" FontSize="24" HorizontalAlignment="Center" Margin="10" FontWeight="Bold"/>

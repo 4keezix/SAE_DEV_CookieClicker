@@ -38,7 +38,7 @@ namespace CookieClicker.View
             ApplyBonus();
             AudioPlay.PlayGoldenCookieSound(); // Jouer le son ici
             var position = e.GetPosition(goldenCookieCanvas);
-            ShowBonusText(cookie.CookiesPerSecond * 10, position.X, position.Y); // Afficher le texte du bonus
+            ShowBonusText((int)(cookie.CookiesPerSecond * 10), position.X, position.Y); // Afficher le texte du bonus
             RemoveGoldenCookie();
         }
 
@@ -67,7 +67,7 @@ namespace CookieClicker.View
 
         private void ApplyBonus()
         {
-            int bonusCookies = cookie.CookiesPerSecond * 10;
+            int bonusCookies = (int)(cookie.CookiesPerSecond * 10);
             cookie.GoldenBonus(bonusCookies);
         }
 
