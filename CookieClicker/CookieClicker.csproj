@@ -149,6 +149,7 @@
     <None Remove="Songs\click3.mp3" />
     <None Remove="Songs\click4.mp3" />
     <None Remove="Songs\click5.mp3" />
+    <None Remove="Songs\GoldenSound.mp3" />
     <None Remove="Songs\sell1.mp3" />
     <None Remove="Songs\sell2.mp3" />
     <None Remove="Songs\sell3.mp3" />
@@ -187,6 +188,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Songs\click5.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Songs\GoldenSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Songs\sell1.mp3">

@@ -92,7 +92,6 @@ namespace CookieClicker
             UpdatePrices();
         }
 
-
         private void GoldenCookieTimer_Tick(object? sender, EventArgs e)
         {
             goldenCookie = new GoldenCookie(GoldenCookieCanvas, cookie);
@@ -114,7 +113,6 @@ namespace CookieClicker
 
         private double CalculateTotalCookiesPerSecond()
         {
-
             double cursorProduction = item1Count * GetCursorProductionPerSecond();
             double grandmaProduction = item2Count * GetGrandMaProductionPerSecond();
             double farmProduction = FarmItem.CookiesPerSecond * item3Count;
@@ -123,14 +121,12 @@ namespace CookieClicker
             return cursorProduction + grandmaProduction + farmProduction + mineProduction;
         }
 
-
         private void UpdateCookieDisplay()
         {
             CookieCountText.Text = $"{cookie.Count} cookies";
             double cookiesPerSecond = CalculateTotalCookiesPerSecond();
             CookiesPerSecondText.Text = $"par seconde {cookiesPerSecond:F2}";
         }
-
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
@@ -246,7 +242,6 @@ namespace CookieClicker
             mainFrame.Navigate(new OptionsPage());
         }
 
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Êtes-vous sûr de vouloir quitter ?", "Quitter", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -280,19 +275,22 @@ namespace CookieClicker
             SellItem(item1, ref item1Count, Item1Count);
             AudioPlay.SellingSongs();
         }
+
         private void SellItem2_Click(object sender, RoutedEventArgs e)
         {
-            SellItem(item2, ref item1Count, Item2Count);
+            SellItem(item2, ref item2Count, Item2Count);
             AudioPlay.SellingSongs();
         }
+
         private void SellItem3_Click(object sender, RoutedEventArgs e)
         {
-            SellItem(item3, ref item1Count, Item3Count);
+            SellItem(item3, ref item3Count, Item3Count);
             AudioPlay.SellingSongs();
         }
+
         private void SellItem4_Click(object sender, RoutedEventArgs e)
         {
-            SellItem(item4, ref item1Count, Item4Count);
+            SellItem(item4, ref item4Count, Item4Count);
             AudioPlay.SellingSongs();
         }
 
@@ -387,7 +385,6 @@ namespace CookieClicker
             CursorUpgradePriceText.Text = $"Prix: {cursorUpgradePrice} cookies";
         }
 
-
         private void CursorUpgradeButton_Click(object sender, RoutedEventArgs e)
         {
             if (cookie.Count >= cursorUpgradePrice)
@@ -399,7 +396,6 @@ namespace CookieClicker
                 UpdateButtonStates();
                 UpdatePrices();
                 UpdateCursorUpgradeButton();
-
 
                 // Mettre à jour le texte des éléments TextBlock
                 UpdateCursorProductionText();
@@ -415,7 +411,6 @@ namespace CookieClicker
             double cursorCookiesPerSecond = GetCursorProductionPerSecond();
 
             CursorProductionText.Text = $"Chaque curseur produit {cursorCookiesPerSecond} cookies par seconde";
-            
         }
 
         private void UpdateGrandMaUpgradeButton()
@@ -444,8 +439,6 @@ namespace CookieClicker
             GrandmaUpgradePriceText.Text = $"Prix: {grandmaUpgradePrice} cookies";
         }
 
-
-
         private void GrandmaUpgradeButton_Click(object sender, RoutedEventArgs e)
         {
             if (cookie.Count >= grandmaUpgradePrice)
@@ -472,15 +465,12 @@ namespace CookieClicker
             double grandmaCookiesPerSecond = GetGrandMaProductionPerSecond();
             GrandmaProductionText.Text = $"Chaque grand-mère produit {grandmaCookiesPerSecond} cookies par seconde";
         }
+
         private double GetGrandMaProductionPerSecond()
         {
             // Implémentez la logique pour calculer la production des cookies par seconde par chaque grand-mère
             return grandmaLevel * 0.4; // Exemple, ajustez en fonction de votre logique
         }
-
-
-
-
 
         // Méthode utilitaire pour trouver un élément visuel à l'intérieur d'un contrôle parent
         private T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
@@ -524,6 +514,7 @@ namespace CookieClicker
 
             infoWindow.ShowDialog();
         }
+
         private void GenerateCookie()
         {
             Image cookie = new Image
@@ -539,9 +530,8 @@ namespace CookieClicker
             Canvas.SetLeft(cookie, startLeft);
             Canvas.SetTop(cookie, -50);
 
-            
             CookieCanvas.Children.Insert(0, cookie);
-            Panel.SetZIndex(cookie, -1); 
+            Panel.SetZIndex(cookie, -1);
 
             DoubleAnimation fallAnimation = new DoubleAnimation
             {
@@ -554,14 +544,5 @@ namespace CookieClicker
 
             cookie.BeginAnimation(Canvas.TopProperty, fallAnimation);
         }
-
-
-
-
-
-
-
-
-
     }
 }

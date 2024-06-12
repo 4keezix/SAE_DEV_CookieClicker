@@ -22,7 +22,7 @@ namespace CookieClicker.View
             goldenCookieImage = new Image
             {
                 Source = new ImageSourceConverter().ConvertFromString("pack://application:,,,/Images/Golden_cookie.png") as ImageSource,
-                Width = 76, 
+                Width = 76,
                 Height = 76,
                 Opacity = 0
             };
@@ -36,6 +36,7 @@ namespace CookieClicker.View
         private void GoldenCookieImage_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ApplyBonus();
+            AudioPlay.PlayGoldenCookieSound(); // Jouer le son ici
             RemoveGoldenCookie();
         }
 
