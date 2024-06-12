@@ -37,6 +37,8 @@ namespace CookieClicker.View
         {
             ApplyBonus();
             AudioPlay.PlayGoldenCookieSound(); // Jouer le son ici
+            var position = e.GetPosition(goldenCookieCanvas);
+            ShowBonusText(cookie.CookiesPerSecond * 10, position.X, position.Y); // Afficher le texte du bonus
             RemoveGoldenCookie();
         }
 
@@ -67,6 +69,51 @@ namespace CookieClicker.View
         {
             int bonusCookies = cookie.CookiesPerSecond * 10;
             cookie.GoldenBonus(bonusCookies);
+        }
+
+        private void ShowBonusText(int bonusCookies, double left, double top)
+        {
+            TextBlock bonusText = new TextBlock
+            {
+                Text = $"+{bonusCookies}",
+                FontSize = 20,
+                FontWeight = FontWeights.Bold,
+                Foreground = new SolidColorBrush(Colors.WhiteSmoke)
+            };
+
+            goldenCookieCanvas.Children.Add(bonusText);
+            Canvas.SetLeft(bonusText, left);
+            Canvas.SetTop(bonusText, top);
+
+            DoubleAnimation fadeOutAnimation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = TimeSpan.FromSeconds(2)
+            };
+
+            TranslateTransform translateTransform = new TranslateTransform();
+            bonusText.RenderTransform = translateTransform;
+
+            DoubleAnimation moveUpAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = -50,
+                Duration = TimeSpan.FromSeconds(2)
+            };
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(fadeOutAnimation);
+            storyboard.Children.Add(moveUpAnimation);
+
+            Storyboard.SetTarget(fadeOutAnimation, bonusText);
+            Storyboard.SetTargetProperty(fadeOutAnimation, new PropertyPath(TextBlock.OpacityProperty));
+
+            Storyboard.SetTarget(moveUpAnimation, bonusText);
+            Storyboard.SetTargetProperty(moveUpAnimation, new PropertyPath("RenderTransform.Y"));
+
+            storyboard.Completed += (s, e) => goldenCookieCanvas.Children.Remove(bonusText);
+            storyboard.Begin();
         }
 
         private void RemoveGoldenCookie()
