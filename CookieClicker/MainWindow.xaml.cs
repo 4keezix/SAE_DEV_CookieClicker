@@ -57,6 +57,10 @@ namespace CookieClicker
             item4 = new Assets(1000, 50);
             stats = new Statistiques();
 
+            // Garantir le fait que le nom et le nombre de cookie soit au premeir plan
+            Panel.SetZIndex(BakeryNameTextBlock, 10);
+            Panel.SetZIndex(CookieCountText, 10);
+
             imageItem = new ImageItem(SpecialImage, SpecialImage3, SpecialImage4);
 
             statsPage = new StatistiquesWindow(stats);
@@ -570,8 +574,9 @@ namespace CookieClicker
             Canvas.SetLeft(cookie, startLeft);
             Canvas.SetTop(cookie, -50);
 
+            // Ajoutez le cookie au canvas à l'index 0 pour le mettre en arrière-plan
             CookieCanvas.Children.Insert(0, cookie);
-            Panel.SetZIndex(cookie, -1);
+            Panel.SetZIndex(cookie, -1); // Assurez-vous que le cookie a un ZIndex bas
 
             DoubleAnimation fallAnimation = new DoubleAnimation
             {

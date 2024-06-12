@@ -53,7 +53,7 @@ namespace CookieClicker.View
                 loopStream = new LoopStream(audioFileReader);
 
                 waveOut.Init(loopStream);
-                waveOut.Volume = 0.2f;
+                waveOut.Volume = 0.1f;
                 waveOut.Play();
             }
         }
