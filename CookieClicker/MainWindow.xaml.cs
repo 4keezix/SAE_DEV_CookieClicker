@@ -20,6 +20,8 @@ namespace CookieClicker
         private GoldenCookie? goldenCookie;
 
         private bool isStatsPageOpen = false;
+        private bool OptionPageOpen = false;
+        private OptionsPage optionsPage;
         private StatistiquesWindow statsPage;
         private Statistiques stats;
 
@@ -305,7 +307,16 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new OptionsPage());
+            if (OptionPageOpen)
+            {
+
+                mainFrame.Content = null;
+            }
+            else
+            {
+                mainFrame.Content = new OptionsPage(); 
+            }
+            OptionPageOpen = !OptionPageOpen;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

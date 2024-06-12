@@ -17,22 +17,65 @@ using System.Diagnostics;
 
 namespace CookieClicker
 {
+    using global::CookieClicker.View;
+
     /// <summary>
     /// Logique d'interaction pour OptionsPage.xaml
     /// </summary>
-    public partial class OptionsPage : Page
-    {
-        public OptionsPage()
+        public partial class OptionsPage : Page
         {
-            InitializeComponent();
-        }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+            public OptionsPage()
+            {
+                InitializeComponent();
+            }
+
+            private void MusicSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+            {
+                // Logique pour changer le volume de la musique
+                double volume = e.NewValue / 100;
+                AudioPlay.SetBackgroundMusicVolume((float)volume);
+            }
+       
+
+        private void ClickSoundCheckBox_Checked(object sender, RoutedEventArgs e)
+            {
+            AudioPlay.EnableClickSound = false;
+
+            }
+
+            private void ClickSoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
+            {
+            AudioPlay.EnableClickSound = true;
+               
+            }
+
+            private void BuySoundCheckBox_Checked(object sender, RoutedEventArgs e)
+            {
+            AudioPlay.EnableBuySound = false;
+
+            }
+
+            private void BuySoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
+            {
+            AudioPlay.EnableBuySound = true;
+                
+            }
+
+            private void SaveButton_Click(object sender, RoutedEventArgs e)
+            {
+               
+            }
+
+        private void MusicCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-           // NavigationService.Navigate(new Uri("MainWindow.xaml", UriKind.Relative));
+            AudioPlay.StopBackgroundMusic();
         }
 
-
-
-
+        private void MusicCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Activer la musique de fond
+            AudioPlay.PlayBackgroundMusic();
+        }
     }
-}
+    }
+

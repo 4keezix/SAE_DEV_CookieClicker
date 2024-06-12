@@ -10,25 +10,37 @@ namespace CookieClicker.View
         private static IWavePlayer? waveOut;
         private static WaveStream? audioFileReader;
         private static LoopStream? loopStream;
+        public static bool EnableClickSound { get; set; } = true;
+        public static bool EnableBuySound { get; set; } = true;
+        private static bool isBackgroundMusicPlaying = true;
 
         public static void PlayClickSound()
         {
-            PlaySound("CookieClicker.Songs.click1.mp3");
+            if (EnableClickSound)
+            {
+                PlaySound("CookieClicker.Songs.click1.mp3");
+            }
         }
 
         public static void BuyingSongs()
         {
-            PlaySound("CookieClicker.Songs.buy1.mp3");
+            if (EnableBuySound)
+            {
+                PlaySound("CookieClicker.Songs.buy1.mp3");
+            }
         }
 
         public static void SellingSongs()
         {
-            PlaySound("CookieClicker.Songs.sell1.mp3");
+            if (EnableBuySound)
+            {
+                PlaySound("CookieClicker.Songs.sell1.mp3");
+            }
         }
 
         public static void PlayGoldenCookieSound()
         {
-            PlaySound("CookieClicker.Songs.GoldenSound.mp3");
+                PlaySound("CookieClicker.Songs.GoldenSound.mp3");
         }
 
         public static void PlayBackgroundMusic()
@@ -94,6 +106,26 @@ namespace CookieClicker.View
                     File.Delete(tempFile);
                 };
             }
+        }
+
+        public static void SetBackgroundMusicVolume(float volume)
+        {
+            if (waveOut != null)
+            {
+                waveOut.Volume = volume;
+            }
+        }
+        public static void ToggleBackgroundMusic()
+        {
+            if (isBackgroundMusicPlaying)
+            {
+                StopBackgroundMusic();
+            }
+            else
+            {
+                PlayBackgroundMusic();
+            }
+            isBackgroundMusicPlaying = !isBackgroundMusicPlaying;
         }
     }
 }

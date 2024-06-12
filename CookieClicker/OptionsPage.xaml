@@ -5,16 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CookieClicker"
       mc:Ignorable="d" 
-      d:DesignHeight="480" d:DesignWidth="395"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="OptionsPage">
 
     <Page.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#333"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -35,74 +36,47 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
-        <Style x:Key="ItemImageStyle" TargetType="Image">
-            <Setter Property="Opacity" Value="0.7"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
-                                                 To="1.0" Duration="0:0:0.3"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
-                                                 To="0.7" Duration="0:0:0.3"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="PriceTextStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FF750D0D"/>
-            <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-
-        <Style x:Key="CounterTextStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
     </Page.Resources>
 
-    <Grid Background="#111">
-        <Button Content="Retour" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="CloseButton_Click"
-                 Style="{StaticResource CustomButtonStyle}"/>
+    <Grid Background="#222">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20">
+                <TextBlock FontSize="28" FontWeight="Bold" Foreground="White" Text="PARAMÈTRES" Margin="0,0,0,20"/>
+                <Border Background="#333" Padding="20" CornerRadius="10" Width="600">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+                        </StackPanel>
 
-        <TextBlock Text="Paramètres" FontSize="36" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,50,0,0"/>
-
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,0,0">
-            <TextBlock Text="Volume" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Text="Musique :" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <Slider Width="200" Minimum="0" Maximum="100" />
+                        <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" Text="Volume" Margin="0,0,0,10"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="Musique :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <Slider Width="200" Minimum="0" Maximum="100" ValueChanged="MusicSlider_ValueChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="Desactiver le Son des clics :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <CheckBox Width="20" Height="20" VerticalAlignment="Center" Checked="ClickSoundCheckBox_Checked" Unchecked="ClickSoundCheckBox_Unchecked"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="Desactiver le Son des achats :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <CheckBox Width="20" Height="20" VerticalAlignment="Center" Checked="BuySoundCheckBox_Checked" Unchecked="BuySoundCheckBox_Unchecked"/>
+                        </StackPanel>
+                       <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="Désactiver la musique :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <CheckBox Width="20" Height="20" Checked="MusicCheckBox_Checked" Unchecked="MusicCheckBox_Unchecked"/>
+                        </StackPanel>
+                        <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" Text="Changer de backgroung" Margin="20,30,0,10"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="Background :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <ComboBox Width="200" Height="30">
+                                <ComboBoxItem Content="Bleu"/>
+                                <ComboBoxItem Content="Rose"/>
+                                <ComboBoxItem Content="ChocoDark"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <Button Content="Sauvegarder" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="SaveButton_Click"/>
+                    </StackPanel>
+                </Border>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Text="Son des clics :" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <CheckBox Width="20" Height="20" VerticalAlignment="Center" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Text="Son des achats :" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <CheckBox Width="20" Height="20" VerticalAlignment="Center" />
-            </StackPanel>
-            <TextBlock Text="Affichage" FontSize="24" FontWeight="Bold" Foreground="White" Margin="20,30,0,10"/>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Text="Option 2 :" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <ComboBox Width="200" Height="30">
-                    <ComboBoxItem Content="Option 1"/>
-                    <ComboBoxItem Content="Option 2"/>
-                    <ComboBoxItem Content="Option 3"/>
-                </ComboBox>
-            </StackPanel>
-            <Button Content="Sauvegarder" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" />
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
