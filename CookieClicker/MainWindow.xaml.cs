@@ -33,6 +33,7 @@ namespace CookieClicker
         private int grandmaLevel = 1;
         private readonly DispatcherTimer timer;
         private readonly DispatcherTimer goldenCookieTimer;
+        private readonly DispatcherTimer textChangeTimer;
 
         private readonly ImageItem imageItem;
 
@@ -40,6 +41,9 @@ namespace CookieClicker
         private int item2Count = 0;
         private int item3Count = 0;
         private int item4Count = 0;
+
+        private readonly string[] textMessages = { "Cliquez-moi", "Bonjour", "Nouveau message", "Continuez à cliquer", "Vous êtes génial" };
+        private int currentTextIndex = 0;
 
         // Déclaration des items administrateur
         public Assets GrandmaItem { get; private set; }
@@ -94,6 +98,13 @@ namespace CookieClicker
 
             // Démarrer la musique de fond
             AudioPlay.PlayBackgroundMusic();
+
+            textChangeTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMinutes(1)
+            };
+            textChangeTimer.Tick += TextChangeTimer_Tick;
+            textChangeTimer.Start();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -116,6 +127,11 @@ namespace CookieClicker
             goldenCookieTimer.Start();
         }
 
+        private void TextChangeTimer_Tick(object? sender, EventArgs e)
+        {
+            UpdateDynamicTextBlock();
+        }
+
         private void CookieButton_Click(object sender, RoutedEventArgs e)
         {
             cookie.AddCookie();
@@ -125,6 +141,37 @@ namespace CookieClicker
             AudioPlay.PlayClickSound();
             GenerateCookie();
             UpdateStats();
+        }
+
+        private void DynamicTextBlock_Click(object sender, MouseButtonEventArgs e)
+        {
+            AnimateTextBlock(DynamicTextBlock);
+            currentTextIndex = (currentTextIndex + 1) % textMessages.Length;
+            DynamicTextBlock.Text = textMessages[currentTextIndex];
+        }
+
+        private void AnimateTextBlock(TextBlock textBlock)
+        {
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                From = 1.0,
+                To = 1.5,
+                Duration = new Duration(TimeSpan.FromSeconds(0.1)),
+                AutoReverse = true
+            };
+
+            ScaleTransform transform = new ScaleTransform();
+            textBlock.RenderTransform = transform;
+            textBlock.RenderTransformOrigin = new Point(0.5, 0.5);
+
+            transform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
+            transform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
+        }
+
+        private void UpdateDynamicTextBlock()
+        {
+            currentTextIndex = (currentTextIndex + 1) % textMessages.Length;
+            DynamicTextBlock.Text = textMessages[currentTextIndex];
         }
 
         private double CalculateTotalCookiesPerSecond()
