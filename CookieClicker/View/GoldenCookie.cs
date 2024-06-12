@@ -33,7 +33,7 @@ namespace CookieClicker.View
             lifetimeTimer.Tick += LifetimeTimer_Tick;
         }
 
-        private void GoldenCookieImage_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void GoldenCookieImage_MouseLeftButtonDown(object? sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ApplyBonus();
             AudioPlay.PlayGoldenCookieSound(); // Jouer le son ici
@@ -42,7 +42,7 @@ namespace CookieClicker.View
             RemoveGoldenCookie();
         }
 
-        private void LifetimeTimer_Tick(object sender, EventArgs e)
+        private void LifetimeTimer_Tick(object? sender, EventArgs e)
         {
             RemoveGoldenCookie();
         }
@@ -76,9 +76,9 @@ namespace CookieClicker.View
             TextBlock bonusText = new TextBlock
             {
                 Text = $"+{bonusCookies}",
-                FontSize = 20,
+                FontSize = 24,
                 FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.WhiteSmoke)
+                Foreground = new SolidColorBrush(Colors.Yellow)
             };
 
             goldenCookieCanvas.Children.Add(bonusText);
@@ -122,16 +122,20 @@ namespace CookieClicker.View
             lifetimeTimer.Stop();
         }
 
-        private void FadeIn(UIElement element, double durationInSeconds)
+        private static void FadeIn(UIElement element, double durationInSeconds)
         {
             DoubleAnimation fadeInAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(durationInSeconds));
             element.BeginAnimation(UIElement.OpacityProperty, fadeInAnimation);
         }
 
-        private void FadeOut(UIElement element, double durationInSeconds)
+        private static void FadeOut(UIElement element, double durationInSeconds)
         {
             DoubleAnimation fadeOutAnimation = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(durationInSeconds));
-            fadeOutAnimation.Completed += (s, e) => goldenCookieCanvas.Children.Remove(element);
+            fadeOutAnimation.Completed += (s, e) =>
+            {
+                var parent = VisualTreeHelper.GetParent(element) as Panel;
+                parent?.Children.Remove(element);
+            };
             element.BeginAnimation(UIElement.OpacityProperty, fadeOutAnimation);
         }
     }

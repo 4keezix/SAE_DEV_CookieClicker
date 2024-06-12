@@ -140,6 +140,7 @@
     <None Remove="Ressources\CookiesEffects\Cookies\Screen Effects\heartStorm.png" />
     <None Remove="Ressources\CookiesEffects\Cookies\Screen Effects\snow.jpg" />
     <None Remove="Ressources\CookiesEffects\Cookies\Screen Effects\snow2.jpg" />
+    <None Remove="Songs\BackgroundMusic.mp3" />
     <None Remove="Songs\buy1.mp3" />
     <None Remove="Songs\buy2.mp3" />
     <None Remove="Songs\buy3.mp3" />
@@ -163,6 +164,9 @@
     <Resource Include="Images\GrandMaUpgrade (6).png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <EmbeddedResource Include="Songs\BackgroundMusic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Songs\buy1.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

@@ -80,6 +80,9 @@ namespace CookieClicker
 
             // Pour le développement, afficher le bouton Admin
             AdminButton.Visibility = Visibility.Visible;
+
+            // Démarrer la musique de fond
+            AudioPlay.PlayBackgroundMusic();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -364,7 +367,6 @@ namespace CookieClicker
             var image = FindVisualChild<Image>(CursorUpgradeButton);
             if (image != null)
             {
-                // Dictionnaire pour mapper les niveaux de curseur aux chemins d'image
                 var cursorImagePaths = new Dictionary<int, string>
         {
             { 2, "/Images/CursorUpgrade.png" },
@@ -375,7 +377,6 @@ namespace CookieClicker
             { 7, "/Images/CursorUpgrade6.png" }
         };
 
-                // Vérifiez si le niveau du curseur a une image associée et mettez à jour l'image
                 if (cursorImagePaths.TryGetValue(cursorLevel, out var imagePath))
                 {
                     image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -397,7 +398,6 @@ namespace CookieClicker
                 UpdatePrices();
                 UpdateCursorUpgradeButton();
 
-                // Mettre à jour le texte des éléments TextBlock
                 UpdateCursorProductionText();
             }
             else
@@ -418,7 +418,6 @@ namespace CookieClicker
             var image = FindVisualChild<Image>(GrandmaUpgradeButton);
             if (image != null)
             {
-                // Dictionnaire pour mapper les niveaux de grand-mère aux chemins d'image
                 var grandmaImagePaths = new Dictionary<int, string>
         {
             { 2, "/Images/GrandMaUpgrade (2).png" },
@@ -429,7 +428,6 @@ namespace CookieClicker
             { 7, "/Images/GrandMaUpgrade (6).png" }
         };
 
-                // Vérifiez si le niveau de la grand-mère a une image associée et mettez à jour l'image
                 if (grandmaImagePaths.TryGetValue(grandmaLevel, out var imagePath))
                 {
                     image.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
@@ -451,7 +449,6 @@ namespace CookieClicker
                 UpdatePrices();
                 UpdateGrandMaUpgradeButton();
 
-                // Mettre à jour le texte des éléments TextBlock
                 UpdateGrandMaProductionText();
             }
             else
@@ -468,12 +465,10 @@ namespace CookieClicker
 
         private double GetGrandMaProductionPerSecond()
         {
-            // Implémentez la logique pour calculer la production des cookies par seconde par chaque grand-mère
-            return grandmaLevel * 0.4; // Exemple, ajustez en fonction de votre logique
+            return grandmaLevel * 0.4;
         }
 
-        // Méthode utilitaire pour trouver un élément visuel à l'intérieur d'un contrôle parent
-        private T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
             {
@@ -491,7 +486,7 @@ namespace CookieClicker
                     }
                 }
             }
-            return null;
+            return null!;
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
@@ -499,15 +494,12 @@ namespace CookieClicker
             InfoWindow infoWindow = new InfoWindow();
             infoWindow.Owner = this;
 
-            // Positionner la fenêtre "Infos" dans la zone noire
             double mainWindowLeft = this.Left;
             double mainWindowTop = this.Top;
             double mainWindowWidth = this.ActualWidth;
-            double mainWindowHeight = this.ActualHeight;
 
-            // Calculer les nouvelles positions pour centrer la fenêtre dans la zone noire
-            double infoWindowLeft = mainWindowLeft + (mainWindowWidth / 3) - 25; // Ajuster la position horizontale
-            double infoWindowTop = mainWindowTop + 115; // Ajuster la position verticale
+            double infoWindowLeft = mainWindowLeft + (mainWindowWidth / 3) - 25;
+            double infoWindowTop = mainWindowTop + 115;
 
             infoWindow.Left = infoWindowLeft;
             infoWindow.Top = infoWindowTop;
