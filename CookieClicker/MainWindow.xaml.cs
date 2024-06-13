@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -20,8 +21,9 @@ namespace CookieClicker
         private GoldenCookie? goldenCookie;
 
         private bool isStatsPageOpen = false;
-        private bool OptionPageOpen = false;
-        private OptionsPage optionsPage;
+        private bool isOptionPageOpen = false;
+        private bool isInfoPageOpen = false;
+        private OptionsPage? optionsPage;
         private StatistiquesWindow statsPage;
         private Statistiques stats;
 
@@ -33,9 +35,9 @@ namespace CookieClicker
         private int cursorLevel = 1;
         private int grandmaUpgradePrice = 300;
         private int grandmaLevel = 1;
-        private readonly DispatcherTimer timer;
-        private readonly DispatcherTimer goldenCookieTimer;
-        private readonly DispatcherTimer textChangeTimer;
+        private readonly DispatcherTimer timer = new() { Interval = TimeSpan.FromSeconds(1) };
+        private readonly DispatcherTimer goldenCookieTimer = new() { Interval = TimeSpan.FromSeconds(new Random().Next(60, 180)) };
+        private readonly DispatcherTimer textChangeTimer = new() { Interval = TimeSpan.FromMinutes(1) };
 
         private readonly ImageItem imageItem;
 
@@ -63,7 +65,7 @@ namespace CookieClicker
             item4 = new Assets(1000, 50);
             stats = new Statistiques();
 
-            // Garantir le fait que le nom et le nombre de cookie soit au premeir plan
+            // Garantir le fait que le nom et le nombre de cookie soit au premier plan
             Panel.SetZIndex(BakeryNameTextBlock, 10);
             Panel.SetZIndex(CookieCountText, 10);
 
@@ -81,17 +83,9 @@ namespace CookieClicker
             UpdateButtonStates();
             UpdatePrices();
 
-            timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(1)
-            };
             timer.Tick += Timer_Tick;
             timer.Start();
 
-            goldenCookieTimer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(new Random().Next(60, 180)) // Intervalle aléatoire entre 1 et 3 minutes
-            };
             goldenCookieTimer.Tick += GoldenCookieTimer_Tick;
             goldenCookieTimer.Start();
 
@@ -101,10 +95,6 @@ namespace CookieClicker
             // Démarrer la musique de fond
             AudioPlay.PlayBackgroundMusic();
 
-            textChangeTimer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMinutes(1)
-            };
             textChangeTimer.Tick += TextChangeTimer_Tick;
             textChangeTimer.Start();
         }
@@ -152,9 +142,9 @@ namespace CookieClicker
             DynamicTextBlock.Text = textMessages[currentTextIndex];
         }
 
-        private void AnimateTextBlock(TextBlock textBlock)
+        private static void AnimateTextBlock(TextBlock textBlock)
         {
-            DoubleAnimation animation = new DoubleAnimation
+            DoubleAnimation animation = new()
             {
                 From = 1.0,
                 To = 1.5,
@@ -162,7 +152,7 @@ namespace CookieClicker
                 AutoReverse = true
             };
 
-            ScaleTransform transform = new ScaleTransform();
+            ScaleTransform transform = new();
             textBlock.RenderTransform = transform;
             textBlock.RenderTransformOrigin = new Point(0.5, 0.5);
 
@@ -195,7 +185,7 @@ namespace CookieClicker
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
         {
-            BuyItem(item1, ref item1Count, Item1Count, Item1Price);
+            BuyItem(item1, ref item1Count, Item1Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
         }
@@ -203,7 +193,7 @@ namespace CookieClicker
         private void BuyItem2_Click(object sender, RoutedEventArgs e)
         {
             imageItem.ShowImageForItem2();
-            BuyItem(item2, ref item2Count, Item2Count, Item2Price);
+            BuyItem(item2, ref item2Count, Item2Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
         }
@@ -211,7 +201,7 @@ namespace CookieClicker
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
         {
             imageItem.ShowImageForItem3();
-            BuyItem(item3, ref item3Count, Item3Count, Item3Price);
+            BuyItem(item3, ref item3Count, Item3Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
         }
@@ -219,12 +209,12 @@ namespace CookieClicker
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
         {
             imageItem.ShowImageForItem4();
-            BuyItem(item4, ref item4Count, Item4Count, Item4Price);
+            BuyItem(item4, ref item4Count, Item4Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
         }
 
-        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock, TextBlock itemPriceTextBlock)
+        private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock)
         {
             if (cookie.Count >= item.Cost)
             {
@@ -307,16 +297,16 @@ namespace CookieClicker
 
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (OptionPageOpen)
+            if (isOptionPageOpen)
             {
-
                 mainFrame.Content = null;
+                isOptionPageOpen = false;
             }
             else
             {
-                mainFrame.Content = new OptionsPage(); 
+                mainFrame.Content = new OptionsPage();
+                isOptionPageOpen = true;
             }
-            OptionPageOpen = !OptionPageOpen;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -548,6 +538,8 @@ namespace CookieClicker
 
         private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
         {
+            if (parent == null) throw new ArgumentNullException(nameof(parent));
+
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(parent, i);
@@ -601,25 +593,21 @@ namespace CookieClicker
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            InfoWindow infoWindow = new InfoWindow();
-            infoWindow.Owner = this;
-
-            double mainWindowLeft = this.Left;
-            double mainWindowTop = this.Top;
-            double mainWindowWidth = this.ActualWidth;
-
-            double infoWindowLeft = mainWindowLeft + (mainWindowWidth / 3) - 25;
-            double infoWindowTop = mainWindowTop + 115;
-
-            infoWindow.Left = infoWindowLeft;
-            infoWindow.Top = infoWindowTop;
-
-            infoWindow.ShowDialog();
+            if (isInfoPageOpen)
+            {
+                mainFrame.Content = null;
+                isInfoPageOpen = false;
+            }
+            else
+            {
+                mainFrame.Navigate(new InfoPage());
+                isInfoPageOpen = true;
+            }
         }
 
         private void GenerateCookie()
         {
-            Image cookie = new Image
+            Image cookie = new()
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/Images/cookie.jpg")),
                 Width = 50,
@@ -636,7 +624,7 @@ namespace CookieClicker
             CookieCanvas.Children.Insert(0, cookie);
             Panel.SetZIndex(cookie, -1); // Assurez-vous que le cookie a un ZIndex bas
 
-            DoubleAnimation fallAnimation = new DoubleAnimation
+            DoubleAnimation fallAnimation = new()
             {
                 From = -50,
                 To = CookieCanvas.ActualHeight,

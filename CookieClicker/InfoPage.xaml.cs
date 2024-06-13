@@ -1,22 +1,17 @@
 ﻿using System.Diagnostics;
-using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace CookieClicker
+namespace CookieClicker.View
 {
-    public partial class InfoWindow : Window
+    public partial class InfoPage : Page
     {
-        public InfoWindow()
+        public InfoPage()
         {
             InitializeComponent();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void SteamButton_Click(object sender, RoutedEventArgs e)
+        private void SteamButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
             {
@@ -25,7 +20,7 @@ namespace CookieClicker
             });
         }
 
-        private void PatreonButton_Click(object sender, RoutedEventArgs e)
+        private void PatreonButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
             {
@@ -34,7 +29,7 @@ namespace CookieClicker
             });
         }
 
-        private void Realgame_Click(object sender, RoutedEventArgs e)
+        private void Realgame_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
             {
@@ -42,6 +37,7 @@ namespace CookieClicker
                 UseShellExecute = true
             });
         }
+
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo
