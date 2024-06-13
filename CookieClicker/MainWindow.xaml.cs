@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,6 +9,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using CookieClicker.View;
+using WpfAnimatedGif;
 
 namespace CookieClicker
 {
@@ -40,6 +42,7 @@ namespace CookieClicker
         private readonly DispatcherTimer textChangeTimer = new() { Interval = TimeSpan.FromMinutes(1) };
 
         private readonly ImageItem imageItem;
+        private Advertising? advertising;
 
         private int item1Count = 0;
         private int item2Count = 0;
@@ -97,6 +100,19 @@ namespace CookieClicker
 
             textChangeTimer.Tick += TextChangeTimer_Tick;
             textChangeTimer.Start();
+
+
+            var imagePath = "pack://application:,,,/Images/oasis.gif";
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(imagePath);
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(SlideshowImage, image);
+        }
+
+        private void SlideshowImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://oasis-sirop.com") { UseShellExecute = true });
         }
 
         private void Timer_Tick(object? sender, EventArgs e)

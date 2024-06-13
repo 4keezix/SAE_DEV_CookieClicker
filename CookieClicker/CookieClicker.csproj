@@ -46,6 +46,7 @@
     <None Remove="Images\milieu_gm.png" />
     <None Remove="Images\milieu_mine.png" />
     <None Remove="Images\mine.png" />
+    <None Remove="Images\oasis.gif" />
     <None Remove="Images\Option.png" />
     <None Remove="Images\perfectCookie.png" />
     <None Remove="Images\sprite.png" />
@@ -215,6 +216,7 @@
 
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.0.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -321,6 +323,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\mine.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\oasis.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Option.png">

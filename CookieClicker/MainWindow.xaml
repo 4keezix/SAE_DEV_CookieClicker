@@ -421,9 +421,8 @@
         </StackPanel>
 
         <!-- Publicités en bas -->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="800" Height="137" Margin="0,441,0,0" Grid.Column="4">
-            <Image Source="pack://application:,,,/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
-            <Image Source="pack://application:,,,/Images/ad1.jpg" Width="400" Height="50" Margin="10"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Width="290" Height="207" Margin="10,384,0,0" Grid.Column="4">
+            <Image x:Name="SlideshowImage" Width="290" Height="207" Stretch="Fill" Opacity="0.8" MouseDown="SlideshowImage_MouseDown"/>
         </StackPanel>
         <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="4" Stretch="None" Margin="61,-355,228,549" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
@@ -493,5 +492,15 @@
         <Grid Grid.Column="2" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top"  Height="480" Width="395">
             <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Height="490" VerticalAlignment="Top" />
         </Grid>
+        <Image Source="/Images/bords.png" Grid.Column="4" Stretch="None" Margin="461,-76,-171,375" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.853"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>
