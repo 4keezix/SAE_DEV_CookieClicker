@@ -22,7 +22,7 @@ Le projet Cookie Clicker est une application WPF interactive où les joueurs cli
 
 ## Installation
 
-Pour installer et exécuter le projet localement, il vous suffit juste de télécharger le projet en ZIP et d'exécuter sur Visual Studio 2022.
+Pour installer et exécuter le projet localement, il vous suffit juste de télécharger le projet en ZIP et d'exécuter sur Visual Studio 2022 avec le Framework Net 8.0.
 
 ## Contributeurs
 
