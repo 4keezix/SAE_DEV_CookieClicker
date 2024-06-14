@@ -651,5 +651,39 @@ namespace CookieClicker
 
             cookie.BeginAnimation(Canvas.TopProperty, fallAnimation);
         }
+
+        public void ChangeBackground(string backgroundName)
+        {
+            try
+            {
+                string imagePath = string.Empty;
+
+                switch (backgroundName)
+                {
+                    case "Bleu":
+                        imagePath = "pack://application:,,,/Ressources/Backgrounds/bgBleu.jpg";
+                        break;
+                    case "Rose":
+                        imagePath = "pack://application:,,,/Ressources/Backgrounds/bgPink.jpg";
+                        break;
+                    case "ChocoDark":
+                        imagePath = "pack://application:,,,/Ressources/Backgrounds/bgChocoDark.jpg";
+                        break;
+                    default:
+                        imagePath = "pack://application:,,,/Images/background.jpg";
+                        break;
+                }
+
+                BackgroundImage.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+                Debug.WriteLine("Background changed successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error setting background: {ex.Message}");
+                Debug.WriteLine($"Exception: {ex.Message}");
+            }
+
+
+        }
     }
 }

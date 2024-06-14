@@ -60,23 +60,33 @@
                             <TextBlock Text="Desactiver le Son des achats :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
                             <CheckBox Width="20" Height="20" VerticalAlignment="Center" Checked="BuySoundCheckBox_Checked" Unchecked="BuySoundCheckBox_Unchecked"/>
                         </StackPanel>
-                       <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <TextBlock Text="Désactiver la musique :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
                             <CheckBox Width="20" Height="20" Checked="MusicCheckBox_Checked" Unchecked="MusicCheckBox_Unchecked"/>
                         </StackPanel>
                         <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" Text="Changer de backgroung" Margin="20,30,0,10"/>
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <TextBlock Text="Background :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                            <ComboBox Width="200" Height="30">
+                            <TextBlock Text="Background :" FontSize="20" Foreground="LightGray"/>
+                            <ComboBox x:Name="BackgroundComboBox" Width="135" Height="30">
                                 <ComboBoxItem Content="Bleu"/>
                                 <ComboBoxItem Content="Rose"/>
                                 <ComboBoxItem Content="ChocoDark"/>
                             </ComboBox>
                         </StackPanel>
+                        <Button Content="Changer le fond" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="ChangeBackgroundButton_Click"/>
+
+
+
                         <Button Content="Sauvegarder" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="SaveButton_Click"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
         </ScrollViewer>
+        <Button Content="Changer le fond" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="100" 
+                Height="30" 
+                Click="ChangeBackgroundButton_Click"/>
     </Grid>
 </Page>

@@ -22,49 +22,49 @@ namespace CookieClicker
     /// <summary>
     /// Logique d'interaction pour OptionsPage.xaml
     /// </summary>
-        public partial class OptionsPage : Page
+    public partial class OptionsPage : Page
+    {
+        public OptionsPage()
         {
-            public OptionsPage()
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
+        }
 
-            private void MusicSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-            {
-                // Logique pour changer le volume de la musique
-                double volume = e.NewValue / 100;
-                AudioPlay.SetBackgroundMusicVolume((float)volume);
-            }
-       
+        private void MusicSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Logique pour changer le volume de la musique
+            double volume = e.NewValue / 100;
+            AudioPlay.SetBackgroundMusicVolume((float)volume);
+        }
+
 
         private void ClickSoundCheckBox_Checked(object sender, RoutedEventArgs e)
-            {
+        {
             AudioPlay.EnableClickSound = false;
 
-            }
+        }
 
-            private void ClickSoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
-            {
+        private void ClickSoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
             AudioPlay.EnableClickSound = true;
-               
-            }
 
-            private void BuySoundCheckBox_Checked(object sender, RoutedEventArgs e)
-            {
+        }
+
+        private void BuySoundCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
             AudioPlay.EnableBuySound = false;
 
-            }
+        }
 
-            private void BuySoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
-            {
+        private void BuySoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
             AudioPlay.EnableBuySound = true;
-                
-            }
 
-            private void SaveButton_Click(object sender, RoutedEventArgs e)
-            {
-               
-            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void MusicCheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -76,6 +76,29 @@ namespace CookieClicker
             // Activer la musique de fond
             AudioPlay.PlayBackgroundMusic();
         }
+
+        private void ChangeBackgroundButton_Click(object sender, RoutedEventArgs e)
+        {
+            string selectedBackground = (BackgroundComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            if (selectedBackground != null)
+            {
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                if (mainWindow != null)
+                {
+                    mainWindow.ChangeBackground(selectedBackground);
+                }
+                else
+                {
+                    Debug.WriteLine("MainWindow is not accessible.");
+                }
+            }
+            else
+            {
+                Debug.WriteLine("No background selected");
+            }
+        }
+
+
     }
-    }
+}
 

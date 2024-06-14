@@ -101,7 +101,7 @@
         </Button>
 
         <!-- Arrière-plan -->
-        <Image Source="pack://application:,,,/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
+        <Image x:Name="BackgroundImage" Source="pack://application:,,,/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
 
         <!-- Panneau gauche -->
         <StackPanel Grid.Column="0" Margin="15,10,5,0" VerticalAlignment="Top">
@@ -305,7 +305,8 @@
                 </Grid>
                 <Grid x:Name="BuyItem2Grid" MouseLeftButtonDown="BuyItem2_Click" Margin="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="252.042"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -325,10 +326,10 @@
                             </BeginStoryboard>
                         </EventTrigger>
                     </Grid.Triggers>
-                    <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7"/>
-                    <TextBlock x:Name="Item2Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Center" Margin="259,0,15,0" Height="24"/>
-                    <Image Source="pack://application:,,,/Ressources/CookiesEffects/Cookies/Miscellaneous/favicon.png" Width="12" Height="12" VerticalAlignment="Top" Margin="70,38,220,0"/>
-                    <TextBlock x:Name="Item2Price" Style="{StaticResource PriceTextStyle}" Text="100 cookies" VerticalAlignment="Top" Margin="84,34,76,0"/>
+                    <Image Source="pack://application:,,,/Images/grandmere.png" Stretch="Fill" Grid.Column="0" Style="{StaticResource ItemImageStyle}" Opacity="0.7" Grid.ColumnSpan="2" Margin="0,0,0,-14"/>
+                    <TextBlock x:Name="Item2Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Top" Margin="209,22,15,0" Height="24" Grid.Column="1"/>
+                    <Image Source="pack://application:,,,/Ressources/CookiesEffects/Cookies/Miscellaneous/favicon.png" Width="12" Height="12" VerticalAlignment="Top" Margin="20,38,220,0" Grid.Column="1"/>
+                    <TextBlock x:Name="Item2Price" Style="{StaticResource PriceTextStyle}" Text="100 cookies" VerticalAlignment="Top" Margin="34,34,76,0" Grid.Column="1"/>
                     <!-- Tooltip for Grandma -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
@@ -455,7 +456,7 @@
             </Image.RenderTransform>
         </Image>
         <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" IsHitTestVisible="True" Grid.ColumnSpan="3" Margin="0,0,290,0">
-            <Image Height="60" Canvas.Left="400" Source="/Images/tile001.png" Stretch="Fill" Canvas.Top="62" Width="60"/>
+            <Image Height="51" Canvas.Left="407" Source="/Images/tile001.png" Stretch="Fill" Canvas.Top="68" Width="50"/>
         </Canvas>
         <Button x:Name="CursorUpgradeButton" Click="CursorUpgradeButton_Click" Margin="27,75,242,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4" RenderTransformOrigin="-3.547,4.531">
             <Button.Template>
@@ -473,7 +474,7 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
-        <Button x:Name="GrandmaUpgradeButton" Click="GrandmaUpgradeButton_Click" Margin="73,75,191,479" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
+        <Button x:Name="GrandmaUpgradeButton" Click="GrandmaUpgradeButton_Click" Margin="92,75,172,479" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Image x:Name="GrandmaUpgradeImage" Source="/Images/GrandMaUpgrade (1).png" Stretch="Fill"/>
@@ -491,6 +492,7 @@
         </Button>
         <Grid Grid.Column="2" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top"  Height="480" Width="395">
             <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Height="490" VerticalAlignment="Top" />
+            <Image Source="/Images/tile001.png" Stretch="Fill" Margin="483,-36,-132,472"/>
         </Grid>
         <Image Source="/Images/bords.png" Grid.Column="4" Stretch="None" Margin="461,-76,-171,375" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
