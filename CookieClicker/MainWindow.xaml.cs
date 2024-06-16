@@ -133,10 +133,10 @@ namespace CookieClicker
         public void Ascend()
         {
             cookie.Reset();
-            item1Count = 0;
-            item2Count = 0;
-            item3Count = 0;
-            item4Count = 0;
+            cookie.item1Count = 0;
+            cookie.item2Count = 0;
+            cookie.item3Count = 0;
+            cookie.item4Count = 0;
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
@@ -145,6 +145,26 @@ namespace CookieClicker
             UpdateUIForState();
             UpdateCursorProductionText();
             UpdateCursorUpgradeButton();
+            currentState = GameState.Playing;
+                cookie.Reset();
+                cookie.item1Count = 0;
+                cookie.item2Count = 0;
+                cookie.item3Count = 0;
+                cookie.item4Count = 0;
+                UpdateCookieDisplay();
+                UpdateButtonStates();
+                UpdatePrices();
+                UpdateStats();
+                ChangeState(GameState.Playing);
+                UpdateUIForState();
+                cursorUpgradePrice = 100;
+                cursorLevel = 1;
+                grandmaUpgradePrice = 300;
+                grandmaLevel = 1;
+                UpdateCursorUpgradeButton();
+                UpdateGrandMaUpgradeButton();
+                UpdateCursorProductionText();
+                UpdateGrandMaProductionText();
         }
 
         private void UpdateUIForState()
