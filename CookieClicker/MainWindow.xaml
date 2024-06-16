@@ -70,6 +70,14 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
+        <Storyboard x:Key="RotateShineAnimation" RepeatBehavior="Forever">
+            <DoubleAnimation
+                Storyboard.TargetName="ShineImage"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                From="0"
+                To="-360"
+                Duration="0:0:10" />
+        </Storyboard>
     </Window.Resources>
 
     <Grid x:Name="MainGrid">
@@ -119,12 +127,12 @@
             <Canvas x:Name="CursorCanvas" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Margin="40,0,0,0">
                 <Canvas x:Name="CookieCanvas" Grid.Column="2" VerticalAlignment="Top" IsHitTestVisible="True" Height="583" Width="296" HorizontalAlignment="Center" Canvas.Left="-66" Canvas.Top="-174"/>
                 <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Width="200" Height="200" Click="CookieButton_Click" HorizontalAlignment="Center" Canvas.Left="-23" VerticalAlignment="Top" Canvas.Top="32">
-
-
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
-                                <Ellipse Width="200" Height="200">
+                                
+                                <!-- Ellipse avec l'image du cookie -->
+                                <Ellipse Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="pack://application:,,,/Images/perfectCookie.png"/>
                                     </Ellipse.Fill>
@@ -155,9 +163,9 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                                     To="1.1" Duration="0:0:0.1"/>
+                                                 To="1.1" Duration="0:0:0.1"/>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                                     To="1.1" Duration="0:0:0.1"/>
+                                                 To="1.1" Duration="0:0:0.1"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -165,9 +173,9 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                                     To="1" Duration="0:0:0.1"/>
+                                                 To="1" Duration="0:0:0.1"/>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                                     To="1" Duration="0:0:0.1"/>
+                                                 To="1" Duration="0:0:0.1"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -180,14 +188,16 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                         From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
+                                     From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
                                     <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                         From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
+                                     From="1" To="1.2" Duration="0:0:0.1" AutoReverse="True"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
+
+
             </Canvas>
 
         </StackPanel>
@@ -244,7 +254,7 @@
                     </Button>
 
 
-                    <Button x:Name="LegacyButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0">
+                    <Button x:Name="LegacyButton" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" Margin="0" Click="HeritageButton_Click">
                         <Image Source="pack://application:,,,/Images/Heritage.png" Stretch="Fill" />
                     </Button>
                 </StackPanel>
@@ -456,7 +466,7 @@
             </Image.RenderTransform>
         </Image>
         <Canvas x:Name="GoldenCookieCanvas" Grid.Column="2" IsHitTestVisible="True" Grid.ColumnSpan="3" Margin="0,0,290,0">
-            <Image Height="51" Canvas.Left="407" Source="/Images/tile001.png" Stretch="Fill" Canvas.Top="68" Width="50"/>
+            <Image Height="55" Canvas.Left="402" Source="/Images/tile001.png" Stretch="Fill" Canvas.Top="64" Width="55"/>
         </Canvas>
         <Button x:Name="CursorUpgradeButton" Click="CursorUpgradeButton_Click" Margin="27,75,242,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4" RenderTransformOrigin="-3.547,4.531">
             <Button.Template>
@@ -469,12 +479,12 @@
                     <StackPanel>
                         <TextBlock Text="Amélioration Curseur" FontWeight="Bold" FontSize="16"/>
                         <TextBlock Text="Augmente la production de cookies par le curseur" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="CursorUpgradePriceText" Text="Prix: cookies" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="CursorUpgradePriceText" Text="Prix: 100 cookies" TextWrapping="Wrap"/>
                     </StackPanel>
                 </ToolTip>
             </Button.ToolTip>
         </Button>
-        <Button x:Name="GrandmaUpgradeButton" Click="GrandmaUpgradeButton_Click" Margin="92,75,172,479" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
+        <Button x:Name="GrandmaUpgradeButton" Click="GrandmaUpgradeButton_Click" Margin="86,71,178,483" Style="{StaticResource CustomButtonStyle}" Grid.Column="4">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Image x:Name="GrandmaUpgradeImage" Source="/Images/GrandMaUpgrade (1).png" Stretch="Fill"/>
@@ -485,10 +495,11 @@
                     <StackPanel>
                         <TextBlock Text="Amélioration Grand-mère" FontWeight="Bold" FontSize="16"/>
                         <TextBlock Text="Augmente la production de cookies par la grand-mère" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="GrandmaUpgradePriceText" Text="Prix: cookies" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="GrandmaUpgradePriceText" Text="Prix: 300 cookies" TextWrapping="Wrap"/>
                     </StackPanel>
                 </ToolTip>
             </Button.ToolTip>
+            <Image Height="60" Source="/Images/tile000.png" Stretch="Fill" Width="60"/>
         </Button>
         <Grid Grid.Column="2" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top"  Height="480" Width="395">
             <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Height="490" VerticalAlignment="Top" />
@@ -504,5 +515,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+        <Image Grid.Column="4" Margin="76,63,168,471" Source="/Images/tile001.png" Stretch="Fill"/>
     </Grid>
 </Window>

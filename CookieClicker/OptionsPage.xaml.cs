@@ -82,22 +82,14 @@ namespace CookieClicker
             string selectedBackground = (BackgroundComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
             if (selectedBackground != null)
             {
-                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-                if (mainWindow != null)
-                {
-                    mainWindow.ChangeBackground(selectedBackground);
-                }
-                else
-                {
-                    Debug.WriteLine("MainWindow is not accessible.");
-                }
+                Debug.WriteLine($"Selected background: {selectedBackground}");
+                ((MainWindow)Application.Current.MainWindow).ChangeBackground(selectedBackground);
             }
             else
             {
                 Debug.WriteLine("No background selected");
             }
         }
-
 
     }
 }

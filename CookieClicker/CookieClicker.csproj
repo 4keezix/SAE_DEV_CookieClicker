@@ -49,6 +49,7 @@
     <None Remove="Images\oasis.gif" />
     <None Remove="Images\Option.png" />
     <None Remove="Images\perfectCookie.png" />
+    <None Remove="Images\PerfectShine.png" />
     <None Remove="Images\sprite.png" />
     <None Remove="Images\Statistiques.png" />
     <None Remove="Images\tile000.png" />
@@ -333,6 +334,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\perfectCookie.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\PerfectShine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\sprite.png">

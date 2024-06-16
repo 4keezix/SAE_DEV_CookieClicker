@@ -10,6 +10,10 @@
         public int GoldenCookieClicks { get; private set; }
         public DateTime StartTime { get; }
         public int CookiesPerClick { get; private set; }
+        public int cursorUpgradePrice = 100;
+        public int cursorLevel = 1;
+        public int grandmaUpgradePrice = 300;
+        public int grandmaLevel = 1;
 
         public Cookie()
         {
@@ -56,5 +60,19 @@
             TotalCookiesProduced += amount;
             GoldenCookieClicks++;
         }
+
+        public void Reset()
+        {
+            Count = 0;
+            TotalCookiesProduced = 0;
+            CookiesPerSecond = 0;
+            TotalClicks = 0;
+            CookiesMadeByHand = 0;
+            GoldenCookieClicks = 0;
+            grandmaLevel = 0;
+            cursorLevel = 0;
+            grandmaUpgradePrice = 300;
+            cursorUpgradePrice = 100;
+    }
     }
 }

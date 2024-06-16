@@ -15,12 +15,23 @@ namespace CookieClicker
 {
     public partial class MainWindow : Window
     {
+        private GameState currentState;
+
         private readonly Cookie cookie;
         private readonly Assets item1;
         private readonly Assets item2;
         private readonly Assets item3;
         private readonly Assets item4;
         private GoldenCookie? goldenCookie;
+
+        private bool isHeirtagePageOpen = false;
+        private HeirtagePage? heirtagePage;
+
+
+        public int cursorUpgradePrice = 100;
+        public int cursorLevel = 1;
+        public int grandmaUpgradePrice = 300;
+        public int grandmaLevel = 1;
 
         private bool isStatsPageOpen = false;
         private bool isOptionPageOpen = false;
@@ -33,10 +44,7 @@ namespace CookieClicker
         private const double baseRadius = 100; // Rayon de base pour le premier cercle
         private const double radiusIncrement = 40; // Incrément de rayon pour chaque cercle supplémentaire
         private const double baseCursorSize = 20; // Taille de base du curseur
-        private int cursorUpgradePrice = 100;
-        private int cursorLevel = 1;
-        private int grandmaUpgradePrice = 300;
-        private int grandmaLevel = 1;
+
         private readonly DispatcherTimer timer = new() { Interval = TimeSpan.FromSeconds(1) };
         private readonly DispatcherTimer goldenCookieTimer = new() { Interval = TimeSpan.FromSeconds(new Random().Next(60, 180)) };
         private readonly DispatcherTimer textChangeTimer = new() { Interval = TimeSpan.FromMinutes(1) };
@@ -61,6 +69,7 @@ namespace CookieClicker
         public MainWindow()
         {
             InitializeComponent();
+            currentState = GameState.Playing;
             cookie = new Cookie();
             item1 = new Assets(15, 1);
             item2 = new Assets(100, 5);
@@ -76,8 +85,8 @@ namespace CookieClicker
 
             statsPage = new StatistiquesWindow(stats);
 
-            // Initialisation des items administrateur
-            GrandmaItem = new Assets(100, 1); // Remplacez ces valeurs par les coûts et cookies par seconde réels
+
+            GrandmaItem = new Assets(100, 1);
             CursorItem = new Assets(50, 1);
             FarmItem = new Assets(500, 10);
             MineItem = new Assets(1000, 20);
@@ -113,6 +122,53 @@ namespace CookieClicker
         private void SlideshowImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://oasis-sirop.com") { UseShellExecute = true });
+        }
+
+        public void ChangeState(GameState newState)
+        {
+            currentState = newState;
+            UpdateUIForState();
+        }
+
+        public void Ascend()
+        {
+            cookie.Reset();
+            item1Count = 0;
+            item2Count = 0;
+            item3Count = 0;
+            item4Count = 0;
+            UpdateCookieDisplay();
+            UpdateButtonStates();
+            UpdatePrices();
+            UpdateStats();
+            ChangeState(GameState.Playing);
+            UpdateUIForState();
+            UpdateCursorProductionText();
+            UpdateCursorUpgradeButton();
+        }
+
+        private void UpdateUIForState()
+        {
+            mainFrame.Content = null; // Réinitialise le contenu de la frame
+            switch (currentState)
+            {
+                case GameState.Playing:
+                    // Logique pour l'état de jeu normal
+                    break;
+                case GameState.HeritagePageOpen:
+                    mainFrame.Navigate(new HeirtagePage());
+                    break;
+                case GameState.StatsPageOpen:
+                    UpdateStats(); // Mise à jour des statistiques avant d'afficher la page
+                    mainFrame.Navigate(statsPage);
+                    break;
+                case GameState.OptionsPageOpen:
+                    mainFrame.Navigate(new OptionsPage());
+                    break;
+                case GameState.InfoPageOpen:
+                    mainFrame.Navigate(new InfoPage());
+                    break;
+            }
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -325,6 +381,11 @@ namespace CookieClicker
             }
         }
 
+        public void HeritageButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeState(currentState == GameState.HeritagePageOpen ? GameState.Playing : GameState.HeritagePageOpen);
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Êtes-vous sûr de vouloir quitter ?", "Quitter", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -413,7 +474,7 @@ namespace CookieClicker
 
         private double GetCursorProductionPerSecond()
         {
-            return 0.4 * cursorLevel; // Production de cookies par curseur par seconde, à multiplier par le nombre de curseurs
+            return 0.1 * cursorLevel; // Production de cookies par curseur par seconde, à multiplier par le nombre de curseurs
         }
 
         private void AddCursor()
@@ -549,7 +610,7 @@ namespace CookieClicker
 
         private double GetGrandMaProductionPerSecond()
         {
-            return grandmaLevel * 0.4;
+            return grandmaLevel * 1;
         }
 
         private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject

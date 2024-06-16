@@ -36,13 +36,76 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Style personnalisé pour ComboBox -->
+        <Style x:Key="CustomComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#663300"/>
+            <Setter Property="BorderBrush" Value="#4B2E0A"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton" 
+                                          IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Focusable="false"
+                                          ClickMode="Press"
+                                          Background="{TemplateBinding Background}">
+                                <Grid HorizontalAlignment="Right">
+                                    <TextBlock Margin="10,2,10,2" Text="▼" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite"
+                                              IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="10,3,30,3"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"/>
+                            <Popup Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" BorderBrush="#4B2E0A" BorderThickness="1" Background="#663300"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#8B4513"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#D2691E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Page.Resources>
 
     <Grid Background="#222">
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20">
                 <TextBlock FontSize="28" FontWeight="Bold" Foreground="White" Text="PARAMÈTRES" Margin="0,0,0,20"/>
-                <Border Background="#333" Padding="20" CornerRadius="10" Width="600">
+                <Border Background="#333" Padding="20" CornerRadius="10" Width="Auto" HorizontalAlignment="Stretch">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
                         </StackPanel>
@@ -50,7 +113,7 @@
                         <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" Text="Volume" Margin="0,0,0,10"/>
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <TextBlock Text="Musique :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                            <Slider Width="200" Minimum="0" Maximum="100" ValueChanged="MusicSlider_ValueChanged"/>
+                            <Slider Width="200" Minimum="0" Maximum="100" ValueChanged="MusicSlider_ValueChanged" HorizontalAlignment="Stretch"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <TextBlock Text="Desactiver le Son des clics :" FontSize="20" Foreground="LightGray" VerticalAlignment="Center" Margin="0,0,10,0"/>
@@ -67,26 +130,18 @@
                         <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" Text="Changer de backgroung" Margin="20,30,0,10"/>
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <TextBlock Text="Background :" FontSize="20" Foreground="LightGray"/>
-                            <ComboBox x:Name="BackgroundComboBox" Width="135" Height="30">
+                            <ComboBox x:Name="BackgroundComboBox" Width="135" Height="30" Style="{StaticResource CustomComboBoxStyle}">
                                 <ComboBoxItem Content="Bleu"/>
                                 <ComboBoxItem Content="Rose"/>
                                 <ComboBoxItem Content="ChocoDark"/>
                             </ComboBox>
                         </StackPanel>
-                        <Button Content="Changer le fond" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="ChangeBackgroundButton_Click"/>
+                        <Button Content="Changer le fond" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="ChangeBackgroundButton_Click" HorizontalAlignment="Center"/>
 
-
-
-                        <Button Content="Sauvegarder" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="SaveButton_Click"/>
+                        <Button Content="Sauvegarder" Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource CustomButtonStyle}" Click="SaveButton_Click" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Changer le fond" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Width="100" 
-                Height="30" 
-                Click="ChangeBackgroundButton_Click"/>
     </Grid>
 </Page>
