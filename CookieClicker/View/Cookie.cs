@@ -7,6 +7,7 @@
         public int TotalCookiesProduced { get; private set; }
         public int CookiesMadeByHand { get; private set; }
         public int TotalClicks { get; private set; }
+        public double ProductionMultiplier { get; private set; }
         public int GoldenCookieClicks { get; private set; }
         public int item1Count = 0;
         public int item2Count = 0;
@@ -14,10 +15,11 @@
         public int item4Count = 0;
         public DateTime StartTime { get; }
         public int CookiesPerClick { get; private set; }
-        public int cursorUpgradePrice = 100;
-        public int cursorLevel = 1;
-        public int grandmaUpgradePrice = 300;
-        public int grandmaLevel = 1;
+        public int cursorUpgradePrice = GameConstants.GrandmaLevel;
+        public int cursorLevel = GameConstants.GrandmaLevel;
+        public int grandmaUpgradePrice = GameConstants.GrandmaUpgradePrice;
+        public int grandmaLevel = GameConstants.GrandmaLevel;
+
 
         public Cookie()
         {
@@ -67,7 +69,6 @@
 
         public void Reset()
         {
-            
             Count = 0;
             TotalCookiesProduced = 0;
             CookiesPerSecond = 0;
@@ -82,6 +83,13 @@
             setCursorLevel(0);
             setGrandmaUpgradePrice(300);
             setGrandmaLevel(0);
+        }
+        public void Ascend()
+        {
+           Count = 0;
+           
+
+
 
         }
 

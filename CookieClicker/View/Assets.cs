@@ -2,14 +2,17 @@
 {
     public class Assets
     {
+        public int InitialCost { get; private set; } 
         public int Cost { get; private set; }
         public int CookiesPerSecond { get; private set; }
 
         public Assets(int cost, int cookiesPerSecond)
         {
+            InitialCost = cost; 
             Cost = cost;
             CookiesPerSecond = cookiesPerSecond;
         }
+
 
         public void IncreaseCost()
         {
@@ -30,5 +33,10 @@
                 IncreaseCost();
             }
         }
+        public void ResetCost()
+        {
+            Cost = InitialCost;
+        }
+       
     }
 }

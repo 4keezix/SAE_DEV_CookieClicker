@@ -21,10 +21,12 @@ namespace CookieClicker
     /// </summary>
     public partial class HeirtagePage : Page
     {
-            public HeirtagePage()
+        private GameState currentState;
+        public HeirtagePage()
             {
                 InitializeComponent();
-                
+                currentState = GameState.HeritagePageOpen;
+
         }
 
         private void AscendButton_Click(object sender, RoutedEventArgs e)
@@ -35,10 +37,10 @@ namespace CookieClicker
         private void ConfirmAscend_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            // Réinitialiser la progression ici
             mainWindow.Ascend();
-            AscendPopup.IsOpen = false;
+            mainWindow.ChangeState(GameState.Playing);
         }
+
 
         private void CancelAscend_Click(object sender, RoutedEventArgs e)
         {

@@ -28,10 +28,10 @@ namespace CookieClicker
         private HeirtagePage? heirtagePage;
 
 
-        public int cursorUpgradePrice = 100;
-        public int cursorLevel = 1;
-        public int grandmaUpgradePrice = 300;
-        public int grandmaLevel = 1;
+        public int cursorUpgradePrice = GameConstants.CursorUpgradePrice;
+        public int cursorLevel = GameConstants.CursorLevel;
+        public int grandmaUpgradePrice = GameConstants.GrandmaUpgradePrice;
+        public int grandmaLevel = GameConstants.GrandmaLevel;
 
         private bool isStatsPageOpen = false;
         private bool isOptionPageOpen = false;
@@ -39,6 +39,8 @@ namespace CookieClicker
         private OptionsPage? optionsPage;
         private StatistiquesWindow statsPage;
         private Statistiques stats;
+
+        private double productionBonus = 1.0;
 
         private const int cursorsPerCircle = 12; // Nombre de curseurs par cercle
         private const double baseRadius = 100; // Rayon de base pour le premier cercle
@@ -60,7 +62,6 @@ namespace CookieClicker
         private readonly string[] textMessages = { "Cliquez-moi", "Bonjour", "Nouveau message", "Continuez à cliquer", "Vous êtes génial" };
         private int currentTextIndex = 0;
 
-        // Déclaration des items administrateur
         public Assets GrandmaItem { get; private set; }
         public Assets CursorItem { get; private set; }
         public Assets FarmItem { get; private set; }
@@ -77,7 +78,6 @@ namespace CookieClicker
             item4 = new Assets(1000, 50);
             stats = new Statistiques();
 
-            // Garantir le fait que le nom et le nombre de cookie soit au premier plan
             Panel.SetZIndex(BakeryNameTextBlock, 10);
             Panel.SetZIndex(CookieCountText, 10);
 
@@ -130,50 +130,47 @@ namespace CookieClicker
             UpdateUIForState();
         }
 
+
         public void Ascend()
         {
-            cookie.Reset();
-            cookie.item1Count = 0;
-            cookie.item2Count = 0;
-            cookie.item3Count = 0;
-            cookie.item4Count = 0;
+            cookie.Ascend();
+            item1Count = 0;
+            item2Count = 0;
+            item3Count = 0;
+            item4Count = 0;
+
+            item1.ResetCost();
+            item2.ResetCost();
+            item3.ResetCost();
+            item4.ResetCost();
+
+            cursorLevel = GameConstants.CursorLevel;
+            cursorUpgradePrice = GameConstants.CursorUpgradePrice;
+            grandmaLevel = GameConstants.GrandmaLevel;
+            grandmaUpgradePrice = GameConstants.GrandmaUpgradePrice;
+
+            productionBonus += 0.1;
+
             UpdateCookieDisplay();
             UpdateButtonStates();
             UpdatePrices();
             UpdateStats();
-            ChangeState(GameState.Playing);
-            UpdateUIForState();
-            UpdateCursorProductionText();
             UpdateCursorUpgradeButton();
+            UpdateGrandMaUpgradeButton();
+            UpdateCursorProductionText();
+            UpdateGrandMaProductionText();
+
             currentState = GameState.Playing;
-                cookie.Reset();
-                cookie.item1Count = 0;
-                cookie.item2Count = 0;
-                cookie.item3Count = 0;
-                cookie.item4Count = 0;
-                UpdateCookieDisplay();
-                UpdateButtonStates();
-                UpdatePrices();
-                UpdateStats();
-                ChangeState(GameState.Playing);
-                UpdateUIForState();
-                cursorUpgradePrice = 100;
-                cursorLevel = 1;
-                grandmaUpgradePrice = 300;
-                grandmaLevel = 1;
-                UpdateCursorUpgradeButton();
-                UpdateGrandMaUpgradeButton();
-                UpdateCursorProductionText();
-                UpdateGrandMaProductionText();
         }
+
+
 
         private void UpdateUIForState()
         {
-            mainFrame.Content = null; // Réinitialise le contenu de la frame
+            mainFrame.Content = null; 
             switch (currentState)
             {
                 case GameState.Playing:
-                    // Logique pour l'état de jeu normal
                     break;
                 case GameState.HeritagePageOpen:
                     mainFrame.Navigate(new HeirtagePage());
@@ -265,14 +262,15 @@ namespace CookieClicker
             double farmProduction = FarmItem.CookiesPerSecond * item3Count;
             double mineProduction = MineItem.CookiesPerSecond * item4Count;
 
-            return cursorProduction + grandmaProduction + farmProduction + mineProduction;
-        }
+            return (cursorProduction + grandmaProduction + farmProduction + mineProduction) * productionBonus;
+        
+    }
 
         private void UpdateCookieDisplay()
         {
             CookieCountText.Text = $"{cookie.Count} cookies";
             double cookiesPerSecond = CalculateTotalCookiesPerSecond();
-            CookiesPerSecondText.Text = $"par seconde {cookiesPerSecond:F2}";
+            CookiesPerSecondText.Text = $"par seconde {cookiesPerSecond:F2} (Bonus x{productionBonus:F2})";
         }
 
         private void BuyItem1_Click(object sender, RoutedEventArgs e)
@@ -403,8 +401,24 @@ namespace CookieClicker
 
         public void HeritageButton_Click(object sender, RoutedEventArgs e)
         {
-            ChangeState(currentState == GameState.HeritagePageOpen ? GameState.Playing : GameState.HeritagePageOpen);
+            const int requiredCookies = 1000000;
+
+            if (currentState == GameState.HeritagePageOpen)
+            {
+                ChangeState(GameState.Playing);
+            }
+            else if (cookie.Count >= requiredCookies)
+            {
+
+                ChangeState(GameState.HeritagePageOpen);
+            }
+            else
+            {
+                MessageBox.Show("Vous devez avoir au moins 1 million de cookies pour ouvrir cette page.");
+            }
         }
+
+
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -494,7 +508,7 @@ namespace CookieClicker
 
         private double GetCursorProductionPerSecond()
         {
-            return 0.1 * cursorLevel; // Production de cookies par curseur par seconde, à multiplier par le nombre de curseurs
+            return 0.1 * cursorLevel * productionBonus;
         }
 
         private void AddCursor()
@@ -630,7 +644,7 @@ namespace CookieClicker
 
         private double GetGrandMaProductionPerSecond()
         {
-            return grandmaLevel * 1;
+            return grandmaLevel * 1 * productionBonus;
         }
 
         private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
