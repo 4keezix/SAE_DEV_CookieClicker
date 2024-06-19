@@ -112,18 +112,18 @@
         <Image x:Name="BackgroundImage" Source="pack://application:,,,/Images/background.jpg" Stretch="Fill" Grid.ColumnSpan="5" Panel.ZIndex="-1"/>
 
         <!-- Panneau gauche -->
-        <StackPanel Grid.Column="0" Margin="15,10,5,0" VerticalAlignment="Top">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
-                <Border Background="Black" CornerRadius="10" Opacity="0.5" Margin="10">
-                    <TextBlock x:Name="BakeryNameTextBlock" Text="Pâtisserie Delicious Gizmo" FontSize="20" FontWeight="Bold" Foreground="White" Padding="10" MouseDown="BakeryNameTextBlock_MouseDown"/>
+        <StackPanel Grid.Column="0" Margin="15,10,5,0" VerticalAlignment="Top" Panel.ZIndex="10">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" Panel.ZIndex="10">
+                <Border Background="Black" CornerRadius="10" Opacity="0.5" Margin="10" Panel.ZIndex="10">
+                    <TextBlock x:Name="BakeryNameTextBlock" Panel.ZIndex="10" Text="Pâtisserie Delicious Gizmo" FontSize="20" FontWeight="Bold" Foreground="White" Padding="10" MouseDown="BakeryNameTextBlock_MouseDown" />
                 </Border>
                 <TextBox x:Name="BakeryNameTextBox" Text="Pâtisserie Delicious Gizmo" FontSize="20" FontWeight="Bold" Foreground="Black" Margin="10" Visibility="Collapsed" KeyDown="BakeryNameTextBox_KeyDown" LostFocus="BakeryNameTextBox_LostFocus"/>
             </StackPanel>
-            <Grid HorizontalAlignment="Center">
-                <Rectangle HorizontalAlignment="Center" Height="46" Stroke="Black" Fill="Black" Opacity="0.5" Width="350"/>
-                <TextBlock x:Name="CookieCountText" Text="0 cookies" FontSize="30" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+            <Grid HorizontalAlignment="Center" Panel.ZIndex="10">
+                <Rectangle HorizontalAlignment="Center" Height="46" Stroke="Black" Fill="Black" Opacity="0.5" Width="350" Panel.ZIndex="10"/>
+                <TextBlock x:Name="CookieCountText" Text="0 cookies" FontSize="30" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Panel.ZIndex="10"/>
             </Grid>
-            <TextBlock x:Name="CookiesPerSecondText" Text="par seconde : 0" FontSize="16" Foreground="White" Margin="10" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="CookiesPerSecondText" Text="par seconde : 0" FontSize="16" Foreground="White" Margin="10" HorizontalAlignment="Center" Panel.ZIndex="10"/>
             <Canvas x:Name="CursorCanvas" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Margin="40,0,0,0">
                 <Canvas x:Name="CookieCanvas" Grid.Column="2" VerticalAlignment="Top" IsHitTestVisible="True" Height="583" Width="296" HorizontalAlignment="Center" Canvas.Left="-66" Canvas.Top="-174"/>
                 <Button x:Name="CookieButton" Background="Transparent" BorderThickness="0" Width="200" Height="200" Click="CookieButton_Click" HorizontalAlignment="Center" Canvas.Left="-23" VerticalAlignment="Top" Canvas.Top="32">
