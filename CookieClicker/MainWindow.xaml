@@ -130,7 +130,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
-                                
+
                                 <!-- Ellipse avec l'image du cookie -->
                                 <Ellipse Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Ellipse.Fill>
@@ -266,7 +266,7 @@
         <!-- Séparateur droit -->
         <Image Source="pack://application:,,,/Images/bords.png" Grid.Column="4" Stretch="Fill" Margin="1,0,290,0"/>
 
-        <Button x:Name="AdminButton" Content="Admin" Click="AdminButton_Click" Visibility="Visible" Margin="15,556,217,9"/>
+        <Button x:Name="AdminButton" Content="Admin" Click="AdminButton_Click" Visibility="Visible" Margin="222,0,10,565" Grid.Column="4"/>
 
         <!-- Panneau droit -->
         <StackPanel Grid.Column="4" Margin="10">
@@ -516,5 +516,15 @@
             </Image.RenderTransform>
         </Image>
         <Image Grid.Column="4" Margin="76,63,168,471" Source="/Images/tile001.png" Stretch="Fill"/>
+        <Image x:Name="MilkImage" Source="Images/milk.png" Stretch="Fill" Margin="-5,488,1,-186">
+            <Image.RenderTransform>
+                <TranslateTransform X="0" Y="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Setter Property="Canvas.ZIndex" Value="10" />
+                </Style>
+            </Image.Style>
+        </Image>
     </Grid>
 </Window>

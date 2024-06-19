@@ -46,5 +46,32 @@ namespace CookieClicker.View
                 isSpecialImage4Displayed = true;
             }
         }
+        public void HideImageForItem2()
+        {
+            if (isSpecialImage2Displayed)
+            {
+                specialImage2.Visibility = Visibility.Collapsed;
+                isSpecialImage2Displayed = false;
+            }
+        }
+
+        public void HideImageForItem3()
+        {
+            if (isSpecialImage3Displayed)
+            {
+                specialImage3.Visibility = Visibility.Collapsed;
+                isSpecialImage3Displayed = false;
+            }
+        }
+
+        public void HideImageForItem4()
+        {
+            if (isSpecialImage4Displayed)
+            {
+                specialImage4.Visibility = Visibility.Collapsed;
+                isSpecialImage4Displayed = false;
+            }
+        }
+
     }
 }

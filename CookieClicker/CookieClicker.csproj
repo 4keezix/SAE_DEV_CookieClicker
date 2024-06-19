@@ -45,6 +45,11 @@
     <None Remove="Images\milieu_ferme.png" />
     <None Remove="Images\milieu_gm.png" />
     <None Remove="Images\milieu_mine.png" />
+    <None Remove="Images\milk.png" />
+    <None Remove="Images\milkCaramel.png" />
+    <None Remove="Images\milkChocolate.png" />
+    <None Remove="Images\milkFire.png" />
+    <None Remove="Images\milkGold.png" />
     <None Remove="Images\mine.png" />
     <None Remove="Images\oasis.gif" />
     <None Remove="Images\Option.png" />
@@ -322,6 +327,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\milieu_mine.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\milk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\milkCaramel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\milkChocolate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\milkFire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\milkGold.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\mine.png">

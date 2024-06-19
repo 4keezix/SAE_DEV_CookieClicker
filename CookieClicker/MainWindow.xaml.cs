@@ -70,6 +70,7 @@ namespace CookieClicker
         public MainWindow()
         {
             InitializeComponent();
+            StartMilkAnimation();
             currentState = GameState.Playing;
             cookie = new Cookie();
             item1 = new Assets(15, 1);
@@ -160,7 +161,43 @@ namespace CookieClicker
             UpdateCursorProductionText();
             UpdateGrandMaProductionText();
 
+            Item1Count.Text = item1Count.ToString();
+            Item2Count.Text = item2Count.ToString();
+            Item3Count.Text = item3Count.ToString();
+            Item4Count.Text = item4Count.ToString();
+
             currentState = GameState.Playing;
+        }
+
+
+        private void StartMilkAnimation()
+        {
+            DoubleAnimation translationAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = 30,
+                Duration = TimeSpan.FromSeconds(3),
+                RepeatBehavior = RepeatBehavior.Forever,
+                AutoReverse = true,
+                EasingFunction = new SineEase { EasingMode = EasingMode.EaseInOut }
+            };
+
+            TranslateTransform translateTransform = new TranslateTransform();
+            MilkImage.RenderTransform = translateTransform;
+            translateTransform.BeginAnimation(TranslateTransform.YProperty, translationAnimation);
+
+           
+        }
+
+        private void ChangeMilkAnimation()
+        {
+            // Choisissez une nouvelle image pour l'animation de lait
+            var imagePath = "pack://application:,,,/Images/milkCaramel.png";
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(imagePath);
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(MilkImage, image);
         }
 
 
@@ -286,6 +323,10 @@ namespace CookieClicker
             BuyItem(item2, ref item2Count, Item2Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
+            if (item2Count <= 0)
+            {
+                imageItem.HideImageForItem2();
+            }
         }
 
         private void BuyItem3_Click(object sender, RoutedEventArgs e)
@@ -294,6 +335,10 @@ namespace CookieClicker
             BuyItem(item3, ref item3Count, Item3Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
+            if (item3Count <= 0)
+            {
+                imageItem.HideImageForItem3();
+            }
         }
 
         private void BuyItem4_Click(object sender, RoutedEventArgs e)
@@ -302,6 +347,10 @@ namespace CookieClicker
             BuyItem(item4, ref item4Count, Item4Count);
             AudioPlay.BuyingSongs();
             UpdateStats();
+            if (item4Count <= 0)
+            {
+                imageItem.HideImageForItem4();
+            }
         }
 
         private void BuyItem(Assets item, ref int itemCount, TextBlock itemCountTextBlock)
