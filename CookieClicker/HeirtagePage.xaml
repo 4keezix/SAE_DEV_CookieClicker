@@ -9,10 +9,8 @@
       Title="HeirtagePage">
 
     <Grid>
-        <!-- Background color similar to Cookie Clicker -->
         <Button x:Name="AscendButton" Content="Ascension" Width="200" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#ffcc00" Click="AscendButton_Click"/>
 
-        <!-- Popup for Ascension confirmation -->
         <Popup x:Name="AscendPopup" Width="400" Height="300" IsOpen="False" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Border Background="Black" BorderBrush="Goldenrod" BorderThickness="2" Padding="20">
                 <StackPanel>

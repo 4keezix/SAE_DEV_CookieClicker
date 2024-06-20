@@ -16,14 +16,13 @@ public class Advertising
 
         _timer = new DispatcherTimer
         {
-            Interval = TimeSpan.FromSeconds(5) // Intervalle de 5 secondes, vous pouvez le modifier si nécessaire
+            Interval = TimeSpan.FromSeconds(5) 
         };
         _timer.Tick += Timer_Tick;
     }
 
     private void Timer_Tick(object? sender, EventArgs e)
     {
-        // Logique du timer si nécessaire, sinon vide
     }
 
     public void Start()

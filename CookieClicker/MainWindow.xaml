@@ -245,7 +245,6 @@
 
                 </StackPanel>
 
-                <!-- Ajout du TextBlock cliquable et animé -->
                 <TextBlock x:Name="DynamicTextBlock" Text="Cliquez-moi" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="DynamicTextBlock_Click" Grid.Column="1"/>
 
                 <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
@@ -302,7 +301,6 @@
                     <Image Source="pack://application:,,,/Ressources/CookiesEffects/Cookies/Miscellaneous/favicon.png" Width="12" Height="12" VerticalAlignment="Top" Margin="71,41,248,0"/>
                     <TextBlock x:Name="Item1Price" Style="{StaticResource PriceTextStyle}" Text="70 cookies" VerticalAlignment="Top" Margin="87,37,80,0"/>
                     <Button Content="Revendre" Click="SellItem1_Click" Style="{StaticResource CustomButtonStyle}" RenderTransformOrigin="0.742,1.66" Margin="216,39,45,0" Height="21" VerticalAlignment="Top"/>
-                    <!-- Tooltip for Cursor -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
                             <StackPanel>
@@ -340,7 +338,6 @@
                     <TextBlock x:Name="Item2Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Top" Margin="209,22,15,0" Height="24" Grid.Column="1"/>
                     <Image Source="pack://application:,,,/Ressources/CookiesEffects/Cookies/Miscellaneous/favicon.png" Width="12" Height="12" VerticalAlignment="Top" Margin="20,38,220,0" Grid.Column="1"/>
                     <TextBlock x:Name="Item2Price" Style="{StaticResource PriceTextStyle}" Text="100 cookies" VerticalAlignment="Top" Margin="34,34,76,0" Grid.Column="1"/>
-                    <!-- Tooltip for Grandma -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
                             <StackPanel>
@@ -379,7 +376,6 @@
                     <TextBlock x:Name="Item3Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Center" Margin="260,0,20,0" Height="25"/>
                     <Image Source="pack://application:,,,/Ressources/CookiesEffects/Cookies/Miscellaneous/favicon.png" Width="12" Height="12" VerticalAlignment="Top" Margin="70,35,222,0"/>
                     <TextBlock x:Name="Item3Price" Style="{StaticResource PriceTextStyle}" Text="500 cookies" VerticalAlignment="Top" Margin="84,32,78,0"/>
-                    <!-- Tooltip for Farm -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
                             <StackPanel>
@@ -417,7 +413,6 @@
                     <TextBlock x:Name="Item4Count" Style="{StaticResource CounterTextStyle}" Text="0" VerticalAlignment="Top" Margin="260,23,19,0" Height="24"/>
                     <Image Source="pack://application:,,,/Ressources/CookiesEffects/Cookies/Miscellaneous/favicon.png" Width="12" Height="12" VerticalAlignment="Top" Margin="66,35,209,0"/>
                     <TextBlock x:Name="Item4Price" Style="{StaticResource PriceTextStyle}" Text="1000 cookies" VerticalAlignment="Top" Margin="79,31,76,0"/>
-                    <!-- Tooltip for Mine -->
                     <Grid.ToolTip>
                         <ToolTip Background="Black" Foreground="White">
                             <StackPanel>

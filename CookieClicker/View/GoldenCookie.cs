@@ -36,9 +36,9 @@ namespace CookieClicker.View
         private void GoldenCookieImage_MouseLeftButtonDown(object? sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ApplyBonus();
-            AudioPlay.PlayGoldenCookieSound(); // Jouer le son ici
+            AudioPlay.PlayGoldenCookieSound();
             var position = e.GetPosition(goldenCookieCanvas);
-            ShowBonusText((int)(cookie.CookiesPerSecond * 10), position.X, position.Y); // Afficher le texte du bonus
+            ShowBonusText((int)(cookie.CookiesPerSecond * 10), position.X, position.Y);
             RemoveGoldenCookie();
         }
 

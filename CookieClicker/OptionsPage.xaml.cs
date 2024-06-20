@@ -19,9 +19,7 @@ namespace CookieClicker
 {
     using global::CookieClicker.View;
 
-    /// <summary>
-    /// Logique d'interaction pour OptionsPage.xaml
-    /// </summary>
+
     public partial class OptionsPage : Page
     {
         public OptionsPage()
@@ -31,7 +29,6 @@ namespace CookieClicker
 
         private void MusicSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Logique pour changer le volume de la musique
             double volume = e.NewValue / 100;
             AudioPlay.SetBackgroundMusicVolume((float)volume);
         }
@@ -73,7 +70,6 @@ namespace CookieClicker
 
         private void MusicCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Activer la musique de fond
             AudioPlay.PlayBackgroundMusic();
         }
 

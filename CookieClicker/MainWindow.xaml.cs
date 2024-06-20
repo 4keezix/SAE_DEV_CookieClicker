@@ -191,7 +191,6 @@ namespace CookieClicker
 
         private void ChangeMilkAnimation()
         {
-            // Choisissez une nouvelle image pour l'animation de lait
             var imagePath = "pack://application:,,,/Images/milkCaramel.png";
             var image = new BitmapImage();
             image.BeginInit();
@@ -563,18 +562,15 @@ namespace CookieClicker
         private void AddCursor()
         {
             item1Count++;
-            // Déterminer le cercle et l'angle pour le curseur actuel
             int circleIndex = (item1Count - 1) / cursorsPerCircle;
             int positionInCircle = (item1Count - 1) % cursorsPerCircle;
 
             double angle = 2 * Math.PI * positionInCircle / cursorsPerCircle;
             double radius = baseRadius + circleIndex * radiusIncrement;
 
-            // Calculer les coordonnées x et y
             double x = radius * Math.Cos(angle) + CookieButton.ActualWidth / 2;
             double y = radius * Math.Sin(angle) + CookieButton.ActualHeight / 2;
 
-            // Réduire la taille du curseur en fonction du cercle
             double cursorSize = baseCursorSize / (1 + circleIndex * 0.2);
 
             Image cursorImage = new Image
@@ -738,15 +734,15 @@ namespace CookieClicker
         private void UpdateStats()
         {
             stats.CookiesEnBanque = cookie.Count;
-            stats.CookiesCuits = cookie.TotalCookiesProduced; // Remplacez par le nombre total de cookies cuits si c'est différent
-            stats.CookiesCuitsTotal = cookie.TotalCookiesProduced; // Exemple, remplacez par la bonne valeur
+            stats.CookiesCuits = cookie.TotalCookiesProduced;
+            stats.CookiesCuitsTotal = cookie.TotalCookiesProduced;
             stats.TempsJeu = DateTime.Now - cookie.StartTime;
             stats.ConstructionsPossedees = item1Count + item2Count + item3Count + item4Count;
             stats.CookiesParSeconde = CalculateTotalCookiesPerSecond();
             stats.CookiesParClic = cookie.CookiesPerClick;
             stats.ClicsDeCookies = cookie.TotalClicks;
             stats.CookiesFaitsMain = cookie.CookiesMadeByHand;
-            stats.ClicsCookiesDores = cookie.GoldenCookieClicks; // Exemple, remplacez par la bonne valeur
+            stats.ClicsCookiesDores = cookie.GoldenCookieClicks;
 
             statsPage.UpdateStatistics();
         }

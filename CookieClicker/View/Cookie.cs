@@ -133,7 +133,6 @@
             return grandmaLevel;
         }
 
-        // Setters with private access
         private void setItem1Count(int item1Count)
         {
             this.item1Count = item1Count;
